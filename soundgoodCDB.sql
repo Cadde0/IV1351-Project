@@ -91,7 +91,7 @@ CREATE TABLE location (
 
 CREATE TABLE pricing (
     price_id INT GENERATED ALWAYS AS IDENTITY NOT NULL,
-    active BOOLEAN NOT NULL,
+    active BOOLEAN NOT NULL DEFAULT TRUE,
     skill_level SMALLINT NOT NULL,
     activity_type INT NOT NULL,
     price MONEY NOT NULL,
