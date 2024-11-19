@@ -6,128 +6,142 @@ CREATE TABLE person (
     date_of_birth DATE,
     address VARCHAR(100),
     zip_code CHAR(6),
-    city VARCHAR(100)
+    city VARCHAR(100),
+    CONSTRAINT person_PK PRIMARY KEY (school_id),
+    CONSTRAINT unique_personal_number UNIQUE (personal_id_number),
+    CHECK (personal_id_number ~ '^[0-9]{8}-[0-9]{4}$'),
+    CHECK (zip_code ~ '^[0-9]{6}$')
 );
-
-ALTER TABLE person ADD CONSTRAINT person_PK PRIMARY KEY (school_id);
-ALTER TABLE person ADD CONSTRAINT unique_personal_number UNIQUE (personal_id_number);
-
-/**/
 
 CREATE TABLE contact_details (
     contact_id INT GENERATED ALWAYS AS IDENTITY NOT NULL,
-    school_id INT NOT NULL REFERENCES person (school_id),
+    school_id INT NOT NULL REFERENCES person (school_id) ON DELETE CASCADE,
     is_personal BOOLEAN NOT NULL,  
     belongs_to VARCHAR(50),
     phone_number VARCHAR(15),
-    email VARCHAR(320)
+    email VARCHAR(320),
+    CONSTRAINT contact_details_PK PRIMARY KEY (contact_id, school_id),
+    CHECK (phone_number IS NOT NULL OR email IS NOT NULL)
 );
-
-ALTER TABLE contact_details ADD CONSTRAINT contact_details_PK PRIMARY KEY (contact_id, school_id);
-/*ALTER TABLE contact_details ADD CONSTRAINT contact_types CHECK (contact_type = 'personal', )*/
 
 CREATE TABLE student (
-    school_id INT NOT NULL REFERENCES person (school_id),
-    sibling_id INT
+    student_school_id INT NOT NULL REFERENCES person (school_id) ON DELETE CASCADE,
+    sibling_id INT,
+    CONSTRAINT student_PK PRIMARY KEY (student_school_id)
 );
-
-ALTER TABLE student ADD CONSTRAINT student_PK PRIMARY KEY (school_id);
 
 CREATE TABLE instructor (
-    school_id INT NOT NULL REFERENCES person (school_id),
-    can_teach_ensamble BOOLEAN
+    instructor_school_id INT NOT NULL REFERENCES person (school_id) ON DELETE CASCADE,
+    can_teach_ensamble BOOLEAN,
+    CONSTRAINT instructor_PK PRIMARY KEY (instructor_school_id)
 );
-
-ALTER TABLE instructor ADD CONSTRAINT instructor_PK PRIMARY KEY (school_id);
 
 CREATE TABLE instrument_skill (
-    instrument_type VARCHAR(100) NOT NULL,
-    instructor_school_id INT NOT NULL REFERENCES instructor (school_id),
-    skill_level INT NOT NULL
+    instrument_type INT NOT NULL,
+    instructor_school_id INT NOT NULL REFERENCES instructor (instructor_school_id) ON DELETE CASCADE,
+    skill_level SMALLINT NOT NULL,
+    CONSTRAINT instrument_skill_PK PRIMARY KEY (instrument_type, instructor_school_id),
+    CHECK (skill_level BETWEEN 1 AND 3)
 );
-
-ALTER TABLE instrument_skill ADD CONSTRAINT instrument_skill_PK PRIMARY KEY (instrument_type, instructor_school_id);
 
 CREATE TABLE instrument (
     inventory_id INT GENERATED ALWAYS AS IDENTITY NOT NULL,
-    instrument_type VARCHAR(100) NOT NULL,
+    instrument_type INT NOT NULL,
     brand VARCHAR(100),
     model VARCHAR(100),
     quantity INT NOT NULL,
-    rental_cost MONEY NOT NULL
+    rental_cost MONEY NOT NULL,
+    CONSTRAINT instrument_PK PRIMARY KEY (inventory_id),
+    CHECK (quantity >= 0),
+    CHECK (rental_cost >= 0::money)
 );
-
-ALTER TABLE instrument ADD CONSTRAINT instrument_PK PRIMARY KEY (inventory_id);
 
 CREATE TABLE rental (
     rental_id INT GENERATED ALWAYS AS IDENTITY NOT NULL,
-    is_paid_for BOOLEAN NOT NULL,
+    is_paid_for BOOLEAN NOT NULL DEFAULT FALSE,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     school_id INT NOT NULL REFERENCES person (school_id),
-    inventory_id INT NOT NULL REFERENCES instrument (inventory_id)
+    inventory_id INT NOT NULL REFERENCES instrument (inventory_id),
+    CONSTRAINT rental_PK PRIMARY KEY (rental_id),
+    CHECK (end_date > start_date),
+    CHECK (end_date <= start_date + INTERVAL '12 months')
 );
 
-ALTER TABLE rental ADD CONSTRAINT rental_PK PRIMARY KEY (rental_id);
+-- Restrict rentals to not be more than 2
+CREATE OR REPLACE FUNCTION check_max_rentals() RETURNS TRIGGER AS $$
+BEGIN
+    IF (SELECT COUNT(*) FROM rental WHERE end_date >= CURRENT_DATE AND school_id = NEW.school_id) >= 2 THEN
+        RAISE EXCEPTION 'Student cannot have more than 2 active rentals.';
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+CREATE TRIGGER max_rentals_trigger BEFORE INSERT ON rental
+FOR EACH ROW EXECUTE FUNCTION check_max_rentals();
+
 
 CREATE TABLE location (
     location_id INT GENERATED ALWAYS AS IDENTITY NOT NULL,
     room_name VARCHAR(25),
-    video_link VARCHAR(999)
+    video_link VARCHAR(999),
+    CONSTRAINT location_PK PRIMARY KEY (location_id),
+    CHECK (room_name IS NOT NULL OR video_link IS NOT NULL)
 );
-
-ALTER TABLE location ADD CONSTRAINT location_PK PRIMARY KEY (location_id);
 
 CREATE TABLE pricing (
     price_id INT GENERATED ALWAYS AS IDENTITY NOT NULL,
     active BOOLEAN NOT NULL,
-    skill_level INT NOT NULL,
+    skill_level SMALLINT NOT NULL,
     activity_type INT NOT NULL,
     price MONEY NOT NULL,
-    sibling_discount DECIMAL(5,2)
+    sibling_discount DECIMAL(5,2),
+    CONSTRAINT pricing_PK PRIMARY KEY (price_id),
+    CHECK (activity_type BETWEEN 1 AND 3),
+    CHECK (skill_level BETWEEN 1 AND 3),
+    CHECK (price >= 0::money),
+    CHECK (sibling_discount BETWEEN 1 AND 100)
 );
-/* Skill level constraint 1-3*/
-/* activity type index? 1-3? constraint?*/
-ALTER TABLE pricing ADD CONSTRAINT pricing_PK PRIMARY KEY (price_id);
 
 CREATE TABLE activity (
     activity_id INT GENERATED ALWAYS AS IDENTITY NOT NULL,
-    instructor_school_id INT NOT NULL REFERENCES instructor (school_id),
+    instructor_school_id INT NOT NULL REFERENCES instructor (instructor_school_id),
     location_id INT NOT NULL REFERENCES location (location_id),
     price_id INT NOT NULL REFERENCES pricing (price_id),
     start_time TIMESTAMP(6) NOT NULL,
     end_time TIMESTAMP(6) NOT NULL,
     title VARCHAR(100) NOT NULL,
-    description VARCHAR(1000) NOT NULL
+    description VARCHAR(1000) NOT NULL,
+    CONSTRAINT activity_PK PRIMARY KEY (activity_id),
+    CHECK (end_time > start_time)
 );
-
-ALTER TABLE activity ADD CONSTRAINT activity_PK PRIMARY KEY (activity_id);
 
 CREATE TABLE booking (
-    student_school_id INT NOT NULL REFERENCES student (school_id),
+    student_school_id INT NOT NULL REFERENCES student (student_school_id),
     activity_id INT NOT NULL REFERENCES activity (activity_id),
-    is_paid_for BOOLEAN
+    is_paid_for BOOLEAN DEFAULT FALSE,
+    CONSTRAINT booking_PK PRIMARY KEY (student_school_id, activity_id)
 );
-
-ALTER TABLE booking ADD CONSTRAINT booking_PK PRIMARY KEY (student_school_id, activity_id);
 
 CREATE TABLE lesson (
-    activity_id INT NOT NULL REFERENCES activity (activity_id),
-    instrument_type VARCHAR(100) NOT NULL,
-    skill_level INT NOT NULL,
-    min_students INT,
-    max_students INT
+    activity_id INT NOT NULL REFERENCES activity (activity_id) ON DELETE CASCADE,
+    instrument_type INT NOT NULL,
+    skill_level SMALLINT NOT NULL,
+    min_students SMALLINT,
+    max_students SMALLINT,
+    CONSTRAINT lesson_PK PRIMARY KEY (activity_id),
+    CHECK (skill_level BETWEEN 1 AND 3),
+    CHECK (min_students IS NULL OR min_students > 0),
+    CHECK (max_students IS NULL OR max_students > 0),
+    CHECK (max_students IS NULL OR max_students >= min_students)
 );
-
-ALTER TABLE lesson ADD CONSTRAINT lesson_PK PRIMARY KEY (activity_id);
-
-/* Skill level constraint 1-3?*/
 
 CREATE TABLE ensamble (
-    activity_id INT NOT NULL REFERENCES activity (activity_id),
+    activity_id INT NOT NULL REFERENCES activity (activity_id) ON DELETE CASCADE,
     genre VARCHAR(99) NOT NULL,
-    min_students INT NOT NULL,
-    max_students INT NOT NULL
+    min_students SMALLINT NOT NULL,
+    max_students SMALLINT NOT NULL,
+    CONSTRAINT ensamble_PK PRIMARY KEY (activity_id),
+    CHECK (max_students >= min_students),
+    CHECK (min_students > 0)
 );
-
-ALTER TABLE ensamble ADD CONSTRAINT ensamble_PK PRIMARY KEY (activity_id);
