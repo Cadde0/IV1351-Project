@@ -5,12 +5,12 @@ CREATE TABLE person (
     last_name VARCHAR(50),
     date_of_birth DATE,
     address VARCHAR(100),
-    zip_code CHAR(6),
+    zip_code CHAR(5),
     city VARCHAR(100),
     CONSTRAINT person_PK PRIMARY KEY (school_id),
     CONSTRAINT unique_personal_number UNIQUE (personal_id_number),
     CHECK (personal_id_number ~ '^[0-9]{8}-[0-9]{4}$'),
-    CHECK (zip_code ~ '^[0-9]{6}$')
+    CHECK (zip_code ~ '^[0-9]{5}$')
 );
 
 CREATE TABLE contact_details (
