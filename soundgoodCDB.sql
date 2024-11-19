@@ -39,3 +39,19 @@ CREATE TABLE instructor (
 );
 
 ALTER TABLE instructor ADD CONSTRAINT instructor_PK PRIMARY KEY (school_id);
+
+CREATE TABLE instrument_skill (
+    instrument_type VARCHAR(100) NOT NULL,
+    school_id INT NOT NULL REFERENCES person (school_id),
+    skill_level INT NOT NULL
+);
+
+ALTER TABLE instrument_skill ADD CONSTRAINT instrument_PK PRIMARY KEY (instrument_type, school_id);
+
+CREATE TABLE instrument (
+    inventory_id INT GENERATED ALWAYS AS IDENTITY NOT NULL,
+    instrument_type VARCHAR(100) NOT NULL,
+    brand VARCHAR(100),
+    model VARCHAR(100),
+    quantity 
+)
