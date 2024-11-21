@@ -47,6 +47,13 @@ During this assignment, the goal was to transform the conceptual model which was
 
 \section{Literature Study}
 
+Before starting this task, we studied \textbf{Chapters 9.1, 14, and 15.1-15.2} in our course literature, \textit{Fundamentals of Database Systems}. These chapters provided key insights into designing and normalizing databases, helping us create a logical and physical model for our project.
+
+Chapter 9.1: Logical and Physical Database Design
+This chapter, along with three lectures on the topic, guided us through the process of turning a conceptual model into a logical schema and eventually a physical database. It covered essential steps like defining relationships, choosing primary and foreign keys, and setting up constraints. This helped us ensure that the structure of the database was both correct and ready for implementation.
+
+Chapters 14 and 15.1-15.2: Normalization
+These chapters focused on normalization and organizing data to reduce redundancy and ensure consistency. We learned about the different normal forms (1NF, 2NF, 3NF, BCNF, etc.) and how to identify functional dependencies. Using this knowledge, we decided that designing the database to \textbf{third normal form (3NF)} was the best choice for our project because:It removes most redundancy and prevents common data anomalies (update, insert, delete issues).Higher normalization levels (e.g., BCNF, 4NF) would make the design overly complex, with too many fragmented tables requiring more joins, which could hurt performance. 3NF struck a good balance between simplicity, efficiency, and maintaining data integrity. By following these chapters, we ensured that our database design is well-structured, avoids unnecessary duplication, and is practical for real-world use. This balance of theory and practicality makes the design easy to work with while remaining robust and scalable.
 
 \section{Method}
 
