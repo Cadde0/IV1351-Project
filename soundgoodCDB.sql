@@ -56,8 +56,14 @@ CREATE TABLE instructor (
     CONSTRAINT instructor_PK PRIMARY KEY (instructor_school_id)
 );
 
+CREATE TABLE instrument_type (
+    instrument_id INT GENERATED ALWAYS AS IDENTITY NOT NULL,
+    instrument_name VARCHAR(25) NOT NULL,
+    CONSTRAINT instrument_type_PK PRIMARY KEY (instrument_id)
+);
+
 CREATE TABLE instrument_skill (
-    instrument_type INT NOT NULL,
+    instrument_type INT NOT NULL REFERENCES instrument_type (instrument_id) ON DELETE CASCADE,
     instructor_school_id INT NOT NULL REFERENCES instructor (instructor_school_id) ON DELETE CASCADE,
     skill_level SMALLINT NOT NULL,
     CONSTRAINT instrument_skill_PK PRIMARY KEY (instrument_type, instructor_school_id),
@@ -66,7 +72,7 @@ CREATE TABLE instrument_skill (
 
 CREATE TABLE instrument (
     inventory_id INT GENERATED ALWAYS AS IDENTITY NOT NULL,
-    instrument_type INT NOT NULL,
+    instrument_type INT NOT NULL REFERENCES instrument_type (instrument_id) ON DELETE RESTRICT,
     brand VARCHAR(100),
     model VARCHAR(100),
     quantity INT NOT NULL,
@@ -159,7 +165,7 @@ CREATE TABLE booking (
 
 CREATE TABLE lesson_individual (
     activity_id INT NOT NULL REFERENCES activity (activity_id) ON DELETE CASCADE,
-    instrument_type INT NOT NULL,
+    instrument_type INT NOT NULL REFERENCES instrument_type (instrument_id) ON DELETE RESTRICT,
     skill_level SMALLINT NOT NULL,
     CONSTRAINT lesson_individual_PK PRIMARY KEY (activity_id),
     CHECK (skill_level BETWEEN 1 AND 3)
@@ -167,7 +173,7 @@ CREATE TABLE lesson_individual (
 
 CREATE TABLE lesson_group (
     activity_id INT NOT NULL REFERENCES activity (activity_id) ON DELETE CASCADE,
-    instrument_type INT NOT NULL,
+    instrument_type INT NOT NULL REFERENCES instrument_type (instrument_id) ON DELETE RESTRICT,
     skill_level SMALLINT NOT NULL,
     min_students SMALLINT NOT NULL,
     max_students SMALLINT NOT NULL,

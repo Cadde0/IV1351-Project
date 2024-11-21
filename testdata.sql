@@ -21,6 +21,15 @@ VALUES
 -- Insert instructors
 INSERT INTO instructor (instructor_school_id, can_teach_ensamble) VALUES (3, false);
 
+-- Insert instrument_types
+INSERT INTO instrument_type (instrument_name)
+VALUES
+('Guitar'),
+('Piano'),
+('Drums'),
+('Violin'),
+('Flute');
+
 -- Insert contact details
 INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email)
 VALUES 
