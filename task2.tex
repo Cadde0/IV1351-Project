@@ -8,6 +8,8 @@
 \usepackage{fancyvrb}
 \usepackage{fancyhdr}
 \usepackage{float}
+\usepackage{hyperref}
+\usepackage{url}
 \pagestyle{fancy}
 
 % Create header and footer
@@ -69,6 +71,8 @@ To create a Logical and Physical Model that accurately represents the requiremen
 \end{enumerate}
 
 \section{Result}
+
+The GitHub repository with Astah files, SQL files, etc., can be found at \url{https://github.com/Cadde0/IV1351-Project}.
 
 The result of our combined physical and logical diagram of our database can be seen in Figure 1 below. Its structure is very alike to our Conceptual Model Diagram since it already was fairly normalized and compatible with a database structure. The first table that we implemented was the \textbf{person} which uses an automatically incremented integer ID \textbf{school\_id} as primary key. It is automatically incremented using the built-in SQL feature \textbf{GENERATED ALWAYS AS IDENTITY} which ensures that we can't insert values to it. The \textbf{school\_id} is widely used in the database since it is used to identify different persons. Their personal ID number is only used to identify their \textbf{Person} row with their real life identity. This ensures that we in special cases can update the personal ID number of a person if it were to change for some reason. The table have two checks using regex to ensure that the \textbf{personal\_id\_number} and \textbf{zip\_code} are correctly formatted.
 
