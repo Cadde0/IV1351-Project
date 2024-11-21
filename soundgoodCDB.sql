@@ -81,8 +81,8 @@ CREATE TABLE rental (
     is_paid_for BOOLEAN NOT NULL DEFAULT FALSE,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
-    school_id INT NOT NULL REFERENCES person (school_id),
-    inventory_id INT NOT NULL REFERENCES instrument (inventory_id),
+    school_id INT NOT NULL REFERENCES person (school_id) ON DELETE CASCADE,
+    inventory_id INT NOT NULL REFERENCES instrument (inventory_id) ON DELETE CASCADE,
     CONSTRAINT rental_PK PRIMARY KEY (rental_id),
     CHECK (end_date > start_date),
     CHECK (end_date <= start_date + INTERVAL '12 months')
