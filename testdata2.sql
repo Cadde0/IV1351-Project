@@ -51,7 +51,7 @@ VALUES
 (5, false, 'Guardian', '0759876543', 'guardian.brown@example.com');
 
 -- Add instruments
-INSERT INTO instrument (instrument_type, brand, model, quantity, rental_cost) 
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) 
 VALUES 
 (1, 'Yamaha', 'FG800', 10, 25.00),
 (2, 'Stradivarius', 'Model X', 5, 50.00),

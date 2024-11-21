@@ -74,7 +74,7 @@ CREATE TABLE instrument_skill (
     CHECK (skill_level BETWEEN 1 AND 3)
 );
 
-CREATE TABLE instrument (
+CREATE TABLE instrument_inventory (
     inventory_id INT GENERATED ALWAYS AS IDENTITY NOT NULL,
     instrument_type INT NOT NULL REFERENCES instrument_type (instrument_id) ON DELETE RESTRICT,
     brand VARCHAR(100),
@@ -92,7 +92,7 @@ CREATE TABLE rental (
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     school_id INT NOT NULL REFERENCES person (school_id) ON DELETE CASCADE,
-    inventory_id INT NOT NULL REFERENCES instrument (inventory_id) ON DELETE CASCADE,
+    inventory_id INT NOT NULL REFERENCES instrument_inventory (inventory_id) ON DELETE CASCADE,
     CONSTRAINT rental_PK PRIMARY KEY (rental_id),
     CHECK (end_date > start_date),
     CHECK (end_date <= start_date + INTERVAL '12 months')
