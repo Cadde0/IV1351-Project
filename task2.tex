@@ -132,6 +132,7 @@ Notes have been used in the diagram to explain triggers, checks, ON DELETE actio
 
 \subsection{Are there attributes which are calculated from other attributes and then written back to the database (derived attributes)? If so, why? Records of student fees and instructor payments might be examples of such attributes.}
 
+There are no derived attributes in the database as this would lead to redundant information being stored. There can be advantages of using derived attributes when a certain column is read a lot. But this time it was optimized for size.
 
 \subsection{Are tables (or ENUMs) always used instead of free text for constants such as the skill levels (beginner, intermediate and advanced)?}
 Initially we used ENUMs for the instrument types but was recommended by a lab assistant to use INT IDs or a lookup table since ENUMs were said to not scale very efficiently. Therefore, IDs like 1 for beginner, 2 for intermediate and 3 for advanced are used for skill level. The same implementation is for instrument types where each unique INT reflects a certain instrument. They can also be defined directly in the diagram using a table of instrument names and their IDs. A foreign key from for example \textbf{instrument\_skill} can then be used to reference that instrument.
@@ -139,6 +140,7 @@ Initially we used ENUMs for the instrument types but was recommended by a lab as
 
 \subsection{Is the method and result explained in the report? Is there a discussion? Is the discussion relevant?}
 
+The method is explained the report thoroughly and systematically and explains what steps were needed to be taken to create the model. The result section describes what was implemented in the database. The report also contains a relevant discussion.  
 
 \subsection{Pros/cons of storing all data in the database compared to application}
 
@@ -147,5 +149,6 @@ Initially we used ENUMs for the instrument types but was recommended by a lab as
 
 \section{Comments About the Course}
 
+What we found a bit confusing this week was the difference between instruction on Canvas and what the TAs told us was best practice. We had implemented an enum to handle three different activity types (lesson, ensemble, other). We thought this was a fairly slick solution, however, when we asked for feedback from a TA we got the criticism that enums are not advised as they incur a performance penalty. From what we saw on canvas it seems that they are recommended. This may just be a case of misunderstanding, but it made us slightly confused.
 
 \end{document}
