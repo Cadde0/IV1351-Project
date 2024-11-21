@@ -106,40 +106,43 @@ Finally, we have the \textbf{instrument} table which store information about all
 All naming conventions are followed strictly. This means that all table names and column names follow snake case. This was the recommended naming conventions presented in the lectures.
 
 \subsection{Is the crow foot notation correctly followed?}
+The crow foot notation is followed correctly since all relationships have the correct cardinality and the table columns reflect the relationships in a correct way.
 
 \subsection{Is the model in 3NF? If not, is there a good reason why not?}
+The model has been made to fully follow the 3NF normalization standard. This can be said since all columns hold unique values, each cell contains a single value, each row is uniquely identifiable by its primary key, there's no partial dependency, there's no transitive dependency.
 
 \subsection{Are all tables relevant? Is some table missing?}
+All tables are relevant to store the data needed to fulfill the requirements posed by the assignment. There are no tables that cannot be connected to a certain requirement of the assignment.
 
 
-\subsection{Are there columns for all data that shall be stored? Are all relevant column con-
-straints and foreign key constraints specified? Can all column types be motivated?}
+\subsection{Are there columns for all data that shall be stored? Are all relevant column constraints and foreign key constraints specified? Can all column types be motivated?}
+All columns are there to fulfill the requirements posed by the assignment. Their data type has been carefully selected to follow the same requirements or general standards for that type of data. All columns that need to be constrained has been done so with checks or triggers. Foreign key constraints are automatically rendered by Astah, modified if needed, and finally verified to be correct.
 
-
-\subsection{Can the choice of primary keys be motivated? Are primary keys unique?}
+\subsection{Can the choice of primary keys be motivated? Are primary keys unique?} All primary keys or composite primary keys have been carefully selected to ensure that they will be unique. Eventual composite primary keys that would not be unique reflects data that is not wanted. For the sibling table we avoid bidirectional composite primary keys using a trigger that ensure each combination of student IDs only can occur once, regardless of their order.
 
 
 \subsection{Are all relations relevant? Is some relation missing? Is the cardinality correct?}
-
+All relations are explicitly needed and there are no relations which are unnecessary. As mentioned earlier, all cardinality have also been carefully selected and is correct. There are no relations missing and this can be verified since the database has been implemented and tested.
 
 \subsection{Is it possible to perform all tasks listed in the project description?}
-
+The database has been carefully planned to fulfill exactly this requirement. All tables and their relations are chosen based on the actions that we need to perform on the data later on.
 
 \subsection{Are all business rules and constraints that are not visible in the diagram explained in plain text?}
-
+Notes have been used in the diagram to explain triggers, checks, ON DELETE actions, etc. For the trigger descriptions we refer to our GitHub if an example of a full implementation is requested.
 
 \subsection{Are there attributes which are calculated from other attributes and then written back to the database (derived attributes)? If so, why? Records of student fees and instructor payments might be examples of such attributes.}
 
 
-\subsection{Are tables (or ENUMs) always used instead of free text for constants such as the
-skill levels (beginner, intermediate and advanced)?}
+\subsection{Are tables (or ENUMs) always used instead of free text for constants such as the skill levels (beginner, intermediate and advanced)?}
+Initially we used ENUMs for the instrument types but was recommended by a lab assistant to use INT IDs or a lookup table since ENUMs were said to not scale very efficiently. Therefore, IDs like 1 for beginner, 2 for intermediate and 3 for advanced are used for skill level. The same implementation is for instrument types where each unique INT reflects a certain instrument. They can also be defined directly in the diagram using a table of instrument names and their IDs. A foreign key from for example \textbf{instrument\_skill} can then be used to reference that instrument.
 
 
-\subsection{Is the method and result explained in the report? Is there a discussion? Is the
-discussion relevant?}
+\subsection{Is the method and result explained in the report? Is there a discussion? Is the discussion relevant?}
 
 
 \subsection{Pros/cons of storing all data in the database compared to application}
+
+
 \subsection{Pros/cons of storing multiple versions of data in the database}
 
 \section{Comments About the Course}
