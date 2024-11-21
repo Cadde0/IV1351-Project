@@ -138,6 +138,7 @@ CREATE TABLE booking (
     CONSTRAINT booking_PK PRIMARY KEY (student_school_id, activity_id)
 );
 
+/*
 CREATE TABLE lesson (
     activity_id INT NOT NULL REFERENCES activity (activity_id) ON DELETE CASCADE,
     instrument_type INT NOT NULL,
@@ -149,6 +150,28 @@ CREATE TABLE lesson (
     CHECK (min_students IS NULL OR min_students > 0),
     CHECK (max_students IS NULL OR max_students > 0),
     CHECK (max_students IS NULL OR max_students >= min_students)
+);
+*/
+
+CREATE TABLE lesson_individual (
+    activity_id INT NOT NULL REFERENCES activity (activity_id) ON DELETE CASCADE,
+    instrument_type INT NOT NULL,
+    skill_level SMALLINT NOT NULL,
+    CONSTRAINT lesson_individual_PK PRIMARY KEY (activity_id),
+    CHECK (skill_level BETWEEN 1 AND 3)
+);
+
+CREATE TABLE lesson_group (
+    activity_id INT NOT NULL REFERENCES activity (activity_id) ON DELETE CASCADE,
+    instrument_type INT NOT NULL,
+    skill_level SMALLINT NOT NULL,
+    min_students SMALLINT NOT NULL,
+    max_students SMALLINT NOT NULL,
+    CONSTRAINT lesson_group_PK PRIMARY KEY (activity_id),
+    CHECK (skill_level BETWEEN 1 AND 3),
+    CHECK (min_students > 0),
+    CHECK (max_students > 0),
+    CHECK (max_students >= min_students)
 );
 
 CREATE TABLE ensamble (
