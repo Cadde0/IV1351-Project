@@ -1,6 +1,6 @@
 CREATE TABLE person (
     school_id INT GENERATED ALWAYS AS IDENTITY NOT NULL,
-    personal_id_number CHAR(13) NOT NULL,
+    personal_id_number CHAR(13) NOT NULL UNIQUE,
     first_name VARCHAR(50),
     last_name VARCHAR(50),
     date_of_birth DATE,
@@ -8,7 +8,6 @@ CREATE TABLE person (
     zip_code CHAR(5),
     city VARCHAR(100),
     CONSTRAINT person_PK PRIMARY KEY (school_id),
-    CONSTRAINT unique_personal_number UNIQUE (personal_id_number),
     CHECK (personal_id_number ~ '^[0-9]{8}-[0-9]{4}$'),
     CHECK (zip_code ~ '^[0-9]{5}$')
 );
@@ -20,7 +19,7 @@ CREATE TABLE contact_details (
     belongs_to VARCHAR(50),
     phone_number VARCHAR(15),
     email VARCHAR(320),
-    CONSTRAINT contact_details_PK PRIMARY KEY (contact_id, school_id),
+    CONSTRAINT contact_details_PK PRIMARY KEY (contact_id),
     CHECK (phone_number IS NOT NULL OR email IS NOT NULL)
 );
 
@@ -127,7 +126,6 @@ BEGIN
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
-
 CREATE TRIGGER instructor_double_booking_trigger BEFORE INSERT OR UPDATE ON activity
 FOR EACH ROW EXECUTE FUNCTION check_instructor_double_bookings();
 
@@ -137,21 +135,6 @@ CREATE TABLE booking (
     is_paid_for BOOLEAN DEFAULT FALSE,
     CONSTRAINT booking_PK PRIMARY KEY (student_school_id, activity_id)
 );
-
-/*
-CREATE TABLE lesson (
-    activity_id INT NOT NULL REFERENCES activity (activity_id) ON DELETE CASCADE,
-    instrument_type INT NOT NULL,
-    skill_level SMALLINT NOT NULL,
-    min_students SMALLINT,
-    max_students SMALLINT,
-    CONSTRAINT lesson_PK PRIMARY KEY (activity_id),
-    CHECK (skill_level BETWEEN 1 AND 3),
-    CHECK (min_students IS NULL OR min_students > 0),
-    CHECK (max_students IS NULL OR max_students > 0),
-    CHECK (max_students IS NULL OR max_students >= min_students)
-);
-*/
 
 CREATE TABLE lesson_individual (
     activity_id INT NOT NULL REFERENCES activity (activity_id) ON DELETE CASCADE,
