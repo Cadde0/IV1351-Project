@@ -127,9 +127,9 @@ CREATE TABLE pricing (
 
 CREATE TABLE activity (
     activity_id INT GENERATED ALWAYS AS IDENTITY NOT NULL,
-    instructor_school_id INT NOT NULL REFERENCES instructor (instructor_school_id),
-    location_id INT NOT NULL REFERENCES location (location_id),
-    price_id INT NOT NULL REFERENCES pricing (price_id),
+    instructor_school_id INT NOT NULL REFERENCES instructor (instructor_school_id) ON DELETE RESTRICT,
+    location_id INT NOT NULL REFERENCES location (location_id) ON DELETE RESTRICT,
+    price_id INT NOT NULL REFERENCES pricing (price_id) ON DELETE RESTRICT,
     start_time TIMESTAMP(6) NOT NULL,
     end_time TIMESTAMP(6) NOT NULL,
     title VARCHAR(100) NOT NULL,
