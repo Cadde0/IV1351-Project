@@ -65,9 +65,11 @@ VALUES
 (3, 2, 2, '2024-11-21 14:00:00', '2024-11-21 16:00:00', 'Violin Ensemble', 'Practice advanced violin techniques');
 
 -- Add lessons
-INSERT INTO lesson (activity_id, instrument_type, skill_level, min_students, max_students) 
-VALUES 
-(1, 1, 1, NULL, NULL),
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level)
+VALUES (1, 1, 1);
+
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) 
+VALUES
 (2, 2, 2, 3, 10);
 
 -- Add bookings
