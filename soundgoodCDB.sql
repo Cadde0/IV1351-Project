@@ -71,13 +71,15 @@ CREATE TABLE rental (
 -- Restrict rentals to not be more than 2
 CREATE OR REPLACE FUNCTION check_max_rentals() RETURNS TRIGGER AS $$
 BEGIN
-    IF (SELECT COUNT(*) FROM rental WHERE end_date >= CURRENT_DATE AND school_id = NEW.school_id) >= 2 THEN
-        RAISE EXCEPTION 'Student cannot have more than 2 active rentals.';
+    IF (TG_OP = 'INSERT' OR NEW.end_date != OLD.end_date OR NEW.school_id != OLD.school_id) THEN
+        IF (SELECT COUNT(*) FROM rental WHERE rental_id != NEW.rental_id AND end_date >= CURRENT_DATE AND school_id = NEW.school_id) >= 2 THEN
+            RAISE EXCEPTION 'Student cannot have more than 2 active rentals.';
+        END IF;
     END IF;
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
-CREATE TRIGGER max_rentals_trigger BEFORE INSERT ON rental
+CREATE TRIGGER max_rentals_trigger BEFORE INSERT OR UPDATE ON rental
 FOR EACH ROW EXECUTE FUNCTION check_max_rentals();
 
 
@@ -115,6 +117,19 @@ CREATE TABLE activity (
     CONSTRAINT activity_PK PRIMARY KEY (activity_id),
     CHECK (end_time > start_time)
 );
+
+-- Restrict instructor to not be double booked
+CREATE OR REPLACE FUNCTION check_instructor_double_bookings() RETURNS TRIGGER AS $$
+BEGIN
+    IF EXISTS (SELECT 1 FROM activity WHERE activity_id != NEW.activity_id AND instructor_school_id = NEW.instructor_school_id AND NEW.start_time < end_time AND NEW.end_time > start_time) THEN
+        RAISE EXCEPTION 'Instructor cannot be booked on more than one activity at a time.';
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER instructor_double_booking_trigger BEFORE INSERT OR UPDATE ON activity
+FOR EACH ROW EXECUTE FUNCTION check_instructor_double_bookings();
 
 CREATE TABLE booking (
     student_school_id INT NOT NULL REFERENCES student (student_school_id),
