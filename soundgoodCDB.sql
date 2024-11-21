@@ -25,9 +25,30 @@ CREATE TABLE contact_details (
 
 CREATE TABLE student (
     student_school_id INT NOT NULL REFERENCES person (school_id) ON DELETE CASCADE,
-    sibling_id INT,
     CONSTRAINT student_PK PRIMARY KEY (student_school_id)
 );
+
+CREATE TABLE sibling (
+    student_school_id_first INT NOT NULL REFERENCES student(student_school_id) ON DELETE CASCADE,
+    student_school_id_second INT NOT NULL REFERENCES student(student_school_id) ON DELETE CASCADE,
+    CONSTRAINT sibling_PK PRIMARY KEY (student_school_id_first, student_school_id_second),
+    CHECK (student_school_id_first != student_school_id_second)
+);
+
+-- Ensure student_school_id_first and student_school_id_second is enforced
+CREATE OR REPLACE FUNCTION enforce_sibling_order() RETURNS TRIGGER AS $$
+DECLARE temp INT;
+BEGIN
+    IF (NEW.student_school_id_first > NEW.student_school_id_second) THEN
+        temp := NEW.student_school_id_first;
+        NEW.student_school_id_first := NEW.student_school_id_second;
+        NEW.student_school_id_second := temp;
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+CREATE TRIGGER enforce_sibling_order BEFORE INSERT OR UPDATE ON sibling
+FOR EACH ROW EXECUTE FUNCTION enforce_sibling_order();
 
 CREATE TABLE instructor (
     instructor_school_id INT NOT NULL REFERENCES person (school_id) ON DELETE CASCADE,

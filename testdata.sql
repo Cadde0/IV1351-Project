@@ -1,15 +1,22 @@
 -- Add more persons
 INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) 
 VALUES 
-('82484573-6763', 'John', 'Appleseed', '1981-11-13', 'Storgatan 3', '14241', 'Tuatuka'),
-('12345678-1234', 'Jane', 'Doe', '1990-05-21', 'Mellangatan 5', '12345', 'Springfield'),
-('87654321-4321', 'John', 'Smith', '1985-07-10', 'Lillgatan 9', '54321', 'Shelbyville');
+('19811113-6763', 'John', 'Appleseed', '1981-11-13', 'Storgatan 3', '14241', 'Tuatuka'),
+('19900521-1234', 'Jane', 'Doe', '1990-05-21', 'Mellangatan 5', '12345', 'Springfield'),
+('19850710-4321', 'John', 'Smith', '1985-07-10', 'Lillgatan 9', '54321', 'Shelbyville'),
+('19811113-6764', 'Will', 'Appleseed', '1981-11-13', 'Storgatan 3', '14241', 'Tuatuka');
 
 -- Insert students
-INSERT INTO student (student_school_id, sibling_id)
+INSERT INTO student (student_school_id)
 VALUES 
-(1, 2),
-(2, 1);
+(1),
+(2),
+(4);
+
+-- Insert siblings
+INSERT INTO sibling (student_school_id_first, student_school_id_second)
+VALUES 
+(4, 1);
 
 -- Insert instructors
 INSERT INTO instructor (instructor_school_id, can_teach_ensamble) VALUES (3, false);
