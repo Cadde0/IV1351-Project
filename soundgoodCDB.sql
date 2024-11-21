@@ -151,8 +151,8 @@ CREATE TRIGGER instructor_double_booking_trigger BEFORE INSERT OR UPDATE ON acti
 FOR EACH ROW EXECUTE FUNCTION check_instructor_double_bookings();
 
 CREATE TABLE booking (
-    student_school_id INT NOT NULL REFERENCES student (student_school_id),
-    activity_id INT NOT NULL REFERENCES activity (activity_id),
+    student_school_id INT NOT NULL REFERENCES student (student_school_id) ON DELETE CASCADE,
+    activity_id INT NOT NULL REFERENCES activity (activity_id) ON DELETE CASCADE,
     is_paid_for BOOLEAN DEFAULT FALSE,
     CONSTRAINT booking_PK PRIMARY KEY (student_school_id, activity_id)
 );
