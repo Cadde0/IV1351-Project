@@ -30,6 +30,15 @@ VALUES
 (3, false),
 (7, true);
 
+-- Insert instrument_types
+INSERT INTO instrument_type (instrument_name)
+VALUES
+('Guitar'),
+('Piano'),
+('Drums'),
+('Violin'),
+('Flute');
+
 -- Insert contact details
 INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email)
 VALUES 
