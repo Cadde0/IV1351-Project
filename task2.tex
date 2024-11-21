@@ -47,6 +47,26 @@ It is furthermore declared that the solution below is a contribution by the proj
 
 \section{Method}
 
+To create a Logical and Physical Model that accurately represents the requirements of the Soundgood Music School the diagram editor Astah Proffesional was used and the diagram made using IE notation. The Logical and Physical Model was created based on the previous Conceptual model and the approach  of converting it consisted of several steps:
+
+\begin{enumerate}
+    \item \textbf{Create tables and columns for entities and attributes}:
+  Tables were created for each of the entities and columns within the tables for each attribute. For attributes with cardinality higher than one, separate tables had to be created but this had been considered when creating the Conceptual model so only one change had to be made with an additional table for siblings.
+
+    \item \textbf{Specify types and add constraints}:
+  After all tables and columns had been created, types where specified for each column. All primary key id:s where set to 'INT ALWAYS GENERATED AS IDENTITY' for example. Constraints such as NOT NULL and UNIQUE where also added and cardinality specified between tables.
+
+    \item \textbf{Define Keys, relationships, Triggers, Checks and Constraints}:
+  For all tables primary keys where defined as well as foreign keys to form relationships between tables. Checks, constraints and triggers where also added to make sure inserted data does not conflict with the requirements. For example a trigger that rejects rental inserts if a student already has 2 active rentals and a trigger that makes sure one instructor can't be booked on different activities during the same timeslot.
+
+    \item \textbf{Normalization}:
+  Finally the model was normalized to 3NF since the group decided that was sufficient for the model and any more normalization would only complicate the model. It was firstly normalized to 1NF by making sure the model only contains atomic values, each column only contains one value of a single type and each table has a unique primary key identifier. To normalize it to 2NF it was made sure that the model does not contain any partial dependecies. The final step to normalize it from 2NF to 3NF was to remove any transitive dependencies.
+
+    \item \textbf{Creating the database}:
+  When the model was complete, a database was created in accordance with the model. Creating all the tables, columns as well as all checks, constraints and triggers. After that some mock data was created and inserted into the database to test and the scripts for both creating the database and inserting mock data where revised and then uploaded. With the database and mock data now in place, the database was tested to make sure all constraints worked as intended and that the data the requirements lists were able to be retrieved from the database.
+
+\end{enumerate}
+
 \section{Result}
 
 The result of our combined physical and logical diagram of our database can be seen in Figure 1 below. Its structure is very alike to our Conceptual Model Diagram since it already was fairly normalized and compatible with a database structure. The first table that we implemented was the \textbf{person} which uses an automatically incremented integer ID \textbf{school\_id} as primary key. It is automatically incremented using the built-in SQL feature \textbf{GENERATED ALWAYS AS IDENTITY} which ensures that we can't insert values to it. The \textbf{school\_id} is widely used in the database since it is used to identify different persons. Their personal ID number is only used to identify their \textbf{Person} row with their real life identity. This ensures that we in special cases can update the personal ID number of a person if it were to change for some reason. The table have two checks using regex to ensure that the \textbf{personal\_id\_number} and \textbf{zip\_code} are correctly formatted.
