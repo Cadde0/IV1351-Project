@@ -1,3 +1,8 @@
 Task 2.asta.lock
 .DS_Store
 *.bak
+task2.aux
+task2.fdb_latexmk
+task2.fls
+task2.log
+task2.synctex.gz
