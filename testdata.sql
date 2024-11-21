@@ -61,7 +61,7 @@ VALUES
 INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) 
 VALUES 
 (3, 1, 1, '2024-11-20 10:00:00', '2024-11-20 12:00:00', 'Private Guitar Lesson', 'Learn the basics of guitar'),
-(3, 1, 1, '2024-11-20 10:00:00', '2024-11-20 12:00:00', 'Guitar Workshop', 'Learn the basics of guitar in group.'),
+(3, 1, 1, '2024-11-20 12:00:00', '2024-11-20 15:00:00', 'Guitar Workshop', 'Learn the basics of guitar in group.'),
 (3, 2, 2, '2024-11-21 14:00:00', '2024-11-21 16:00:00', 'Violin Ensemble', 'Practice advanced violin techniques');
 
 -- Add lessons
@@ -80,3 +80,4 @@ VALUES
 INSERT INTO ensamble (activity_id, genre, min_students, max_students) 
 VALUES 
 (3, 'Classical', 3, 10);
+
