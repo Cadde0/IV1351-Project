@@ -153,7 +153,6 @@ CREATE TABLE lesson_group (
     CONSTRAINT lesson_group_PK PRIMARY KEY (activity_id),
     CHECK (skill_level BETWEEN 1 AND 3),
     CHECK (min_students > 0),
-    CHECK (max_students > 0),
     CHECK (max_students >= min_students)
 );
 
