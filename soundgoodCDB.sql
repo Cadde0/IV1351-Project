@@ -1,3 +1,7 @@
+CREATE DATABASE soundgood;
+
+\c soundgood;
+
 CREATE TABLE person (
     school_id INT GENERATED ALWAYS AS IDENTITY NOT NULL,
     personal_id_number CHAR(13) NOT NULL UNIQUE,
