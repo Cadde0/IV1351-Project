@@ -196,3 +196,9 @@ CREATE TABLE ensamble (
     CHECK (max_students >= min_students),
     CHECK (min_students > 0)
 );
+
+/* 
+    Need Constraint for lessons so that one activity ID only can correspond to one type of lesson 
+*/
+
+/* Need Constraint for if instructor can teach ensamble */

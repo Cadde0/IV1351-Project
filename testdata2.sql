@@ -122,3 +122,5 @@ INSERT INTO ensamble (activity_id, genre, min_students, max_students)
 VALUES 
 (3, 'Classical', 3, 10),
 (5, 'Rock', 5, 20);
+
+
