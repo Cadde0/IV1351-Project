@@ -110,3 +110,70 @@ SELECT TO_CHAR(start_time, 'Dy') as "Day",
   END AS "No of Free Seats"
 FROM ensambles_next_week
   LEFT JOIN bookings_per_ensamble on ensambles_next_week.activity_id = bookings_per_ensamble.activity_id
+
+
+/* Query 5 (Insert historical data) */
+
+WITH personal_emails AS (
+    SELECT DISTINCT ON (school_id) *
+    FROM contact_details
+    WHERE is_personal=true AND email IS NOT NULL
+),
+history_data AS (
+    SELECT
+        booking.activity_id,
+        booking.student_school_id,
+        person.first_name,
+        person.last_name,
+        personal_emails.email,
+        activity.start_time as activity_date,
+        ROUND(EXTRACT(EPOCH FROM (activity.end_time - activity.start_time)) / 3600, 2) AS activity_length_hours,
+        pricing.price as hourly_price,
+        CASE
+            WHEN lesson_individual.activity_id IS NOT NULL THEN 'Private Lesson'
+            WHEN lesson_group.activity_id IS NOT NULL THEN 'Group Lesson'
+            WHEN ensamble.activity_id IS NOT NULL THEN 'Ensemble'
+        END::activity_type_enum AS activity_type,
+        CASE
+            WHEN lesson_individual.activity_id IS NOT NULL THEN instrument_type.instrument_name
+            WHEN lesson_group.activity_id IS NOT NULL THEN instrument_type.instrument_name
+            ELSE NULL
+        END AS instrument,
+        CASE
+            WHEN ensamble.activity_id IS NOT NULL THEN ensamble.genre
+            ELSE NULL
+        END AS genre
+    FROM booking
+        JOIN person ON booking.student_school_id = person.school_id
+        LEFT JOIN personal_emails ON booking.student_school_id = personal_emails.school_id
+        JOIN activity ON booking.activity_id = activity.activity_id
+        JOIN pricing ON activity.price_id = pricing.price_id
+        LEFT JOIN lesson_individual ON booking.activity_id = lesson_individual.activity_id
+        LEFT JOIN lesson_group ON booking.activity_id = lesson_group.activity_id
+        LEFT JOIN ensamble ON booking.activity_id = ensamble.activity_id
+        LEFT JOIN instrument_type ON (lesson_individual.instrument_type = instrument_type.instrument_id OR lesson_group.instrument_type = instrument_type.instrument_id)
+)
+INSERT INTO activity_history (
+    activity_id,
+    student_school_id,
+    activity_date,
+    activity_type,
+    activity_price,
+    genre,
+    instrument,
+    student_firstname,
+    student_lastname,
+    student_email
+)
+SELECT
+    activity_id,
+    student_school_id,
+    activity_date,
+    activity_type,
+    activity_length_hours * hourly_price AS activity_price,
+    genre,
+    instrument,
+    first_name AS student_firstname,
+    last_name AS student_lastname,
+    email AS student_email
+FROM history_data;
