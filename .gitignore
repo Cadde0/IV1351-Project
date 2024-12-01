@@ -8,3 +8,9 @@ task2.log
 task2.synctex.gz
 .vscode/ltex.hiddenFalsePositives.en-US.txt
 task2.out
+task3.aux
+task3.fdb_latexmk
+task3.fls
+task3.log
+task3.out
+task3.synctex.gz
