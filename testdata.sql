@@ -1,101 +1,3127 @@
--- Add more persons
-INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) 
-VALUES 
-('19811113-6763', 'John', 'Appleseed', '1981-11-13', 'Storgatan 3', '14241', 'Tuatuka'),
-('19900521-1234', 'Jane', 'Doe', '1990-05-21', 'Mellangatan 5', '12345', 'Springfield'),
-('19850710-4321', 'John', 'Smith', '1985-07-10', 'Lillgatan 9', '54321', 'Shelbyville'),
-('19811113-6764', 'Will', 'Appleseed', '1981-11-13', 'Storgatan 3', '14241', 'Tuatuka');
-
--- Insert students
-INSERT INTO student (student_school_id)
-VALUES 
-(1),
-(2),
-(4);
-
--- Insert siblings
-INSERT INTO sibling (student_school_id_first, student_school_id_second)
-VALUES 
-(4, 1);
-
--- Insert instructors
-INSERT INTO instructor (instructor_school_id, can_teach_ensamble) VALUES (3, false);
-
--- Insert instrument_types
-INSERT INTO instrument_type (instrument_name)
-VALUES
-('Guitar'),
-('Piano'),
-('Drums'),
-('Violin'),
-('Flute');
-
--- Insert contact details
-INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email)
-VALUES 
-(1, TRUE, 'John Appleseed', '0702357645', 'hector@example.com'),
-(2, TRUE, 'Jane Doe', '0735416452', 'jane@example.com'),
-(3, TRUE, 'John Smith', '0742549674', 'john@example.com'),
-(1, false, 'Parent', '070322145', NULL),
-(2, false, 'Parent', '073232116452', 'mrcool@example.com'),
-(3, false, 'Parent', '0742231674', NULL);
-
--- Add instruments
-INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) 
-VALUES 
-(1, 'Yamaha', 'FG800', 10, 25.00),
-(2, 'Stradivarius', 'Model X', 5, 50.00),
-(3, 'Steinway', 'Grand Model B', 2, 200.00);
-
--- Add instrument skills
-INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) 
-VALUES 
-(1, 3, 3),
-(2, 3, 2);
-
--- Add rental records
-INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) 
-VALUES 
-(TRUE, '2024-01-01', '2024-06-01', 2, 1),
-(FALSE, '2024-01-15', '2024-07-15', 1, 2);
-
--- Add locations
-INSERT INTO location (room_name, video_link) 
-VALUES 
-('Room A', 'https://example.com/roomA'),
-('Room B', 'https://example.com/roomB'),
-('Room C', NULL),
-(NULL, 'example.com/room-d');
-
--- Add pricing
-INSERT INTO pricing (skill_level, activity_type, price, sibling_discount) 
-VALUES 
-(1, 1, 15.00, 10),
-(2, 2, 25.00, 15);
-
--- Add activities
-INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) 
-VALUES 
-(3, 1, 1, '2024-11-20 10:00:00', '2024-11-20 12:00:00', 'Private Guitar Lesson', 'Learn the basics of guitar'),
-(3, 1, 1, '2024-11-20 12:00:00', '2024-11-20 15:00:00', 'Guitar Workshop', 'Learn the basics of guitar in group.'),
-(3, 2, 2, '2024-11-21 14:00:00', '2024-11-21 16:00:00', 'Violin Ensemble', 'Practice advanced violin techniques');
-
--- Add lessons
-INSERT INTO lesson_individual (activity_id, instrument_type, skill_level)
-VALUES (1, 1, 1);
-
-INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) 
-VALUES
-(2, 2, 2, 3, 10);
-
--- Add bookings
-INSERT INTO booking (student_school_id, activity_id, is_paid_for) 
-VALUES 
-(2, 1, TRUE),
-(1, 2, FALSE);
-
--- Add ensembles
-INSERT INTO ensamble (activity_id, genre, min_students, max_students) 
-VALUES 
-(3, 'Classical', 3, 10);
-
+INSERT INTO instrument_type (instrument_name) VALUES ('Gitarr');
+INSERT INTO instrument_type (instrument_name) VALUES ('Piano');
+INSERT INTO instrument_type (instrument_name) VALUES ('Trummor');
+INSERT INTO instrument_type (instrument_name) VALUES ('Violin');
+INSERT INTO instrument_type (instrument_name) VALUES ('Flöjt');
+INSERT INTO instrument_type (instrument_name) VALUES ('Saxofon');
+INSERT INTO instrument_type (instrument_name) VALUES ('Cello');
+INSERT INTO instrument_type (instrument_name) VALUES ('Trumpet');
+INSERT INTO instrument_type (instrument_name) VALUES ('Bas');
+INSERT INTO instrument_type (instrument_name) VALUES ('Harpa');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19660618-2597', 'Sven', 'Henriksson', '1966-06-18', 'Ringgatan 05', '89969', 'Västerås');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('20081001-3720', 'Linn', 'Nord', '2008-10-01', 'Parkgatan 237', '77509', 'Östersund');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19710326-3119', 'Carina', 'Pettersson', '1971-03-26', 'Strandstigen 76', '28193', 'Gävle');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19940202-3379', 'Mats', 'Nord', '1994-02-02', 'Stationsgatan 4', '14736', 'Uddevalla');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19940529-0292', 'Anna', 'Nilsson', '1994-05-29', 'Villagatan 39', '61740', 'Eskilstuna');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19940725-9901', 'Hans', 'Jakobsson', '1994-07-25', 'Ekgatan 404', '71711', 'Karlskrona');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19750714-5431', 'Harry', 'Henriksson', '1975-07-14', 'Nyvägen 7', '37175', 'Lidköping');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19760303-0738', 'Bengt', 'Björk', '1976-03-03', 'Stationsvägen 9', '55482', 'Linköping');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19710322-1184', 'Johan', 'Jakobsson', '1971-03-22', 'Parkgatan 61', '37218', 'Växjö');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('20040307-2610', 'Ida', 'Mårtensson', '2004-03-07', 'Fabriksgatan 347', '91782', 'Uddevalla');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19940804-9659', 'Maria', 'Nord', '1994-08-04', 'Ektorget 23', '61251', 'Lidköping');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19790608-7371', 'Karin', 'Henriksson', '1979-06-08', 'Trädgårdstorget 7', '51989', 'Kalmar');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19601217-0674', 'Tobias', 'Johansson', '1960-12-17', 'Parkgatan 10', '97134', 'Nyköping');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19901202-5833', 'Maria', 'Johansson', '1990-12-02', 'Strandvägen 428', '92831', 'Södertälje');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19910209-6652', 'Magdalena', 'Karlsson', '1991-02-09', 'Skolgränd 9', '50184', 'Karlstad');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('20000711-6062', 'Holger', 'Svensson', '2000-07-11', 'Industrivägen 0', '33763', 'Nyköping');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19601128-1515', 'Hjalmar', 'Mattsson', '1960-11-28', 'Fabriksvägen 16', '66831', 'Skellefteå');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19691118-1111', 'Margareta', 'Andersson', '1969-11-18', 'Strandgatan 4', '77888', 'Karlstad');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19821013-6009', 'Per', 'Larsson', '1982-10-13', 'Trädgårdsstigen 0', '82969', 'Örebro');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19620111-2964', 'Marie', 'Andersson', '1962-01-11', 'Backtorget 71', '64392', 'Mölndal');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19751004-9095', 'Sture', 'Axelsson', '1975-10-04', 'Kvarnvägen 785', '66375', 'Sundsvall');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19760207-8575', 'Eva', 'Sandberg', '1976-02-07', 'Kyrkostigen 5', '97546', 'Borås');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('20071125-5895', 'Anna', 'Jakobsson', '2007-11-25', 'Järnvägsstigen 2', '17318', 'Karlskrona');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('20000218-0349', 'Arne', 'Pettersson', '2000-02-18', 'Industrigränd 53', '27255', 'Jönköping');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19850728-8270', 'Lovisa', 'Andersson', '1985-07-28', 'Nytorget 18', '97910', 'Borlänge');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19961219-7723', 'Ingela', 'Henriksson', '1996-12-19', 'Fabriksgatan 4', '79486', 'Umeå');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19620528-5483', 'Tomas', 'Henriksson', '1962-05-28', 'Storvägen 0', '46536', 'Borås');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19630611-6189', 'Thomas', 'Forsberg', '1963-06-11', 'Strandvägen 6', '39745', 'Örnsköldsvik');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19810816-7481', 'Therese', 'Nord', '1981-08-16', 'Strandtorget 97', '63187', 'Trollhättan');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19890928-6515', 'Stig', 'Andersson', '1989-09-28', 'Nytorget 017', '18056', 'Lidingö');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19881008-7713', 'Viola', 'Norberg', '1988-10-08', 'Stationsstigen 443', '56286', 'Helsingborg');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19970824-8248', 'Paul', 'Petersson', '1997-08-24', 'Björkgränd 374', '88398', 'Nyköping');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19870528-6847', 'Eva', 'Jakobsson', '1987-05-28', 'Skogsgränd 1', '65758', 'Trelleborg');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('20070727-5253', 'Evert', 'Linder', '2007-07-27', 'Aspstigen 8', '12991', 'Landskrona');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('20080104-7931', 'Jörgen', 'Andersson', '2008-01-04', 'Bäckgatan 591', '53545', 'Skellefteå');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19610826-7692', 'Maria', 'Johansson', '1961-08-26', 'Parkvägen 286', '43134', 'Ängelholm');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19890430-0959', 'Elisabet', 'Nilsson', '1989-04-30', 'Parktorget 8', '18836', 'Borlänge');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('20010517-9038', 'Göran', 'Jakobsson', '2001-05-17', 'Järnvägsgatan 977', '72594', 'Uppsala');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19660801-9096', 'Sven', 'Gustavsson', '1966-08-01', 'Backstigen 0', '33458', 'Kalmar');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19750613-9784', 'Eva', 'Henriksson', '1975-06-13', 'Grantorget 775', '33419', 'Örnsköldsvik');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('20081219-5100', 'Marianne', 'Olsson', '2008-12-19', 'Åkertorget 02', '74183', 'Södertälje');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19771217-4276', 'Ingeborg', 'Jakobsson', '1977-12-17', 'Industrigatan 936', '58355', 'Skellefteå');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('20041004-8604', 'Eleonora', 'Henriksson', '2004-10-04', 'Skogsvägen 6', '59208', 'Borlänge');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19811030-4579', 'Margareta', 'Olsson', '1981-10-30', 'Kvarngränd 5', '26893', 'Jönköping');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('20010704-4346', 'Gunhild', 'Larsson', '2001-07-04', 'Bäckvägen 548', '11636', 'Landskrona');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19920920-3328', 'Gertrud', 'Henriksson', '1992-09-20', 'Bäckvägen 18', '43376', 'Motala');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19900609-7602', 'Sylvia', 'Andersson', '1990-06-09', 'Ringgränd 204', '22238', 'Karlskrona');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19730724-9365', 'Johan', 'Lind', '1973-07-24', 'Parkgatan 64', '31596', 'Norrköping');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19920313-2163', 'Jan', 'Gustafsson', '1992-03-13', 'Trädgårdsstigen 238', '31248', 'Ängelholm');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19780420-8028', 'Ove', 'Karlsson', '1978-04-20', 'Ringgatan 85', '48218', 'Lidingö');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19941003-6336', 'Per', 'Jakobsson', '1994-10-03', 'Ekgatan 617', '51611', 'Nyköping');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19670507-7086', 'Alexandra', 'Larsson', '1967-05-07', 'Kyrktorget 0', '59195', 'Östersund');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('20060617-6939', 'Sofia', 'Johansson', '2006-06-17', 'Skogsgränd 6', '64334', 'Skellefteå');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('20050213-6973', 'Christian', 'Oskarsson', '2005-02-13', 'Trädgårdsvägen 0', '50262', 'Nyköping');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19680530-7980', 'Charlotta', 'Nord', '1968-05-30', 'Trädgårdsgränd 6', '60324', 'Ängelholm');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19860306-3498', 'Henrik', 'Jakobsson', '1986-03-06', 'Skolgatan 584', '46625', 'Göteborg');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19960525-6825', 'Kerstin', 'Persson', '1996-05-25', 'Ängsgatan 33', '19553', 'Lund');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('20030704-3299', 'William', 'Larsson', '2003-07-04', 'Kvarngränd 256', '50097', 'Kristianstad');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19891220-7496', 'Lena', 'Henriksson', '1989-12-20', 'Stationsvägen 60', '64356', 'Malmö');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19751203-9550', 'Robert', 'Davidsson', '1975-12-03', 'Grangatan 896', '23195', 'Södertälje');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19940829-2076', 'Malin', 'Blomqvist', '1994-08-29', 'Parkgatan 97', '79441', 'Skövde');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19730314-0184', 'Gunnar', 'Nord', '1973-03-14', 'Åkertorget 446', '66949', 'Lidingö');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19840412-0036', 'Linnea', 'Nord', '1984-04-12', 'Björkgränd 857', '75031', 'Karlskrona');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19961218-5421', 'Daniel', 'Bäckström', '1996-12-18', 'Kyrktorget 5', '27351', 'Eskilstuna');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19800419-0022', 'Erik', 'Svensson', '1980-04-19', 'Kvarngatan 354', '25403', 'Uppsala');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19670302-2718', 'Linnea', 'Henriksson', '1967-03-02', 'Skolstigen 7', '26069', 'Karlskrona');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19601030-7599', 'Carl', 'Andreasson', '1960-10-30', 'Kyrkotorget 7', '78869', 'Ängelholm');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19980912-8699', 'Kristina', 'Axelsson', '1998-09-12', 'Ängsstigen 3', '73313', 'Falun');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19690604-1835', 'Margareta', 'Henriksson', '1969-06-04', 'Idrottsgatan 3', '54297', 'Landskrona');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19961020-2901', 'Kristina', 'Magnusson', '1996-10-20', 'Kvarngatan 93', '14046', 'Sundsvall');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('20000113-1641', 'Marianne', 'Henriksson', '2000-01-13', 'Backgatan 253', '84268', 'Örebro');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19950810-3462', 'Mona', 'Jansson', '1995-08-10', 'Parkvägen 8', '35721', 'Västerås');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19971006-6995', 'Anna', 'Henriksson', '1997-10-06', 'Gengatan 1', '47723', 'Skellefteå');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('20100731-9483', 'Jonny', 'Andersson', '2010-07-31', 'Stationsstigen 07', '80911', 'Örnsköldsvik');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19720812-7685', 'Ulla', 'Arvidsson', '1972-08-12', 'Järnvägsstigen 85', '94910', 'Södertälje');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('20000201-8002', 'Tord', 'Möller', '2000-02-01', 'Ektorget 0', '14508', 'Karlskoga');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19881212-7377', 'Christina', 'Larsson', '1988-12-12', 'Skolgatan 27', '52462', 'Kristianstad');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19630712-6762', 'Peter', 'Ljungberg', '1963-07-12', 'Gengatan 17', '56386', 'Umeå');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('20090517-0065', 'Ulla', 'Björk', '2009-05-17', 'Villagatan 5', '88672', 'Halmstad');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19900517-6849', 'Oskar', 'Nilsson', '1990-05-17', 'Bäckvägen 272', '64614', 'Ängelholm');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19621228-8830', 'Karin', 'Mattsson', '1962-12-28', 'Järnvägsgatan 3', '59357', 'Östersund');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('20040114-1375', 'Karin', 'Nord', '2004-01-14', 'Kvarntorget 4', '52500', 'Sandviken');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19660704-4190', 'Elvira', 'Jakobsson', '1966-07-04', 'Gentorget 758', '45403', 'Malmö');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19640914-0603', 'Kerstin', 'Nord', '1964-09-14', 'Grangatan 7', '34722', 'Sundsvall');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19690901-0333', 'Kjell', 'Nilsson', '1969-09-01', 'Asptorget 2', '78413', 'Helsingborg');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19720725-0672', 'Jonas', 'Olsson', '1972-07-25', 'Storgatan 466', '51857', 'Trelleborg');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('20070304-6604', 'Astrid', 'Henriksson', '2007-03-04', 'Skogsgatan 6', '73747', 'Sundsvall');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19840127-1089', 'Vilhelmina', 'Andersson', '1984-01-27', 'Parkstigen 31', '68682', 'Alingsås');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19661021-3522', 'Thomas', 'Johansson', '1966-10-21', 'Industrivägen 181', '92126', 'Uppsala');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19801002-4800', 'Thomas', 'Henriksson', '1980-10-02', 'Skogstorget 5', '95428', 'Borlänge');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19820120-7952', 'Sten', 'Petersson', '1982-01-20', 'Skolgatan 518', '17000', 'Lund');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19810304-7984', 'Christer', 'Jakobsson', '1981-03-04', 'Furugatan 47', '31102', 'Uppsala');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19741223-2541', 'Folke', 'Björk', '1974-12-23', 'Skolgatan 9', '48954', 'Lund');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19730421-9623', 'Anna', 'Björk', '1973-04-21', 'Kyrkogatan 7', '84105', 'Göteborg');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19790615-2875', 'Carin', 'Jönsson', '1979-06-15', 'Kvarnvägen 0', '55996', 'Landskrona');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19620623-3317', 'Hans', 'Andersson', '1962-06-23', 'Skolvägen 38', '46077', 'Lidköping');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19660713-0467', 'Helen', 'Persson', '1966-07-13', 'Trädgårdsvägen 38', '36865', 'Luleå');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('20071002-3152', 'Håkan', 'Björk', '2007-10-02', 'Kyrktorget 216', '70217', 'Nyköping');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19830826-4471', 'Henning', 'Olausson', '1983-08-26', 'Kvarntorget 329', '20145', 'Varberg');
+INSERT INTO person (personal_id_number, first_name, last_name, date_of_birth, address, zip_code, city) VALUES ('19950124-8163', 'Kristina', 'Gustafsson', '1995-01-24', 'Kvarngatan 355', '98980', 'Östersund');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (1, FALSE, 'Vårdnadshavare', NULL, 'abergstrom@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (2, FALSE, 'Vårdnadshavare', NULL, 'ulf58@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (3, TRUE, 'Carina Pettersson', '004-784 89 61', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (3, TRUE, 'Carina Pettersson', '0946-436 48', 'paxelsson@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (4, FALSE, 'Syskon', NULL, 'jorgenlindgren@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (4, FALSE, 'Vårdnadshavare', '+46 (0)8 898 55', 'torbjorn27@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (5, FALSE, 'Vårdnadshavare', '043-043 99 17', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (5, TRUE, 'Anna Nilsson', NULL, 'carlssonadam@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (6, FALSE, 'Vårdnadshavare', NULL, 'jonssonjohannes@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (7, FALSE, 'Partner', '0523-22 03 77', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (7, TRUE, 'Harry Henriksson', '0620-843 79', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (8, FALSE, 'Syskon', '08-010 469 24', 'alarsson@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (8, TRUE, 'Bengt Björk', NULL, 'wjansson@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (9, TRUE, 'Johan Jakobsson', '015-48 72 49', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (9, FALSE, 'Förälder', NULL, 'rose-mariesjogren@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (10, FALSE, 'Syskon', NULL, 'erikssonsylvia@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (11, TRUE, 'Maria Nord', '+46 (0)8 571 22', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (11, TRUE, 'Maria Nord', NULL, 'chenriksson@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (12, FALSE, 'Vårdnadshavare', '+46 (0)27 36 01', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (12, FALSE, 'Partner', '+46 (0)46 38 55', 'alfivarsson@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (13, TRUE, 'Tobias Johansson', NULL, 'ljungbergmargareta@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (14, FALSE, 'Vårdnadshavare', NULL, 'jpersson@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (15, FALSE, 'Partner', NULL, 'johan85@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (16, TRUE, 'Holger Svensson', '+46 (0)591 388 ', 'gustafssonjan@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (16, TRUE, 'Holger Svensson', NULL, 'birgitta32@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (17, FALSE, 'Förälder', NULL, 'berit75@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (18, TRUE, 'Margareta Andersson', '098-27 71 84', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (19, FALSE, 'Syskon', '08-307 02 46', 'rutsjoberg@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (20, TRUE, 'Marie Andersson', '012-24 39 92', 'anderssonerik@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (20, FALSE, 'Partner', '+46 (0)76 59 13', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (21, FALSE, 'Syskon', '010-874 48 59', 'maria49@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (21, TRUE, 'Sture Axelsson', NULL, 'dagmar51@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (22, FALSE, 'Förälder', NULL, 'yolsson@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (23, TRUE, 'Anna Jakobsson', '+46 (0)85 92 59', 'gustafssonbo@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (23, FALSE, 'Förälder', '0574-697 06', 'per94@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (24, TRUE, 'Arne Pettersson', NULL, 'monica41@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (24, TRUE, 'Arne Pettersson', '08-88 73 18', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (25, TRUE, 'Lovisa Andersson', NULL, 'karlolsson@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (26, TRUE, 'Ingela Henriksson', '08-053 57 18', 'kristoffer54@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (26, TRUE, 'Ingela Henriksson', NULL, 'ragnarsamuelsson@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (27, FALSE, 'Förälder', NULL, 'glundqvist@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (28, TRUE, 'Thomas Forsberg', '030-965 00 65', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (28, FALSE, 'Partner', '+46 (0)263 666 ', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (29, FALSE, 'Partner', NULL, 'xberg@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (30, TRUE, 'Stig Andersson', NULL, 'ake67@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (30, TRUE, 'Stig Andersson', NULL, 'rutkarlsson@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (31, FALSE, 'Syskon', '092-611 53 78', 'nlarsson@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (31, TRUE, 'Viola Norberg', NULL, 'lars85@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (32, FALSE, 'Förälder', NULL, 'johan43@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (32, FALSE, 'Vårdnadshavare', NULL, 'onilsson@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (33, TRUE, 'Eva Jakobsson', NULL, 'kristianlindkvist@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (34, TRUE, 'Evert Linder', '+46 (0)055 529 ', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (35, FALSE, 'Syskon', '0165-50 09 41', 'gunnar25@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (36, TRUE, 'Maria Johansson', NULL, 'sara43@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (36, TRUE, 'Maria Johansson', '08-369 489 00', 'leifnilsson@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (37, TRUE, 'Elisabet Nilsson', NULL, 'bkarlsson@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (38, TRUE, 'Göran Jakobsson', '0494-301 15', 'lars99@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (39, FALSE, 'Vårdnadshavare', NULL, 'arne93@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (40, FALSE, 'Förälder', '08-254 63 89', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (40, FALSE, 'Syskon', '+46 (0)933 705 ', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (41, FALSE, 'Vårdnadshavare', '0680-82 60 59', 'kristina77@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (42, TRUE, 'Ingeborg Jakobsson', NULL, 'elsasvensson@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (43, TRUE, 'Eleonora Henriksson', '08-533 498 87', 'mobergarne@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (43, TRUE, 'Eleonora Henriksson', '+46 (0)85 88 92', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (44, TRUE, 'Margareta Olsson', '+46 (0)8 485 49', 'deriksson@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (44, TRUE, 'Margareta Olsson', NULL, 'lundbenny@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (45, TRUE, 'Gunhild Larsson', NULL, 'gretahansson@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (45, FALSE, 'Syskon', '+46 (0)8 871 48', 'fredrikssonsune@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (46, TRUE, 'Gertrud Henriksson', NULL, 'johanssonjulia@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (46, FALSE, 'Förälder', '+46 (0)462 796 ', 'joakimandersson@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (47, TRUE, 'Sylvia Andersson', NULL, 'emma05@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (47, TRUE, 'Sylvia Andersson', '08-217 78 40', 'margaretajohansson@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (48, TRUE, 'Johan Lind', NULL, 'elisabeth18@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (48, TRUE, 'Johan Lind', '08-30 91 84', 'eivor31@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (49, TRUE, 'Jan Gustafsson', '+46 (0)78 38 31', 'erikmagnusson@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (50, FALSE, 'Syskon', NULL, 'ingeborgjohannesson@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (50, FALSE, 'Förälder', NULL, 'bengtpersson@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (51, FALSE, 'Partner', '079-59 61 96', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (51, FALSE, 'Syskon', '057-90 26 25', 'claesholm@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (52, FALSE, 'Förälder', '08-148 64 82', 'johanssonper@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (53, TRUE, 'Sofia Johansson', NULL, 'gunnar23@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (54, FALSE, 'Syskon', '0950-553 39', 'kurtnystrom@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (54, TRUE, 'Christian Oskarsson', '08-859 593 80', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (55, FALSE, 'Syskon', NULL, 'andreassonelisabeth@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (55, TRUE, 'Charlotta Nord', '078-550 18 49', 'rbjorkman@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (56, FALSE, 'Förälder', NULL, 'henrikssonbo@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (56, FALSE, 'Syskon', '08-771 153 79', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (57, FALSE, 'Partner', NULL, 'englundingegerd@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (58, FALSE, 'Vårdnadshavare', NULL, 'erikssonmaria@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (58, TRUE, 'William Larsson', '+46 (0)79 26 90', 'lennart97@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (59, TRUE, 'Lena Henriksson', '093-304 78 89', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (59, TRUE, 'Lena Henriksson', '0748-70 09 08', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (60, TRUE, 'Robert Davidsson', NULL, 'helenaeliasson@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (61, TRUE, 'Malin Blomqvist', '08-930 17 85', 'omoberg@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (62, TRUE, 'Gunnar Nord', NULL, 'nmoller@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (62, TRUE, 'Gunnar Nord', NULL, 'johnnysamuelsson@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (63, TRUE, 'Linnea Nord', '035-39 18 36', 'mats69@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (63, TRUE, 'Linnea Nord', '+46 (0)570 631 ', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (64, FALSE, 'Syskon', '08-263 46 68', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (64, TRUE, 'Daniel Bäckström', NULL, 'solveig28@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (65, TRUE, 'Erik Svensson', '+46 (0)483 726 ', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (65, FALSE, 'Vårdnadshavare', '+46 (0)653 197 ', 'kerstinlindholm@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (66, TRUE, 'Linnea Henriksson', NULL, 'gustafssonmalin@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (66, TRUE, 'Linnea Henriksson', NULL, 'lhogberg@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (67, FALSE, 'Partner', '+46 (0)38 61 75', 'anna81@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (67, TRUE, 'Carl Andreasson', '+46 (0)55 99 53', 'evanilsson@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (68, FALSE, 'Syskon', NULL, 'sjakobsson@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (69, TRUE, 'Margareta Henriksson', NULL, 'mikael34@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (69, TRUE, 'Margareta Henriksson', '08-23 63 48', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (70, FALSE, 'Partner', NULL, 'dhansson@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (71, TRUE, 'Marianne Henriksson', NULL, 'bsvensson@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (71, TRUE, 'Marianne Henriksson', '078-272 43 73', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (72, FALSE, 'Partner', NULL, 'gunnar48@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (73, FALSE, 'Förälder', '+46 (0)78 55 05', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (74, FALSE, 'Vårdnadshavare', '+46 (0)483 686 ', 'leifpersson@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (75, FALSE, 'Partner', NULL, 'maria36@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (76, TRUE, 'Tord Möller', '08-170 12 61', 'yforsberg@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (77, FALSE, 'Vårdnadshavare', NULL, 'mariannehansen@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (77, FALSE, 'Syskon', '+46 (0)99 55 96', 'ulfkarlsson@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (78, TRUE, 'Peter Ljungberg', '036-79 98 27', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (78, TRUE, 'Peter Ljungberg', NULL, 'astridmagnusson@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (79, TRUE, 'Ulla Björk', '0970-10 36 75', 'bsandstrom@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (79, FALSE, 'Partner', NULL, 'john50@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (80, TRUE, 'Oskar Nilsson', '054-975 90 57', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (81, TRUE, 'Karin Mattsson', '0154-448 87', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (82, FALSE, 'Förälder', '+46 (0)8 002 77', 'gustafssonkarl@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (83, TRUE, 'Elvira Jakobsson', '08-386 33 70', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (83, FALSE, 'Partner', NULL, 'eolsson@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (84, FALSE, 'Förälder', NULL, 'helena35@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (84, TRUE, 'Kerstin Nord', NULL, 'gaberg@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (85, FALSE, 'Förälder', NULL, 'gjansson@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (86, FALSE, 'Partner', '0308-764 72', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (87, FALSE, 'Syskon', NULL, 'karlssonerik@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (88, TRUE, 'Vilhelmina Andersson', NULL, 'erikhellberg@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (88, FALSE, 'Vårdnadshavare', '08-39 28 50', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (89, TRUE, 'Thomas Johansson', NULL, 'njohansson@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (90, TRUE, 'Thomas Henriksson', '+46 (0)509 539 ', 'rkristiansson@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (91, FALSE, 'Partner', NULL, 'gustavgustafsson@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (92, TRUE, 'Christer Jakobsson', '08-618 94 11', 'mariadahlberg@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (92, FALSE, 'Partner', NULL, 'ericeriksson@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (93, TRUE, 'Folke Björk', '08-96 51 64', 'strombergjorgen@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (93, FALSE, 'Vårdnadshavare', '056-113 53 58', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (94, TRUE, 'Anna Björk', NULL, 'lsvensson@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (94, TRUE, 'Anna Björk', NULL, 'vpettersson@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (95, FALSE, 'Vårdnadshavare', '+46 (0)844 368 ', 'magnussonanna-lena@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (96, FALSE, 'Syskon', '+46 (0)749 898 ', 'gjonsson@example.net');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (97, FALSE, 'Förälder', NULL, 'angelica11@example.org');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (98, TRUE, 'Håkan Björk', NULL, 'margareta98@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (98, TRUE, 'Håkan Björk', '+46 (0)117 757 ', 'erikakarlsson@example.com');
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (99, TRUE, 'Henning Olausson', '+46 (0)637 349 ', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (99, FALSE, 'Partner', '078-97 35 21', NULL);
+INSERT INTO contact_details (school_id, is_personal, belongs_to, phone_number, email) VALUES (100, TRUE, 'Kristina Gustafsson', '08-18 50 94', 'svenssonerik@example.com');
+INSERT INTO student (student_school_id) VALUES (67);
+INSERT INTO student (student_school_id) VALUES (87);
+INSERT INTO student (student_school_id) VALUES (5);
+INSERT INTO student (student_school_id) VALUES (60);
+INSERT INTO student (student_school_id) VALUES (75);
+INSERT INTO student (student_school_id) VALUES (33);
+INSERT INTO student (student_school_id) VALUES (28);
+INSERT INTO student (student_school_id) VALUES (32);
+INSERT INTO student (student_school_id) VALUES (39);
+INSERT INTO student (student_school_id) VALUES (79);
+INSERT INTO student (student_school_id) VALUES (38);
+INSERT INTO student (student_school_id) VALUES (66);
+INSERT INTO student (student_school_id) VALUES (85);
+INSERT INTO student (student_school_id) VALUES (89);
+INSERT INTO student (student_school_id) VALUES (18);
+INSERT INTO student (student_school_id) VALUES (91);
+INSERT INTO student (student_school_id) VALUES (47);
+INSERT INTO student (student_school_id) VALUES (48);
+INSERT INTO student (student_school_id) VALUES (35);
+INSERT INTO student (student_school_id) VALUES (70);
+INSERT INTO student (student_school_id) VALUES (21);
+INSERT INTO student (student_school_id) VALUES (4);
+INSERT INTO student (student_school_id) VALUES (93);
+INSERT INTO student (student_school_id) VALUES (23);
+INSERT INTO student (student_school_id) VALUES (86);
+INSERT INTO student (student_school_id) VALUES (11);
+INSERT INTO student (student_school_id) VALUES (90);
+INSERT INTO student (student_school_id) VALUES (14);
+INSERT INTO student (student_school_id) VALUES (41);
+INSERT INTO student (student_school_id) VALUES (97);
+INSERT INTO student (student_school_id) VALUES (84);
+INSERT INTO student (student_school_id) VALUES (16);
+INSERT INTO student (student_school_id) VALUES (7);
+INSERT INTO student (student_school_id) VALUES (95);
+INSERT INTO student (student_school_id) VALUES (50);
+INSERT INTO student (student_school_id) VALUES (13);
+INSERT INTO student (student_school_id) VALUES (45);
+INSERT INTO student (student_school_id) VALUES (25);
+INSERT INTO student (student_school_id) VALUES (98);
+INSERT INTO student (student_school_id) VALUES (58);
+INSERT INTO student (student_school_id) VALUES (8);
+INSERT INTO student (student_school_id) VALUES (73);
+INSERT INTO student (student_school_id) VALUES (69);
+INSERT INTO student (student_school_id) VALUES (62);
+INSERT INTO student (student_school_id) VALUES (17);
+INSERT INTO student (student_school_id) VALUES (100);
+INSERT INTO student (student_school_id) VALUES (94);
+INSERT INTO student (student_school_id) VALUES (19);
+INSERT INTO student (student_school_id) VALUES (81);
+INSERT INTO student (student_school_id) VALUES (52);
+INSERT INTO student (student_school_id) VALUES (37);
+INSERT INTO student (student_school_id) VALUES (22);
+INSERT INTO student (student_school_id) VALUES (53);
+INSERT INTO student (student_school_id) VALUES (92);
+INSERT INTO student (student_school_id) VALUES (1);
+INSERT INTO student (student_school_id) VALUES (46);
+INSERT INTO student (student_school_id) VALUES (6);
+INSERT INTO student (student_school_id) VALUES (29);
+INSERT INTO student (student_school_id) VALUES (31);
+INSERT INTO student (student_school_id) VALUES (65);
+INSERT INTO student (student_school_id) VALUES (82);
+INSERT INTO student (student_school_id) VALUES (72);
+INSERT INTO student (student_school_id) VALUES (57);
+INSERT INTO student (student_school_id) VALUES (27);
+INSERT INTO student (student_school_id) VALUES (10);
+INSERT INTO student (student_school_id) VALUES (40);
+INSERT INTO student (student_school_id) VALUES (76);
+INSERT INTO student (student_school_id) VALUES (77);
+INSERT INTO student (student_school_id) VALUES (24);
+INSERT INTO student (student_school_id) VALUES (20);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (66, 87);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (87, 90);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (7, 87);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (73, 87);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (69, 87);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (1, 87);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (46, 87);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (27, 87);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (40, 87);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (66, 90);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (7, 66);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (66, 73);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (66, 69);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (1, 66);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (46, 66);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (27, 66);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (40, 66);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (7, 90);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (73, 90);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (69, 90);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (1, 90);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (46, 90);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (27, 90);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (40, 90);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (7, 73);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (7, 69);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (1, 7);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (7, 46);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (7, 27);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (7, 40);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (69, 73);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (1, 73);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (46, 73);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (27, 73);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (40, 73);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (1, 69);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (46, 69);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (27, 69);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (40, 69);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (1, 46);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (1, 27);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (1, 40);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (27, 46);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (40, 46);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (27, 40);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (5, 85);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (5, 37);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (37, 85);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (33, 38);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (23, 33);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (33, 92);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (6, 33);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (23, 38);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (38, 92);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (6, 38);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (23, 92);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (6, 23);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (6, 92);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (32, 91);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (79, 93);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (79, 98);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (8, 79);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (79, 94);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (93, 98);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (8, 93);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (93, 94);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (8, 98);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (94, 98);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (8, 94);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (14, 89);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (13, 89);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (53, 89);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (13, 14);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (14, 53);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (13, 53);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (18, 47);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (18, 35);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (18, 25);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (18, 20);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (35, 47);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (25, 47);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (20, 47);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (25, 35);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (20, 35);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (20, 25);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (4, 11);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (4, 84);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (4, 62);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (4, 29);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (4, 82);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (11, 84);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (11, 62);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (11, 29);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (11, 82);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (62, 84);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (29, 84);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (82, 84);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (29, 62);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (62, 82);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (29, 82);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (41, 86);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (57, 97);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (16, 65);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (45, 58);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (19, 45);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (45, 52);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (45, 77);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (19, 58);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (52, 58);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (58, 77);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (19, 52);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (19, 77);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (52, 77);
+INSERT INTO sibling (student_school_id_first, student_school_id_second) VALUES (17, 81);
+INSERT INTO instructor (instructor_school_id, can_teach_ensamble) VALUES (2, TRUE);
+INSERT INTO instructor (instructor_school_id, can_teach_ensamble) VALUES (30, FALSE);
+INSERT INTO instructor (instructor_school_id, can_teach_ensamble) VALUES (42, FALSE);
+INSERT INTO instructor (instructor_school_id, can_teach_ensamble) VALUES (59, TRUE);
+INSERT INTO instructor (instructor_school_id, can_teach_ensamble) VALUES (34, FALSE);
+INSERT INTO instructor (instructor_school_id, can_teach_ensamble) VALUES (54, TRUE);
+INSERT INTO instructor (instructor_school_id, can_teach_ensamble) VALUES (15, TRUE);
+INSERT INTO instructor (instructor_school_id, can_teach_ensamble) VALUES (3, TRUE);
+INSERT INTO instructor (instructor_school_id, can_teach_ensamble) VALUES (55, TRUE);
+INSERT INTO instructor (instructor_school_id, can_teach_ensamble) VALUES (99, FALSE);
+INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) VALUES (7, 2, 3);
+INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) VALUES (1, 30, 1);
+INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) VALUES (5, 30, 1);
+INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) VALUES (6, 30, 3);
+INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) VALUES (5, 42, 1);
+INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) VALUES (3, 42, 1);
+INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) VALUES (1, 42, 1);
+INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) VALUES (1, 59, 2);
+INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) VALUES (5, 59, 2);
+INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) VALUES (7, 59, 3);
+INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) VALUES (1, 34, 3);
+INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) VALUES (2, 34, 1);
+INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) VALUES (6, 34, 1);
+INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) VALUES (4, 54, 1);
+INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) VALUES (9, 54, 3);
+INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) VALUES (7, 54, 1);
+INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) VALUES (3, 15, 1);
+INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) VALUES (5, 3, 3);
+INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) VALUES (10, 3, 2);
+INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) VALUES (1, 3, 1);
+INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) VALUES (6, 55, 2);
+INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) VALUES (10, 55, 3);
+INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) VALUES (7, 55, 3);
+INSERT INTO instrument_skill (instrument_type, instructor_school_id, skill_level) VALUES (6, 99, 1);
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) VALUES (1, 'Yamaha', 'Serie X', 7, 967.61);
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) VALUES (1, 'Korg', 'Modell B', 2, 640.79);
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) VALUES (1, 'Korg', 'Modell C', 5, 319.28);
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) VALUES (2, 'Korg', 'Modell B', 4, 997.73);
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) VALUES (2, 'Yamaha', 'Modell C', 2, 367.5);
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) VALUES (3, 'Fender', 'Serie X', 2, 142.78);
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) VALUES (3, 'Pearl', 'Modell A', 9, 669.71);
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) VALUES (3, 'Korg', 'Modell A', 1, 144.83);
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) VALUES (4, 'Pearl', 'Modell A', 7, 277.82);
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) VALUES (5, 'Korg', 'Modell C', 6, 876.67);
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) VALUES (5, 'Gibson', 'Serie X', 7, 156.04);
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) VALUES (5, 'Roland', 'Modell A', 5, 787.87);
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) VALUES (6, 'Steinway', 'Serie X', 2, 857.46);
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) VALUES (7, 'Roland', 'Modell B', 1, 893.31);
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) VALUES (7, 'Pearl', 'Modell C', 8, 760.38);
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) VALUES (7, 'Pearl', 'Modell C', 6, 924.35);
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) VALUES (8, 'Korg', 'Serie X', 2, 612.04);
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) VALUES (8, 'Fender', 'Serie X', 5, 108.07);
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) VALUES (8, 'Yamaha', 'Serie X', 7, 440.7);
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) VALUES (9, 'Korg', 'Modell A', 7, 117.81);
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) VALUES (9, 'Steinway', 'Modell A', 4, 104.45);
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) VALUES (10, 'Roland', 'Modell C', 6, 386.15);
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) VALUES (10, 'Fender', 'Modell A', 10, 994.07);
+INSERT INTO instrument_inventory (instrument_type, brand, model, quantity, rental_cost) VALUES (10, 'Fender', 'Modell C', 1, 396.75);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-04-13', '2025-01-23', 5, 7);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-01-11', '2024-04-19', 5, 6);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-09-16', '2025-05-10', 75, 20);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-07-27', '2025-04-15', 75, 22);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-08-23', '2024-10-09', 32, 18);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-02-07', '2024-09-06', 32, 11);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-03-25', '2025-03-11', 39, 1);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-09-06', '2024-12-05', 38, 24);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-04-04', '2024-12-28', 89, 24);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-09-15', '2025-08-30', 18, 18);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-06-12', '2025-05-12', 18, 17);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-02-20', '2025-01-29', 91, 21);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2023-12-07', '2024-01-28', 91, 12);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-03-22', '2024-12-24', 48, 4);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-09-13', '2025-06-12', 35, 18);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-10-10', '2025-08-03', 35, 23);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-04-17', '2024-08-20', 70, 9);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-06-22', '2025-06-20', 70, 9);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-06-09', '2024-08-12', 21, 7);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-05-24', '2024-06-17', 4, 23);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-02-17', '2024-09-05', 4, 14);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-08-03', '2025-02-18', 23, 16);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-08-12', '2025-05-02', 23, 5);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-04-07', '2024-06-10', 14, 23);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-05-17', '2025-04-30', 14, 4);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-03-03', '2024-05-26', 41, 10);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-08-24', '2024-10-19', 97, 5);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-01-27', '2024-07-02', 97, 3);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2023-12-06', '2024-12-01', 7, 11);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-03-03', '2025-02-18', 95, 22);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-09-24', '2025-09-10', 50, 2);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-10-06', '2025-05-19', 50, 6);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-06-29', '2024-10-06', 98, 13);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-11-08', '2024-12-12', 98, 15);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-03-15', '2025-01-12', 58, 24);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-09-09', '2025-08-18', 8, 12);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-11-09', '2024-12-07', 8, 14);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2023-12-18', '2024-03-25', 73, 23);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-06-28', '2025-04-26', 73, 6);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-06-22', '2025-05-21', 69, 10);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-06-28', '2025-04-30', 17, 7);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2023-12-05', '2024-08-15', 17, 3);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-01-21', '2024-01-22', 100, 23);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-05-05', '2024-12-14', 100, 20);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2023-12-13', '2024-02-02', 94, 4);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-06-13', '2024-09-12', 19, 9);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-10-13', '2025-03-05', 19, 5);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-03-01', '2024-10-23', 81, 17);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-04-21', '2025-02-23', 81, 8);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2023-12-18', '2024-05-02', 52, 15);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-11-10', '2025-10-10', 37, 4);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-04-29', '2024-07-24', 37, 18);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-10-07', '2025-06-08', 1, 8);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-06-25', '2024-08-16', 1, 7);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-03-29', '2024-08-03', 46, 1);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-08-29', '2025-03-17', 46, 11);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-09-17', '2024-10-04', 6, 14);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-11-03', '2025-10-05', 6, 23);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-05-23', '2024-12-08', 29, 10);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-08-22', '2025-06-07', 29, 6);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-05-13', '2024-07-31', 31, 11);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-10-06', '2024-12-02', 31, 10);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2023-12-13', '2024-08-14', 65, 9);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2023-12-03', '2024-07-09', 65, 9);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-09-14', '2025-07-02', 82, 10);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2023-11-29', '2024-11-06', 82, 4);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-05-04', '2024-12-03', 27, 11);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-04-11', '2025-03-13', 27, 14);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-09-06', '2025-01-02', 76, 4);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-08-18', '2024-12-23', 77, 18);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-05-03', '2025-02-23', 77, 5);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-01-03', '2024-12-08', 24, 21);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (FALSE, '2024-05-30', '2024-12-30', 20, 8);
+INSERT INTO rental (is_paid_for, start_date, end_date, school_id, inventory_id) VALUES (TRUE, '2024-03-17', '2024-10-04', 20, 14);
+INSERT INTO location (room_name, video_link) VALUES ('Optio Rum', 'http://www.mansson.net/');
+INSERT INTO location (room_name, video_link) VALUES (NULL, 'http://johansson.org/');
+INSERT INTO location (room_name, video_link) VALUES (NULL, 'https://www.eliasson.net/');
+INSERT INTO location (room_name, video_link) VALUES (NULL, 'https://engstrom.se/');
+INSERT INTO location (room_name, video_link) VALUES (NULL, 'https://www.lindgren.com/');
+INSERT INTO location (room_name, video_link) VALUES (NULL, 'https://eriksson.net/');
+INSERT INTO location (room_name, video_link) VALUES (NULL, 'http://isaksson.com/');
+INSERT INTO location (room_name, video_link) VALUES (NULL, 'https://www.svensson.org/');
+INSERT INTO location (room_name, video_link) VALUES (NULL, 'https://andersson.com/');
+INSERT INTO location (room_name, video_link) VALUES (NULL, 'http://www.holmstrom.se/');
+INSERT INTO pricing (active, skill_level, activity_type, price, sibling_discount) VALUES (TRUE, 1, 1, 258.23, 17);
+INSERT INTO pricing (active, skill_level, activity_type, price, sibling_discount) VALUES (TRUE, 2, 1, 498.95, 10);
+INSERT INTO pricing (active, skill_level, activity_type, price, sibling_discount) VALUES (TRUE, 3, 1, 138.16, 7);
+INSERT INTO pricing (active, skill_level, activity_type, price, sibling_discount) VALUES (TRUE, 1, 2, 272.04, 7);
+INSERT INTO pricing (active, skill_level, activity_type, price, sibling_discount) VALUES (TRUE, 2, 2, 628.12, 4);
+INSERT INTO pricing (active, skill_level, activity_type, price, sibling_discount) VALUES (TRUE, 3, 2, 786.97, 28);
+INSERT INTO pricing (active, skill_level, activity_type, price, sibling_discount) VALUES (TRUE, 1, 3, 852.44, 37);
+INSERT INTO pricing (active, skill_level, activity_type, price, sibling_discount) VALUES (TRUE, 2, 3, 608.82, 15);
+INSERT INTO pricing (active, skill_level, activity_type, price, sibling_discount) VALUES (TRUE, 3, 3, 618.92, 4);
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 10, 6, '2022-01-06 09:00:00', '2022-01-06 10:00:00', 'Dignissimos quibusdam quia.', 'Odit doloribus modi officia qui sequi voluptatem. Autem distinctio qui vel sapiente tenetur facere. Neque iusto at itaque unde minus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 6, 9, '2022-01-23 12:00:00', '2022-01-23 14:00:00', 'Blanditiis illo officiis officia ullam.', 'Deserunt veniam ad modi quia laudantium ipsum maiores. Optio occaecati at fugiat explicabo incidunt accusamus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 7, 9, '2022-02-04 15:00:00', '2022-02-04 17:00:00', 'Suscipit assumenda sint.', 'Fugit voluptas ad vel sed vel officiis. Tempore repudiandae blanditiis fugiat veritatis libero reiciendis cum. Beatae dignissimos quisquam maiores.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 5, 2, '2022-03-20 11:00:00', '2022-03-20 12:00:00', 'In debitis alias quas.', 'Minima optio autem quae alias. Illum reprehenderit voluptate. Error impedit consectetur nesciunt modi quaerat magnam consectetur. Repudiandae velit et magni sequi cum quasi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 1, 3, '2022-03-20 14:00:00', '2022-03-20 15:00:00', 'Repudiandae labore assumenda quisquam qui.', 'Numquam cumque ipsam laboriosam consectetur vero. Consectetur perferendis iusto tempora quo.
+Vitae molestiae odio ullam at aliquid vel. Neque quod ipsa non labore iste.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 7, 2, '2022-03-25 10:00:00', '2022-03-25 11:00:00', 'Expedita reprehenderit eos natus doloremque.', 'Ipsam error maxime unde quia aut. Nihil at molestias voluptatibus ullam. Impedit ut commodi tempora repellat ducimus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 8, 8, '2022-04-25 10:00:00', '2022-04-25 11:00:00', 'Odit in voluptatem quod.', 'Pariatur nulla distinctio itaque omnis assumenda consectetur. Labore ducimus voluptatibus saepe a.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 7, 7, '2022-05-17 12:00:00', '2022-05-17 13:00:00', 'Quas iusto nisi omnis temporibus.', 'Porro quaerat impedit occaecati neque similique praesentium. Totam ipsam blanditiis sint. Officia alias vitae porro nemo laboriosam assumenda eius.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 5, 5, '2022-05-08 13:00:00', '2022-05-08 15:00:00', 'Tempore voluptate autem accusamus.', 'Corrupti dolores facere nisi explicabo possimus eligendi. Atque corrupti quod fuga et. Odit ad esse molestias reiciendis excepturi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 9, 5, '2022-06-05 09:00:00', '2022-06-05 10:00:00', 'Delectus rerum reiciendis necessitatibus.', 'Illo soluta assumenda excepturi eligendi nobis iusto. Earum a voluptatum quo repudiandae facilis.
+Quod odio sit. Aspernatur nobis aperiam quae. Optio quaerat distinctio blanditiis quis voluptates.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 8, 9, '2022-06-24 16:00:00', '2022-06-24 17:00:00', 'Possimus corrupti est aperiam.', 'Fugiat fugit esse eveniet.
+Blanditiis ipsam quasi animi consequuntur odio voluptates. Cupiditate itaque iusto reprehenderit vero inventore.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 10, 3, '2022-06-16 09:00:00', '2022-06-16 11:00:00', 'Consequuntur aliquid magnam sint.', 'Harum eius deserunt sequi ullam eaque. Iure dolore eaque.
+Cumque repellendus atque officia dolore laborum. Aut impedit consectetur id.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 4, 8, '2022-07-16 10:00:00', '2022-07-16 11:00:00', 'Commodi accusantium voluptatum ullam.', 'Similique error beatae consectetur ut ipsum. Earum velit voluptatem libero eius.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 2, 8, '2022-08-17 15:00:00', '2022-08-17 16:00:00', 'Alias ducimus placeat.', 'Eligendi non ab tenetur harum neque. Asperiores soluta cum explicabo cum adipisci debitis. Maxime fuga placeat provident tenetur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 1, 4, '2022-08-15 14:00:00', '2022-08-15 16:00:00', 'Provident pariatur illum.', 'Accusamus quas pariatur error inventore reiciendis. Omnis necessitatibus cumque iste. Tempore consequuntur distinctio sequi ex cumque sed.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 3, 5, '2022-08-17 16:00:00', '2022-08-17 18:00:00', 'Exercitationem provident aperiam cum ipsa.', 'Suscipit in similique soluta cumque nihil iusto. Eligendi hic laudantium tenetur quo consequatur explicabo libero.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 8, 2, '2022-09-06 12:00:00', '2022-09-06 14:00:00', 'Et iste provident aspernatur.', 'Corrupti sunt doloribus numquam deserunt architecto voluptatem maiores. Nostrum facere delectus repellat in perferendis quae minima.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 6, 2, '2022-09-01 12:00:00', '2022-09-01 14:00:00', 'Cumque rerum doloribus culpa.', 'Mollitia corrupti architecto quis unde cum. Et quis quas ad quae dicta sequi.
+Aliquid sint consectetur explicabo ab. Facilis iure culpa ex veniam facilis voluptatum mollitia.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 7, 4, '2022-09-09 09:00:00', '2022-09-09 11:00:00', 'Exercitationem tempore iusto ab.', 'Ea incidunt ea suscipit neque in. Eveniet exercitationem veniam dolore itaque atque cum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 6, 4, '2022-10-06 12:00:00', '2022-10-06 14:00:00', 'Expedita nam.', 'Nulla est minima maiores. Quia animi assumenda deleniti.
+Aliquid praesentium porro. Saepe hic odio facere reprehenderit consequuntur itaque.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 5, 3, '2022-10-01 16:00:00', '2022-10-01 18:00:00', 'Dolorem nam.', 'Facere reprehenderit exercitationem distinctio quam vitae voluptatum. Provident aut ab officiis laudantium. Nihil nulla qui commodi magnam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 4, 6, '2022-10-04 09:00:00', '2022-10-04 10:00:00', 'Recusandae tempora repellendus.', 'Ut ex sequi eaque odio. Ut quasi doloremque magni vero. Impedit nesciunt vel neque doloribus sapiente quibusdam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 5, 3, '2022-11-16 15:00:00', '2022-11-16 16:00:00', 'Sunt at.', 'Culpa porro nemo perspiciatis rem. Non eaque quis impedit fuga delectus in tempore. Recusandae totam nulla dignissimos error harum suscipit.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 9, 6, '2022-12-09 12:00:00', '2022-12-09 14:00:00', 'Quasi doloremque.', 'Natus illo laudantium sit placeat aspernatur nisi. Impedit eveniet totam quidem mollitia quas veritatis. Non a numquam amet.
+Earum veniam et. Libero magnam cum asperiores.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 2, 5, '2022-12-27 14:00:00', '2022-12-27 16:00:00', 'Eos quasi aspernatur inventore.', 'Illum amet eveniet voluptatibus veniam. Earum voluptas error minima velit. Assumenda quod nihil iure quisquam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 1, 4, '2022-12-17 12:00:00', '2022-12-17 13:00:00', 'Facilis magni numquam.', 'Earum illo assumenda dolores vitae. Cumque cupiditate eius vel corporis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 9, 2, '2023-01-18 11:00:00', '2023-01-18 12:00:00', 'Temporibus accusantium commodi facilis.', 'Repellendus culpa ad numquam harum illo asperiores. Repellendus ullam nesciunt non neque.
+Rem aliquam atque veniam. Illo minus voluptates id doloremque odio.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 9, 6, '2023-01-13 12:00:00', '2023-01-13 13:00:00', 'Fuga natus voluptates nam quibusdam.', 'Expedita maxime ipsum odit quo quis. Quisquam odio natus at dolore eius. Odit laboriosam velit. Recusandae libero voluptatem ex dolores.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 3, 3, '2023-02-26 15:00:00', '2023-02-26 17:00:00', 'Nobis delectus dolores.', 'Iusto quo in nesciunt molestias molestiae. Non iusto unde voluptates accusantium a quod.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 6, 5, '2023-02-11 11:00:00', '2023-02-11 13:00:00', 'Harum cum veritatis error mollitia.', 'Tenetur ullam consectetur pariatur nam eaque repudiandae deserunt.
+Sequi illum quasi similique facilis. Alias eum itaque veritatis doloremque perspiciatis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 4, 5, '2023-03-01 14:00:00', '2023-03-01 15:00:00', 'Est accusantium minus doloremque.', 'Reiciendis saepe voluptates incidunt sunt aperiam. Consequuntur nostrum facilis. Odit expedita aliquid illo saepe sapiente.
+Dicta architecto cumque sunt doloribus labore. Sunt amet voluptate neque.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 3, 1, '2023-03-10 15:00:00', '2023-03-10 17:00:00', 'Soluta assumenda accusantium.', 'Harum id eveniet quidem perspiciatis. Voluptate asperiores necessitatibus vel.
+Velit consequatur necessitatibus. Incidunt optio fugiat doloribus dignissimos rem.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 10, 1, '2023-04-13 13:00:00', '2023-04-13 15:00:00', 'Magnam perferendis voluptatem.', 'Rerum aut incidunt nam aperiam aut.
+Ipsam nam voluptatum debitis nesciunt provident. Nisi sed eaque perferendis nisi quo veritatis totam. Dignissimos nihil pariatur enim earum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 3, 3, '2023-04-02 10:00:00', '2023-04-02 12:00:00', 'In repellat mollitia quam.', 'Magnam adipisci iste dicta nesciunt. Animi aspernatur asperiores voluptates.
+Repellendus aspernatur itaque. Neque deleniti ut. Dolores fugiat consequatur quibusdam cum corporis cumque voluptate.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 9, 9, '2023-04-03 14:00:00', '2023-04-03 16:00:00', 'Corrupti ad molestias dolor.', 'Minima harum magni placeat inventore consequuntur voluptatum. Accusamus officiis quo quisquam alias consectetur. Veniam numquam nobis quisquam facere eum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 10, 6, '2023-05-20 15:00:00', '2023-05-20 17:00:00', 'Fugit veniam voluptatibus qui.', 'Reiciendis deleniti et explicabo veniam. Quam hic pariatur tempora fuga cum animi exercitationem. Harum veritatis incidunt sed sunt ea illum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 10, 4, '2023-05-10 09:00:00', '2023-05-10 11:00:00', 'Tenetur natus labore voluptas.', 'Libero omnis hic. Nisi est doloribus vel vero.
+Culpa atque dolorem omnis ab nostrum. Ea delectus quisquam fuga blanditiis incidunt soluta. Eum illo harum adipisci magnam consectetur doloremque.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 4, 2, '2023-05-11 09:00:00', '2023-05-11 11:00:00', 'Fugiat ullam.', 'Optio voluptates maxime hic est. Impedit recusandae id temporibus nihil. Ullam sit natus esse numquam. Consequuntur dicta sunt atque nesciunt.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 4, 9, '2023-06-20 16:00:00', '2023-06-20 17:00:00', 'Ratione occaecati quod.', 'Labore id atque illo aut quidem cum. Repellendus sed id sequi fugiat nulla.
+Maxime vitae earum exercitationem quibusdam. Nobis dolore pariatur eligendi corrupti quasi quo.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 7, 3, '2023-06-13 09:00:00', '2023-06-13 10:00:00', 'At facere quia voluptas nesciunt.', 'Sit soluta eveniet.
+Aperiam sed accusantium eum. Impedit quo aspernatur natus labore iste enim. Laudantium totam dolore eum quae nemo.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 5, 8, '2023-07-17 13:00:00', '2023-07-17 15:00:00', 'Eveniet illo cumque.', 'Voluptas nemo totam magnam. Eos blanditiis facere.
+Eligendi voluptatum fugiat iure ab consequuntur tempora.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 4, 9, '2023-08-15 10:00:00', '2023-08-15 11:00:00', 'Veniam numquam veniam est.', 'Ipsa nam dolores accusamus voluptatem consequuntur nisi laboriosam. Repellat quis ullam accusamus ratione cupiditate.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 8, 8, '2023-09-03 12:00:00', '2023-09-03 13:00:00', 'Rem odio illum explicabo.', 'Expedita consectetur odit sunt porro architecto. Beatae placeat at sequi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 8, 4, '2023-10-28 10:00:00', '2023-10-28 12:00:00', 'Officia iste soluta eos.', 'Accusantium placeat quos. Iure libero quasi consequatur delectus. Esse eveniet animi enim quidem recusandae. Animi enim praesentium tempore.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 4, 5, '2023-10-15 16:00:00', '2023-10-15 18:00:00', 'Asperiores eaque et consequatur nam.', 'Sunt repellendus hic sapiente magni id odit. Labore quisquam voluptatibus autem voluptatum quos ex.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 10, 2, '2023-10-19 11:00:00', '2023-10-19 13:00:00', 'Quas sit iusto.', 'Possimus debitis similique. Excepturi quibusdam dolorem.
+Illo id tenetur inventore. Repellat unde modi tempora doloremque. Architecto odio harum at consectetur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 1, 8, '2023-11-13 14:00:00', '2023-11-13 15:00:00', 'Ad sunt.', 'Animi tenetur necessitatibus praesentium qui corrupti veniam. Incidunt possimus aspernatur quod. Sequi beatae eligendi quia laudantium.
+Impedit modi expedita asperiores magnam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 5, 3, '2023-11-27 13:00:00', '2023-11-27 15:00:00', 'Praesentium excepturi sequi beatae.', 'Delectus quaerat quaerat repellendus. Sunt sed saepe officia ipsum doloremque.
+Sint voluptatem doloribus consequuntur distinctio. Omnis expedita cumque asperiores. Sed suscipit alias ad.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 6, 4, '2023-11-21 09:00:00', '2023-11-21 10:00:00', 'Vitae reiciendis voluptas corporis.', 'Iure doloribus beatae libero iusto. Esse quod perspiciatis corrupti ad deserunt. Nisi totam illum necessitatibus quae vero aspernatur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 8, 6, '2023-12-07 09:00:00', '2023-12-07 10:00:00', 'Similique nobis modi amet.', 'Impedit hic in. Magni id incidunt ipsum aliquam eum dolor vero. Nobis ex pariatur molestiae officiis eaque. Pariatur vel unde totam ratione facilis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 8, 2, '2023-12-19 11:00:00', '2023-12-19 12:00:00', 'Id tenetur distinctio commodi.', 'Ducimus laboriosam explicabo sapiente nihil. Explicabo voluptatum sit vero vel animi a sequi.
+Deserunt doloribus ut. Quia cum quam deleniti eum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 4, 8, '2023-12-25 16:00:00', '2023-12-25 17:00:00', 'Enim accusantium doloremque a incidunt.', 'Illum nemo deserunt nemo culpa placeat quas. Blanditiis aut magnam harum earum quas impedit fugit. Excepturi recusandae quasi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 2, 3, '2024-01-07 10:00:00', '2024-01-07 12:00:00', 'Recusandae aperiam libero perspiciatis.', 'Ipsam totam blanditiis at laudantium perferendis exercitationem.
+Cupiditate dolor saepe voluptatem suscipit. Laboriosam odit ad quod aut delectus assumenda. Ut quasi iste eius nemo accusantium.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 9, 6, '2024-01-15 10:00:00', '2024-01-15 12:00:00', 'Consequatur dignissimos quia.', 'Eveniet ea repudiandae quam. Enim rem dolorum debitis minima unde molestiae ea. Atque quia totam illo.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 4, 4, '2024-02-12 16:00:00', '2024-02-12 17:00:00', 'Quae fugiat commodi.', 'Ut commodi officiis molestias nulla id. Quo enim quo a optio. Quia voluptate laborum ab recusandae aperiam ducimus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 5, 8, '2024-02-04 14:00:00', '2024-02-04 15:00:00', 'Hic ut pariatur minima.', 'Dicta nam odio qui sed iusto dicta. Aliquam modi earum cumque nulla neque explicabo. Exercitationem laboriosam accusantium esse id amet maxime.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 10, 6, '2024-03-04 12:00:00', '2024-03-04 14:00:00', 'Labore sed cum laudantium.', 'Beatae sed libero cumque.
+Tempora est dolorum magnam. Delectus molestiae qui alias culpa.
+Illum cupiditate ea. Atque illum culpa esse asperiores.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 4, 5, '2024-03-13 16:00:00', '2024-03-13 17:00:00', 'Accusamus consectetur reiciendis sed et.', 'Ullam quam at vel laborum modi eius. Occaecati libero accusamus nemo eveniet officiis dignissimos.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 6, 2, '2024-04-20 13:00:00', '2024-04-20 15:00:00', 'Quasi doloribus in.', 'Sint facilis accusamus voluptatum accusantium quaerat illo. Quis vero saepe ipsum eum consequuntur provident.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 4, 4, '2024-04-15 12:00:00', '2024-04-15 13:00:00', 'Sint quaerat.', 'Sapiente id dolorum inventore. Alias dicta ratione delectus similique animi. Voluptas consequuntur accusantium harum natus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 4, 2, '2024-04-08 09:00:00', '2024-04-08 10:00:00', 'Quo qui dicta hic.', 'Veritatis quidem ipsum dignissimos mollitia. Minus ipsum mollitia aliquam animi assumenda. Illum temporibus accusantium similique ab deleniti minus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 7, 7, '2024-05-21 11:00:00', '2024-05-21 13:00:00', 'Quia quae.', 'Quo incidunt aspernatur. Molestiae culpa tenetur dolores iure reprehenderit molestiae deleniti. Libero accusamus atque.
+Quam aut iste omnis nostrum velit. Quae veritatis adipisci vitae fugit.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 3, 3, '2024-05-07 12:00:00', '2024-05-07 13:00:00', 'Eaque deleniti quaerat animi.', 'Quas nulla dolorem. Tempore soluta exercitationem sed itaque.
+Harum totam doloribus earum saepe. Laboriosam laboriosam alias.
+Provident id praesentium repellat.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 8, 7, '2024-06-21 09:00:00', '2024-06-21 11:00:00', 'Repellat error dolorem.', 'Tempora tempora minus voluptatum optio distinctio. Aperiam quidem exercitationem sunt. Architecto provident debitis quasi facilis harum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 6, 6, '2024-06-15 14:00:00', '2024-06-15 15:00:00', 'Asperiores veniam.', 'Ullam distinctio praesentium saepe doloremque. Deserunt officiis quibusdam officiis pariatur. Consectetur dignissimos molestiae quas. Consequuntur illum nobis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 2, 3, '2024-07-13 15:00:00', '2024-07-13 16:00:00', 'Velit aliquam consequatur.', 'Quaerat cumque odio molestiae delectus dolore alias nobis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 10, 9, '2024-08-11 16:00:00', '2024-08-11 18:00:00', 'Earum eum iusto.', 'Assumenda dignissimos non nesciunt assumenda blanditiis ex. Doloribus sunt quod consequuntur. Est inventore magni ex.
+Quos consequuntur fugiat explicabo quod atque. Inventore magnam architecto.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 7, 1, '2024-08-15 09:00:00', '2024-08-15 11:00:00', 'Recusandae aspernatur soluta.', 'Doloremque nemo porro ipsum consequatur error consequuntur. Labore sequi nam consectetur amet sapiente.
+Excepturi quo ipsam doloribus repellendus perferendis impedit.
+In voluptatem necessitatibus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 5, 1, '2024-08-21 10:00:00', '2024-08-21 12:00:00', 'Blanditiis adipisci officiis quasi nulla.', 'Eaque fuga porro alias quis maiores ipsam. Magni error accusantium aperiam esse autem autem. Eveniet recusandae optio deserunt eum autem.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 2, 2, '2024-09-28 15:00:00', '2024-09-28 16:00:00', 'Debitis excepturi.', 'Deserunt fuga sequi odio placeat assumenda. Sunt quibusdam pariatur officiis voluptate sequi.
+Dolorum voluptatem autem omnis. Dolorem veniam aliquid enim consequatur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 5, 4, '2024-09-25 14:00:00', '2024-09-25 15:00:00', 'Officiis aliquid repudiandae reprehenderit veniam.', 'Magnam praesentium quaerat qui tempore deleniti placeat. Illum quam voluptates eligendi. Ex placeat labore iusto quam ex atque fugit.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 5, 9, '2024-10-09 12:00:00', '2024-10-09 14:00:00', 'Adipisci odit.', 'Itaque nisi eos eveniet repellat laboriosam. Ab deleniti atque.
+Ratione repellat assumenda dolorum voluptas assumenda.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 10, 9, '2024-11-18 16:00:00', '2024-11-18 18:00:00', 'Doloremque quaerat exercitationem.', 'Esse rem asperiores hic. Pariatur maiores iste harum repellat asperiores ipsum.
+Placeat facere reiciendis. Quos ratione sint distinctio animi odit assumenda.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 5, 5, '2024-12-04 09:00:00', '2024-12-04 10:00:00', 'Ut itaque aut.', 'Velit ut rem reiciendis rem harum. Corporis consectetur unde reprehenderit optio. Quisquam maxime rem ab molestiae.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 2, 3, '2024-12-26 11:00:00', '2024-12-26 12:00:00', 'Cupiditate eum optio.', 'Dolor ratione ad voluptatibus cumque vel modi quaerat.
+Error vitae ipsam. Id nulla sint magni explicabo consequatur maiores. Hic fugit inventore incidunt voluptatum voluptates voluptas modi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (2, 3, 8, '2024-12-17 13:00:00', '2024-12-17 15:00:00', 'Laborum aut corporis.', 'Aspernatur incidunt earum reiciendis exercitationem maiores.
+Dignissimos accusamus repellat explicabo animi iste. Omnis iusto quo totam eaque maiores.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 9, 5, '2022-01-18 15:00:00', '2022-01-18 16:00:00', 'Voluptatibus eaque architecto.', 'Debitis aperiam quidem aspernatur eligendi modi. Quo dolor aspernatur distinctio. Maiores perspiciatis unde dolores aliquam eum sequi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 7, 2, '2022-01-06 09:00:00', '2022-01-06 11:00:00', 'Labore quia dicta.', 'Temporibus quisquam minima veritatis sint vitae placeat. Voluptatem debitis ea dicta.
+Quasi iste deserunt unde iusto. Itaque ea cum minus culpa iure atque distinctio.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 6, 6, '2022-02-14 16:00:00', '2022-02-14 17:00:00', 'Corporis est quod.', 'Eius magnam consequatur libero aut rem. Quaerat culpa sit laborum aspernatur sint repudiandae.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 1, 4, '2022-02-01 16:00:00', '2022-02-01 17:00:00', 'Accusamus vitae cum.', 'Odio nulla nulla quod. Veritatis mollitia hic laboriosam eos facilis. Repellendus eveniet minus molestias. Voluptatum ea repudiandae esse dolor ad nisi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 1, 2, '2022-03-03 11:00:00', '2022-03-03 12:00:00', 'Illo illum.', 'Sit sequi dicta non. Asperiores reiciendis facilis. Harum aperiam deleniti soluta.
+Necessitatibus alias inventore voluptate consequuntur nihil odit. Vero rem libero nesciunt incidunt.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 4, 6, '2022-03-22 16:00:00', '2022-03-22 18:00:00', 'Doloremque quos sequi nesciunt.', 'Omnis blanditiis ullam saepe repellendus occaecati. Reiciendis unde quas non aliquid. Qui odit veniam animi quis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 10, 6, '2022-03-20 12:00:00', '2022-03-20 14:00:00', 'Quod ea vero beatae.', 'Nobis illum enim ex adipisci ad. Aspernatur libero ea delectus.
+Exercitationem veniam autem corporis accusantium. Possimus eos distinctio dolor.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 5, 6, '2022-05-20 13:00:00', '2022-05-20 15:00:00', 'Tenetur dolores aspernatur.', 'Aperiam cupiditate animi nostrum magnam. Corrupti doloribus quas.
+Ab quod aperiam. Consequuntur iste tenetur fuga. Mollitia distinctio recusandae vero qui occaecati veniam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 2, 6, '2022-05-03 15:00:00', '2022-05-03 16:00:00', 'Saepe asperiores illo saepe esse.', 'Saepe perspiciatis optio.
+Illo quaerat ut sed. Aliquid est commodi.
+Nisi accusamus doloremque.
+Magni hic dolores quos consectetur ratione. Dignissimos quasi veniam totam temporibus optio dicta.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 2, 4, '2022-05-22 10:00:00', '2022-05-22 11:00:00', 'Dolore praesentium harum.', 'Aut excepturi fuga omnis accusamus accusamus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 9, 2, '2022-06-06 09:00:00', '2022-06-06 11:00:00', 'Perspiciatis necessitatibus nemo.', 'Amet quas inventore ab. Incidunt neque provident quae quam. Dolorum porro voluptates rerum eius amet soluta.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 3, 6, '2022-06-01 09:00:00', '2022-06-01 11:00:00', 'Accusamus delectus molestias.', 'In dolor voluptates est porro. Quod maxime quia quaerat. Porro deserunt excepturi earum.
+Eos dolorem provident quis. Eligendi qui voluptas quis omnis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 3, 6, '2022-07-26 11:00:00', '2022-07-26 13:00:00', 'Dolorum non autem officia autem.', 'Rerum exercitationem eos nesciunt ab doloribus. Porro voluptates pariatur accusamus.
+Magni dignissimos dolore maxime. Commodi corrupti voluptas voluptate magnam quo.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 9, 2, '2022-07-10 10:00:00', '2022-07-10 12:00:00', 'Autem nesciunt.', 'Veniam minus ducimus atque voluptatibus. A cumque eos hic. Molestias maiores ullam aut nobis explicabo ducimus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 5, 1, '2022-08-25 09:00:00', '2022-08-25 10:00:00', 'Velit cupiditate sequi recusandae.', 'Ea nulla cumque. Dolorum sunt optio molestiae culpa ut. Iusto eveniet dolorem dolorem ducimus laborum veritatis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 7, 6, '2022-09-28 16:00:00', '2022-09-28 18:00:00', 'Libero nemo inventore unde voluptatem.', 'Ut minima delectus error. Atque consequatur magnam itaque esse deserunt officiis. Necessitatibus reiciendis voluptatum debitis explicabo ipsa repellat.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 3, 2, '2022-10-25 11:00:00', '2022-10-25 13:00:00', 'Quas molestias maiores.', 'Quo sed atque hic dolores nulla omnis. Voluptatibus excepturi dolores. Corrupti quis ratione inventore culpa possimus.
+Molestias voluptates harum natus perferendis. Veniam voluptate esse commodi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 3, 5, '2022-10-10 11:00:00', '2022-10-10 13:00:00', 'Ipsa deleniti perferendis incidunt libero.', 'Error hic pariatur praesentium dolore officiis. Unde fugit dicta quis.
+Eveniet deserunt hic accusamus consequatur. Modi voluptatum cumque explicabo. Beatae debitis nobis odit est similique mollitia.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 2, 6, '2022-12-07 14:00:00', '2022-12-07 15:00:00', 'Facere cum alias.', 'Recusandae tenetur maxime nesciunt nisi.
+Earum non quaerat animi exercitationem eos et.
+Ratione pariatur deleniti veniam. Temporibus illum consectetur illo sed quis fuga.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 8, 5, '2022-12-28 09:00:00', '2022-12-28 10:00:00', 'Facere quidem numquam.', 'Aspernatur molestiae culpa magni iure molestias ipsam. Cupiditate rem cupiditate architecto adipisci et vel amet.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 7, 2, '2023-02-21 13:00:00', '2023-02-21 14:00:00', 'Delectus magnam repudiandae.', 'Atque accusantium facere ipsa temporibus. Aperiam fugit laboriosam odit itaque ullam minus libero.
+Molestiae minus rerum odit. Nesciunt ad aliquam commodi impedit porro ut.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 1, 5, '2023-03-01 09:00:00', '2023-03-01 10:00:00', 'Voluptate sapiente illo.', 'Molestiae aut dolores sequi. Dignissimos commodi impedit.
+Possimus facilis laborum iure sapiente saepe consectetur. Exercitationem delectus ex nemo voluptate at adipisci.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 9, 2, '2023-04-16 13:00:00', '2023-04-16 14:00:00', 'Reiciendis architecto sint sed debitis.', 'Facilis officia nostrum et natus nihil odit nesciunt. Quia placeat atque dicta cum veritatis inventore aliquid.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 6, 3, '2023-04-12 10:00:00', '2023-04-12 11:00:00', 'Blanditiis a consequuntur deserunt.', 'Et quaerat quisquam quo maxime eum. Accusamus quaerat aut facilis. Nesciunt quaerat doloribus reprehenderit pariatur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 7, 5, '2023-05-18 12:00:00', '2023-05-18 13:00:00', 'Tempore est possimus.', 'Eligendi cupiditate quo itaque. Dolore a facere eum corrupti veniam eligendi. Ut cupiditate ipsam ea magnam aliquid animi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 5, 3, '2023-05-13 09:00:00', '2023-05-13 11:00:00', 'Doloremque molestiae fugit incidunt porro.', 'Similique facilis aspernatur ab at error. Odit molestiae itaque error esse reiciendis autem. Perspiciatis enim perspiciatis dolore. Ratione animi optio a magnam cum quod.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 7, 4, '2023-06-15 13:00:00', '2023-06-15 14:00:00', 'Autem dicta saepe sunt.', 'Itaque laborum temporibus. Occaecati doloremque aliquam nostrum magni dolorem. Optio corporis rem magnam labore est.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 10, 6, '2023-07-03 13:00:00', '2023-07-03 14:00:00', 'Quasi est non porro eligendi.', 'Provident sit unde quos. Suscipit similique laboriosam iste libero a perspiciatis. Blanditiis eos illum impedit eaque eius eveniet.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 10, 5, '2023-07-09 14:00:00', '2023-07-09 16:00:00', 'Fugit quaerat ullam ducimus.', 'Tempora ducimus dicta cupiditate. Sint optio aut perferendis dolore. Enim repellat id quia possimus repellendus. Incidunt itaque esse ab.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 9, 4, '2023-08-26 11:00:00', '2023-08-26 12:00:00', 'Odio aspernatur fugit.', 'Cumque suscipit accusamus sit mollitia nihil ipsa. Fugiat dolorem cum nostrum dolores expedita.
+Quod sint ullam officia hic consequatur dolorem. Odio mollitia quidem placeat totam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 8, 2, '2023-09-02 09:00:00', '2023-09-02 11:00:00', 'Tempora dolorem quam non.', 'At itaque voluptatem iure soluta. Ipsa quae explicabo nobis. Quia sit debitis molestiae eaque doloremque.
+Ullam pariatur ipsa cumque. Adipisci voluptas mollitia rerum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 10, 6, '2023-09-08 14:00:00', '2023-09-08 15:00:00', 'Autem est.', 'Quasi fugit assumenda enim atque est. Rerum est molestias deleniti iure quos at.
+Delectus eaque quis suscipit distinctio. Impedit nam dignissimos rerum explicabo mollitia fugit.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 8, 6, '2023-09-26 16:00:00', '2023-09-26 17:00:00', 'Esse fuga.', 'Quas blanditiis ipsum itaque ab. Eos officiis impedit cupiditate eveniet quaerat.
+Hic nam vero officiis totam sint. Incidunt nostrum est. Minus vitae autem tenetur enim itaque.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 8, 3, '2023-10-24 16:00:00', '2023-10-24 18:00:00', 'Nam quas explicabo.', 'Alias a mollitia accusamus. Cumque voluptatum eligendi atque corrupti. Sint voluptates consequuntur laboriosam blanditiis voluptatibus aliquam.
+Ex aut iste unde esse. Voluptates nulla ab.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 2, 1, '2023-11-05 09:00:00', '2023-11-05 10:00:00', 'Fugiat soluta officia.', 'Soluta fugiat et dignissimos impedit. Fugit ut suscipit voluptatum. Temporibus quasi eveniet quod sequi ipsa laudantium.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 7, 3, '2023-12-27 13:00:00', '2023-12-27 15:00:00', 'Optio quae.', 'Eligendi expedita eum animi autem. Rerum inventore ducimus laborum quisquam. Nam temporibus autem.
+Aliquam rem eligendi laborum iure delectus maiores. Voluptate voluptates odit iste.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 1, 6, '2024-01-15 16:00:00', '2024-01-15 18:00:00', 'Possimus a perspiciatis sequi quod.', 'Expedita id tempore nobis modi vel amet. Voluptates perspiciatis voluptates explicabo maxime repudiandae nam deleniti. Optio magni molestias odio maxime voluptates quae amet.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 4, 1, '2024-01-18 09:00:00', '2024-01-18 10:00:00', 'Voluptatibus laboriosam quidem atque.', 'Tenetur explicabo aspernatur voluptates. Odio a aliquid totam. Labore nihil eligendi fugiat tempore esse.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 6, 5, '2024-02-17 15:00:00', '2024-02-17 17:00:00', 'Voluptas et in quos.', 'Eaque excepturi esse voluptas eos quod.
+Natus quos rem ipsum omnis fugit. Quod autem cupiditate consectetur excepturi dicta deleniti incidunt.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 4, 6, '2024-03-12 12:00:00', '2024-03-12 14:00:00', 'Placeat eum omnis.', 'Eveniet blanditiis occaecati officia quas. Fuga ipsum perferendis ipsam nobis libero necessitatibus facere. Ab reiciendis perspiciatis ab.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 10, 3, '2024-05-16 14:00:00', '2024-05-16 16:00:00', 'Dolorum minus alias.', 'Ullam at totam ipsum reprehenderit autem. Facilis possimus eos. Maxime facilis magni cumque.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 3, 5, '2024-06-06 10:00:00', '2024-06-06 11:00:00', 'Deserunt provident consequatur nulla ex.', 'Quas explicabo voluptatum dolor omnis laborum sed. In dolorum eveniet impedit pariatur. Natus distinctio voluptate rerum suscipit.
+Eius nisi sapiente explicabo quod. Optio quis accusamus perferendis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 3, 5, '2024-07-16 11:00:00', '2024-07-16 13:00:00', 'Sequi deleniti.', 'Cum natus numquam sapiente. Voluptatem accusantium dolore dignissimos similique dolor.
+Libero exercitationem nulla vero nostrum explicabo unde.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 10, 2, '2024-07-24 12:00:00', '2024-07-24 13:00:00', 'Autem iusto numquam facilis soluta.', 'Non occaecati omnis ratione. Optio repellendus eveniet nulla illum qui. Distinctio nihil officia animi distinctio autem quasi autem.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 1, 6, '2024-08-14 13:00:00', '2024-08-14 14:00:00', 'Vitae repudiandae.', 'Illo laboriosam recusandae doloribus possimus. Sed ratione reprehenderit quo.
+Reprehenderit temporibus mollitia sit debitis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 3, 2, '2024-08-02 12:00:00', '2024-08-02 13:00:00', 'Tempore maiores quia ducimus.', 'Praesentium nulla quaerat sint. Deleniti cumque perspiciatis quia voluptatem. Asperiores velit illum sapiente sed enim.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 4, 2, '2024-08-04 15:00:00', '2024-08-04 16:00:00', 'Modi facilis.', 'Error saepe labore repellendus id. Perspiciatis laborum consectetur atque consequatur expedita.
+Quasi dicta autem est quam esse autem tempora. Quasi consequatur numquam nobis dicta corrupti ratione.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 1, 6, '2024-09-05 14:00:00', '2024-09-05 15:00:00', 'Dicta repudiandae enim.', 'Ipsa nihil ullam dolores commodi quidem aut. Occaecati minus facilis laboriosam explicabo error.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 9, 2, '2024-09-07 16:00:00', '2024-09-07 18:00:00', 'Dolore assumenda.', 'Fugit quidem nulla eaque eum. Rerum totam corrupti mollitia consequuntur quo. A reprehenderit perferendis nobis recusandae iste.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 9, 1, '2024-10-21 09:00:00', '2024-10-21 11:00:00', 'Velit excepturi molestias.', 'Saepe magnam asperiores mollitia officiis. Excepturi perspiciatis nulla sit quis voluptatum. Consequuntur dolores inventore consectetur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 5, 1, '2024-10-15 15:00:00', '2024-10-15 17:00:00', 'Harum minus necessitatibus quas consequatur.', 'Rerum fugiat deleniti. Alias libero ratione sapiente laboriosam.
+Error cupiditate cum itaque reprehenderit. Cum minus fugiat ipsam dolorem ut sit.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 10, 2, '2024-11-02 10:00:00', '2024-11-02 11:00:00', 'Fugit placeat reiciendis.', 'Sequi non deserunt vero officiis assumenda quidem. Sapiente dolore tempore accusamus similique aliquid.
+Consequuntur commodi accusamus rerum. Voluptates beatae sint ut odit rem officiis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (30, 4, 2, '2024-12-06 13:00:00', '2024-12-06 14:00:00', 'Odio reprehenderit nesciunt ducimus.', 'Recusandae blanditiis incidunt repellendus ea itaque aliquid. Non sint modi tempore nam sunt tenetur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (42, 2, 1, '2022-05-10 11:00:00', '2022-05-10 12:00:00', 'Dolorum fugiat tempora magnam eum.', 'Aliquam molestiae blanditiis perspiciatis. Sequi vel natus amet sequi. Neque reiciendis dolorum ullam eligendi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (42, 6, 4, '2022-11-11 14:00:00', '2022-11-11 15:00:00', 'Libero itaque dignissimos commodi.', 'Magni fugiat quam dolorem impedit maxime nobis. Ullam necessitatibus quasi quas rerum culpa. Pariatur sequi perferendis ullam quia.
+Laboriosam autem sit amet voluptas quasi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (42, 10, 4, '2023-02-21 11:00:00', '2023-02-21 12:00:00', 'Tenetur earum ex inventore est.', 'Nostrum consequatur beatae delectus saepe. Impedit minima doloribus voluptatum a qui. Voluptate repudiandae explicabo in doloremque.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (42, 4, 1, '2023-03-14 16:00:00', '2023-03-14 18:00:00', 'Pariatur aliquid adipisci tempore mollitia.', 'Iusto suscipit accusamus ad porro numquam vero. Commodi quam iusto minus deserunt. Sequi mollitia in laboriosam impedit cum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (42, 2, 1, '2023-04-28 12:00:00', '2023-04-28 14:00:00', 'Maxime fugiat et quaerat.', 'Voluptatem modi exercitationem excepturi eos quod. Sunt cumque voluptatibus labore qui ut nobis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (42, 3, 4, '2023-08-20 09:00:00', '2023-08-20 10:00:00', 'Nobis eligendi.', 'Sed mollitia reiciendis occaecati. Maiores voluptas libero temporibus.
+Eligendi quia beatae ducimus. Quidem deserunt minima accusantium debitis vitae magni nam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (42, 2, 1, '2023-10-01 14:00:00', '2023-10-01 16:00:00', 'Assumenda quidem aliquam itaque ut.', 'Rerum maiores laborum architecto. Consequuntur ex dicta quod quae hic. Sed harum officia animi atque.
+Quibusdam quis aliquam ad. Nesciunt in omnis quidem. Consequatur minima eum voluptatibus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (42, 2, 4, '2023-12-01 14:00:00', '2023-12-01 16:00:00', 'Deleniti quisquam molestias.', 'Blanditiis id perferendis ab maxime unde beatae. Facere dolor perspiciatis suscipit dolorum explicabo iste.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (42, 4, 4, '2024-01-06 12:00:00', '2024-01-06 13:00:00', 'Accusamus doloribus corrupti.', 'Minus odio ipsam nemo itaque accusamus. Ullam maiores magni.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (42, 10, 1, '2024-02-24 09:00:00', '2024-02-24 10:00:00', 'Eveniet soluta fuga.', 'Sequi natus laudantium. Fugiat neque similique totam minima. In eveniet alias iste blanditiis dolores corporis.
+Molestiae ab tenetur error harum sed.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (42, 7, 4, '2024-08-26 15:00:00', '2024-08-26 16:00:00', 'Totam soluta non adipisci.', 'Accusamus magni iusto aperiam harum. Earum dolore dolore voluptate recusandae.
+Quaerat maxime ratione odio id. Facere esse porro.
+Pariatur adipisci suscipit expedita perferendis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 8, 8, '2022-01-13 12:00:00', '2022-01-13 14:00:00', 'Rerum iste laboriosam.', 'Maiores dolore dolorem illum. Nam possimus delectus aliquid eos. Assumenda dolorem voluptatem assumenda. Nihil sunt incidunt nemo.
+Eligendi voluptatem veritatis praesentium asperiores nisi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 7, 9, '2022-01-15 10:00:00', '2022-01-15 11:00:00', 'Quasi voluptatibus tempora autem.', 'Totam unde aut enim cumque sed non reprehenderit. At magni deleniti tenetur. Blanditiis alias iste.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 3, 2, '2022-02-24 11:00:00', '2022-02-24 12:00:00', 'Ipsa voluptate odit corrupti placeat.', 'Nulla repudiandae unde quo sapiente inventore impedit. Alias quia omnis minus consectetur ad rem. Quibusdam pariatur perspiciatis deleniti natus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 7, 9, '2022-02-13 16:00:00', '2022-02-13 17:00:00', 'Blanditiis voluptatibus asperiores pariatur.', 'Nobis nulla cumque praesentium repudiandae quidem. Similique commodi odit vero eveniet.
+Quibusdam odio cupiditate adipisci. Natus numquam corrupti vel inventore a ad.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 9, 9, '2022-02-24 13:00:00', '2022-02-24 14:00:00', 'Vitae labore non porro.', 'Beatae blanditiis distinctio vel laudantium. Iure distinctio soluta doloribus ipsa ipsam. Voluptate impedit quasi ducimus quidem ducimus suscipit omnis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 1, 4, '2022-03-03 13:00:00', '2022-03-03 14:00:00', 'Temporibus aperiam rem.', 'Asperiores fugiat cum recusandae maiores sed fugit. Temporibus voluptatum quisquam non voluptas. Reiciendis fuga dolorum sint.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 3, 5, '2022-03-08 09:00:00', '2022-03-08 11:00:00', 'Iste explicabo amet.', 'Vitae eum perferendis tempora quia eveniet soluta. Fugiat natus earum.
+Itaque numquam temporibus. Explicabo modi sunt commodi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 1, 6, '2022-04-15 12:00:00', '2022-04-15 14:00:00', 'Sunt debitis blanditiis dicta.', 'Iste excepturi recusandae aliquam soluta sapiente cum. Debitis autem quos qui voluptas rem. Voluptatem laudantium dignissimos sit unde nisi. Quam quidem tenetur unde minima reprehenderit dolore.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 8, 9, '2022-04-02 11:00:00', '2022-04-02 12:00:00', 'Maxime maxime nemo iure sunt.', 'Eveniet harum voluptates in dicta. Corporis fugiat dicta sapiente reprehenderit eius. Aspernatur repellendus modi esse quo unde rerum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 7, 8, '2022-05-07 15:00:00', '2022-05-07 17:00:00', 'Hic quod doloremque debitis.', 'Quisquam porro sed distinctio unde velit totam. Porro in beatae minima quos quos.
+Architecto nisi ratione mollitia rerum. Aliquid voluptate deserunt repudiandae.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 9, 3, '2022-05-14 16:00:00', '2022-05-14 18:00:00', 'Amet doloremque nam perferendis earum.', 'Placeat eaque saepe. Officiis quasi quas amet tempora qui itaque. Ea maxime iste magni suscipit.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 7, 7, '2022-06-10 11:00:00', '2022-06-10 13:00:00', 'Quasi doloremque quis at.', 'Sed aperiam totam modi assumenda. Fugit totam corporis repellendus quos quo sint.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 10, 1, '2022-07-15 14:00:00', '2022-07-15 15:00:00', 'Dolores nam.', 'Nostrum ipsam odit repellendus aut fugit. Tempore adipisci cumque distinctio occaecati perspiciatis assumenda. Culpa reiciendis impedit ducimus quia sapiente. Ipsa tempore fuga quasi aut.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 8, 4, '2022-08-07 16:00:00', '2022-08-07 18:00:00', 'Ad sit ratione eveniet dolorem.', 'Neque vero ullam dolor dolores in necessitatibus ex. Accusantium quod deserunt itaque odio.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 4, 9, '2022-09-16 14:00:00', '2022-09-16 15:00:00', 'Repudiandae aliquid reprehenderit in.', 'Aliquam illo temporibus possimus. Blanditiis officia nobis optio. Ipsum molestias molestiae velit quidem sapiente eaque.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 2, 7, '2022-10-12 10:00:00', '2022-10-12 12:00:00', 'Modi impedit tempora ipsa quam.', 'Quaerat voluptatum doloribus quas eligendi beatae corrupti. Animi quasi sunt nesciunt. Consequatur dolorum exercitationem alias.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 1, 3, '2022-11-20 16:00:00', '2022-11-20 18:00:00', 'Possimus minus possimus cumque.', 'Quasi molestiae reiciendis perferendis. Tenetur a possimus commodi molestias dolorem animi earum. Blanditiis harum tempora ab.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 9, 3, '2022-12-22 15:00:00', '2022-12-22 16:00:00', 'Quis dolorem fugiat.', 'Possimus recusandae praesentium nostrum placeat. Similique iusto dolorem accusamus unde quia itaque. Dolorum facere laborum nisi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 6, 9, '2022-12-10 15:00:00', '2022-12-10 16:00:00', 'Ducimus a sequi consequuntur cum.', 'Voluptatum ad dolor expedita.
+Exercitationem culpa maiores modi repellendus deleniti ex. Tempora incidunt quasi ullam quidem. Distinctio harum nulla.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 2, 4, '2022-12-16 14:00:00', '2022-12-16 16:00:00', 'Aut ab.', 'Similique nostrum incidunt ipsa. Doloribus iusto quas ut vel maiores.
+Sit minima porro doloribus recusandae libero. Consectetur fuga quia officia.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 1, 8, '2023-01-08 09:00:00', '2023-01-08 10:00:00', 'Labore aliquid.', 'Occaecati mollitia earum earum incidunt sed incidunt dignissimos. Eligendi quaerat dignissimos iusto occaecati deleniti.
+Ut vel odio eveniet non. Labore iusto tempora dolores.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 9, 8, '2023-01-15 15:00:00', '2023-01-15 16:00:00', 'Nihil nostrum delectus harum.', 'Eius molestias praesentium repudiandae deserunt nemo eaque. Placeat totam ratione.
+Ad magnam aut voluptatum. Aspernatur mollitia at est excepturi. Porro molestias sunt.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 3, 6, '2023-01-14 12:00:00', '2023-01-14 14:00:00', 'Occaecati necessitatibus non numquam necessitatibus.', 'At vero consequuntur placeat labore laboriosam. Dignissimos nihil tempora id mollitia dolores reiciendis. Deleniti magni at officiis temporibus ipsum hic.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 1, 9, '2023-02-28 16:00:00', '2023-02-28 18:00:00', 'Sint eius.', 'Odio recusandae laudantium atque corporis dolor. Sequi necessitatibus quibusdam accusamus eveniet minus.
+Commodi quaerat minus at. Tempore officia necessitatibus quae et.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 3, 1, '2023-03-08 09:00:00', '2023-03-08 11:00:00', 'Sequi saepe illo modi.', 'Unde vitae odio magnam voluptates commodi cum. Consequatur excepturi earum iure.
+Reiciendis id ea ex suscipit architecto.
+Dolor commodi debitis quo. Repellendus aliquid mollitia consequatur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 8, 1, '2023-03-06 15:00:00', '2023-03-06 16:00:00', 'Veniam rerum earum alias.', 'Sapiente deleniti voluptas quasi. Nostrum vero unde. Nisi dolor accusantium eum.
+Nesciunt voluptas iusto rerum harum culpa ipsam. Id debitis totam blanditiis recusandae voluptatem.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 8, 5, '2023-04-12 09:00:00', '2023-04-12 10:00:00', 'Tempora hic.', 'Neque vitae ipsa tempora iusto placeat incidunt. Eligendi quaerat non numquam possimus est repellat repellat.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 8, 4, '2023-04-18 16:00:00', '2023-04-18 18:00:00', 'Ipsa illum.', 'Enim architecto iure iure error magnam autem. Hic ut odit veniam explicabo nemo fuga. Dolor quae in eveniet facilis molestias laborum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 4, 5, '2023-04-15 12:00:00', '2023-04-15 13:00:00', 'Culpa vel.', 'Nulla ex reiciendis nisi recusandae. Itaque repellat pariatur.
+Aspernatur itaque animi accusamus totam qui. Officia illum tenetur facere magnam amet modi. Magni hic at quam eius.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 1, 9, '2023-05-14 14:00:00', '2023-05-14 16:00:00', 'Maxime quibusdam commodi distinctio eligendi.', 'Doloremque architecto debitis mollitia laboriosam hic eos eius. Illo officia laudantium sapiente.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 2, 6, '2023-05-02 15:00:00', '2023-05-02 17:00:00', 'Voluptate quis laudantium.', 'Doloribus ratione doloremque qui deserunt aliquam praesentium. Qui magnam vel assumenda et molestiae iste. Quia fuga itaque natus doloremque nihil assumenda.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 3, 4, '2023-05-27 09:00:00', '2023-05-27 10:00:00', 'Error dolor quasi odio perferendis.', 'Culpa minus debitis tempore dolorem cumque recusandae. Sit in alias vel deleniti non sunt. Velit a cumque veniam sapiente sunt.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 6, 3, '2023-06-15 10:00:00', '2023-06-15 12:00:00', 'Esse explicabo esse fugiat.', 'Dolorum sunt at blanditiis. Numquam necessitatibus occaecati hic aspernatur labore.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 1, 3, '2023-06-27 10:00:00', '2023-06-27 11:00:00', 'Totam iure cum consequatur odio.', 'Quia sunt reiciendis doloremque. Eligendi nemo nemo incidunt fugit inventore.
+Quaerat nostrum nemo ea quaerat sed recusandae. Quos cumque sequi veniam optio cum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 9, 8, '2023-07-09 10:00:00', '2023-07-09 12:00:00', 'Hic sint.', 'Occaecati in tempora aperiam blanditiis occaecati iusto. Consequuntur ut assumenda sequi pariatur quasi. Asperiores illum illum totam voluptates ad vero.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 6, 9, '2023-08-13 10:00:00', '2023-08-13 11:00:00', 'Cum in impedit.', 'Nesciunt corrupti eveniet at suscipit.
+Molestiae harum unde nostrum recusandae blanditiis similique. Autem nemo voluptas iste tempora.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 4, 4, '2023-08-17 10:00:00', '2023-08-17 11:00:00', 'Alias nemo expedita.', 'Rerum voluptate odio iusto velit.
+Quisquam expedita dolor id doloremque tempora saepe. Vitae corrupti quibusdam mollitia eaque quibusdam. Ducimus beatae praesentium optio.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 4, 7, '2023-09-23 14:00:00', '2023-09-23 16:00:00', 'Eaque beatae earum.', 'Commodi commodi placeat incidunt ea quam. Repellat quod atque voluptatum neque necessitatibus sit. Quae perspiciatis repudiandae id.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 6, 6, '2023-10-20 10:00:00', '2023-10-20 12:00:00', 'Enim libero.', 'Vitae sed necessitatibus debitis officiis. Rerum corporis non consequatur libero ipsa.
+Culpa architecto ipsum sit ex iste ex. Dolore maiores recusandae molestias placeat.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 9, 7, '2023-11-10 11:00:00', '2023-11-10 13:00:00', 'Repellat suscipit voluptatibus blanditiis.', 'Veritatis ipsa delectus deserunt id. Esse rerum qui placeat facere cupiditate iure. Quasi harum placeat dicta. Debitis ipsum fugiat ipsam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 6, 6, '2023-11-18 12:00:00', '2023-11-18 13:00:00', 'Accusamus excepturi odit quisquam.', 'Eum fuga explicabo sit dolores fuga consectetur suscipit. Perspiciatis labore dolorum totam voluptatem alias. Provident ipsam temporibus commodi eaque.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 6, 7, '2023-11-12 12:00:00', '2023-11-12 14:00:00', 'Harum excepturi voluptate eaque.', 'Placeat voluptatum consequatur fugiat hic velit. Similique odit repudiandae at architecto porro.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 10, 2, '2023-12-15 16:00:00', '2023-12-15 18:00:00', 'Debitis aperiam nobis.', 'Consectetur rerum ipsum perspiciatis consequuntur. Facilis consectetur voluptatibus itaque. Tempora consequuntur quia veniam praesentium veniam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 2, 7, '2023-12-03 11:00:00', '2023-12-03 13:00:00', 'Ullam temporibus.', 'Possimus saepe eaque molestiae reiciendis. Molestiae dolores odit molestiae quas beatae alias. Repudiandae eum placeat.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 7, 7, '2023-12-11 12:00:00', '2023-12-11 13:00:00', 'Id voluptatum deserunt similique.', 'Inventore adipisci perferendis vel natus praesentium hic rem. Dignissimos velit quia accusantium.
+Cum amet est repudiandae quis dolorem dolor. Velit ut numquam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 5, 3, '2024-01-10 16:00:00', '2024-01-10 18:00:00', 'Fugiat eos harum.', 'Vel doloremque voluptatibus accusantium magnam. Autem fugit repellat iste voluptate ipsa veritatis.
+Ipsam dignissimos earum debitis. Repellendus vel placeat voluptas a quas. At nam et dolorum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 3, 6, '2024-01-12 15:00:00', '2024-01-12 16:00:00', 'Vitae quaerat soluta iure vel.', 'Aliquam ipsa reiciendis aperiam pariatur enim nesciunt id. Saepe eaque nam ipsum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 5, 6, '2024-01-22 11:00:00', '2024-01-22 13:00:00', 'Corrupti sapiente repudiandae quis corporis.', 'Asperiores minima quidem deserunt illo ab voluptate quasi. Repellendus nisi maiores ratione error suscipit sint.
+Atque nobis veritatis dolorem. Voluptates ab animi voluptatem.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 8, 1, '2024-02-27 13:00:00', '2024-02-27 15:00:00', 'Hic in amet non.', 'Doloribus suscipit illo voluptatum. Ipsa aliquam enim soluta eius odit. Architecto velit adipisci error autem.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 8, 6, '2024-02-06 12:00:00', '2024-02-06 14:00:00', 'Laudantium voluptates nulla cumque voluptas.', 'Inventore rem perspiciatis molestiae soluta. Dolorem nesciunt quis rerum porro tempore ex eum.
+Ipsa placeat totam quibusdam a tenetur. Neque quos sit asperiores totam laborum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 5, 6, '2024-03-06 12:00:00', '2024-03-06 13:00:00', 'Delectus iusto.', 'Quia natus adipisci labore laborum inventore modi. Odio quos vel neque nemo in ad.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 8, 2, '2024-03-12 14:00:00', '2024-03-12 15:00:00', 'Nam maiores atque fuga sint.', 'Atque occaecati id. Repudiandae officia iure ex sapiente ipsum dolorem.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 10, 2, '2024-04-25 12:00:00', '2024-04-25 14:00:00', 'Voluptatibus omnis sapiente.', 'Pariatur omnis eum inventore. Perferendis minima expedita. Rerum iste culpa.
+Libero doloribus temporibus maiores nisi. Assumenda nesciunt autem. Rem ad temporibus itaque enim aut optio.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 9, 2, '2024-05-10 15:00:00', '2024-05-10 17:00:00', 'Optio assumenda culpa omnis error.', 'Possimus illum voluptas quisquam. Nostrum nostrum maxime neque nisi et. Ullam asperiores reprehenderit voluptatum possimus veritatis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 6, 4, '2024-05-06 12:00:00', '2024-05-06 14:00:00', 'Ut modi.', 'Ipsa consectetur corporis tempora quasi. Voluptatem repellat aliquam dolorum exercitationem laboriosam sint.
+Itaque iusto doloremque optio neque deleniti modi quidem.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 1, 4, '2024-06-02 11:00:00', '2024-06-02 13:00:00', 'Repellendus quod.', 'At quia neque et numquam sint. Eum recusandae cum.
+Suscipit deserunt dolorem odio doloremque et. Cum delectus corporis eius nulla.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 10, 6, '2024-06-21 13:00:00', '2024-06-21 14:00:00', 'Eveniet repudiandae.', 'Asperiores delectus deserunt. Quidem expedita esse cum.
+Error totam dolorum qui dolores. Provident magni veritatis necessitatibus esse suscipit ut. Magni rem ducimus quisquam repellendus ex.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 10, 6, '2024-06-11 14:00:00', '2024-06-11 15:00:00', 'Recusandae sunt nam.', 'Dicta accusantium voluptates hic aperiam dolorum. Ratione velit nostrum consequuntur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 5, 6, '2024-07-12 15:00:00', '2024-07-12 17:00:00', 'Iure dolore magni sequi repudiandae.', 'Veritatis provident quos perferendis eveniet. Inventore reprehenderit labore nihil veniam hic illum ipsam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 5, 6, '2024-08-11 14:00:00', '2024-08-11 16:00:00', 'Optio culpa qui soluta.', 'Aut consequuntur eos mollitia magnam. Placeat placeat quae esse.
+Similique occaecati modi distinctio. Facilis iste vitae ipsam dolores. Mollitia iste animi in praesentium consectetur non autem.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 10, 8, '2024-08-23 10:00:00', '2024-08-23 12:00:00', 'Voluptas in ratione.', 'Alias sit quae incidunt at nisi pariatur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 2, 1, '2024-09-27 11:00:00', '2024-09-27 12:00:00', 'Suscipit consectetur aliquid.', 'Accusamus unde eveniet quasi facilis perspiciatis. Temporibus voluptatum laborum sit impedit voluptatem.
+Soluta fugiat recusandae odio. Optio laboriosam labore possimus fugit nihil quaerat.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 9, 2, '2024-09-04 14:00:00', '2024-09-04 15:00:00', 'Consectetur accusantium labore quisquam.', 'Ab nemo consequuntur.
+Praesentium vitae sed quae ab distinctio ipsam amet. Beatae temporibus nulla nam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 8, 6, '2024-10-24 14:00:00', '2024-10-24 16:00:00', 'Ducimus eligendi voluptate voluptatem ipsum.', 'Dolorum doloremque cupiditate expedita. Aut adipisci esse repudiandae.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 5, 6, '2024-11-25 15:00:00', '2024-11-25 17:00:00', 'Dolor accusantium assumenda.', 'Perferendis dicta blanditiis fugit doloremque. Molestiae incidunt quam commodi fuga aliquid.
+Esse repellat dignissimos reprehenderit eligendi autem. Accusantium nisi vitae excepturi fugiat aliquam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 2, 6, '2024-12-19 10:00:00', '2024-12-19 11:00:00', 'Officia reiciendis.', 'Ex ipsum itaque ab ducimus velit officia ea. Recusandae quaerat nesciunt ipsum quam.
+Fugiat nihil necessitatibus earum quibusdam. Officiis explicabo iusto molestias quo hic.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 2, 4, '2024-12-22 11:00:00', '2024-12-22 12:00:00', 'Reiciendis assumenda quibusdam qui.', 'Ratione nostrum odit unde dolorem illum. Magni nihil quos incidunt odio ducimus.
+Illo reiciendis quae est temporibus nesciunt molestiae.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (59, 4, 4, '2024-12-04 11:00:00', '2024-12-04 12:00:00', 'Assumenda error magnam.', 'Tempore similique nihil quod. Sunt odio magni ullam ex amet perferendis. Sequi voluptatibus exercitationem quia quo. Non facilis rerum reiciendis sequi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 4, 1, '2022-01-11 12:00:00', '2022-01-11 13:00:00', 'Minus eligendi.', 'Voluptatum nulla expedita neque corrupti dolore. Reprehenderit eum at.
+Provident saepe distinctio laboriosam. Earum fugit saepe asperiores id. Sapiente quam laudantium corrupti occaecati voluptas.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 9, 2, '2022-01-21 11:00:00', '2022-01-21 13:00:00', 'Animi illo neque.', 'Rerum non dolores. Illo iusto doloremque quasi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 8, 5, '2022-01-05 12:00:00', '2022-01-05 14:00:00', 'Ipsum provident.', 'Adipisci sit ut dignissimos. Quae assumenda sed perspiciatis sequi exercitationem assumenda. Voluptates laboriosam reiciendis perspiciatis nulla enim tempora.
+Dolor exercitationem quia laboriosam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 2, 6, '2022-02-24 13:00:00', '2022-02-24 15:00:00', 'Omnis temporibus.', 'Quam neque totam ducimus. Praesentium porro aliquam dolor asperiores aliquam ipsa.
+Dicta magnam sunt corporis nemo. Laboriosam quae voluptates qui.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 3, 6, '2022-02-07 16:00:00', '2022-02-07 17:00:00', 'Sapiente magnam ipsam deleniti.', 'Iure eligendi vitae molestiae modi in repellendus placeat. Vitae quo ea minima minus id. Quam ad temporibus dignissimos ea.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 4, 1, '2022-03-05 16:00:00', '2022-03-05 18:00:00', 'Praesentium optio omnis sint.', 'Natus sunt excepturi nam. Consequuntur aperiam commodi fuga expedita voluptatibus tempora.
+Atque esse libero nulla omnis. Consequuntur architecto impedit soluta corrupti ea.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 2, 1, '2022-03-25 12:00:00', '2022-03-25 13:00:00', 'Voluptatibus voluptas sit.', 'Eius nisi dolorum sint quod aspernatur. Fugit commodi quas iste doloremque debitis. Quaerat ea adipisci impedit.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 6, 3, '2022-04-25 10:00:00', '2022-04-25 11:00:00', 'Eius nobis omnis.', 'Aspernatur optio voluptatum inventore deserunt. Veritatis earum animi cum enim accusamus voluptas.
+Culpa sed occaecati facere pariatur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 10, 4, '2022-05-13 11:00:00', '2022-05-13 12:00:00', 'Nostrum beatae.', 'Et tempore nobis dolores. Fugiat quae amet. Aut nihil voluptatum.
+Dolorum earum provident est eaque. Laboriosam laborum labore ex dolorem ad fugit. Et officiis veritatis ullam sint veniam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 7, 5, '2022-07-13 10:00:00', '2022-07-13 12:00:00', 'Fugit laboriosam unde.', 'Voluptatum blanditiis harum ad expedita facere. Nulla deleniti unde recusandae eaque facilis. Numquam cupiditate consectetur dignissimos.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 6, 3, '2022-08-12 11:00:00', '2022-08-12 12:00:00', 'Officia a praesentium.', 'Aspernatur vel ex perspiciatis. Reiciendis fuga ducimus corporis. Totam deserunt tenetur tenetur eum beatae facere. Accusantium voluptate id consequatur iste nihil consectetur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 3, 3, '2022-09-25 10:00:00', '2022-09-25 12:00:00', 'Libero cum neque cupiditate.', 'Quam praesentium nam deserunt eligendi. Odit maxime saepe maiores repellat.
+Rerum occaecati iusto cupiditate iste assumenda. Quasi deserunt fugit sit. Nam voluptas officiis sed.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 8, 6, '2022-10-23 11:00:00', '2022-10-23 12:00:00', 'Excepturi quas amet quam.', 'Inventore provident totam ipsa alias eos facere. Ipsum temporibus alias illo accusamus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 7, 4, '2022-10-28 16:00:00', '2022-10-28 18:00:00', 'Tenetur eveniet ea nostrum.', 'Atque rerum iste minima quaerat tenetur magni. Explicabo tenetur non. Iusto dolores explicabo quis.
+Harum incidunt quaerat quo nisi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 9, 5, '2022-11-12 13:00:00', '2022-11-12 15:00:00', 'Unde consequuntur delectus.', 'Cumque alias perspiciatis dicta voluptatum. Sequi doloribus inventore reiciendis assumenda.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 10, 1, '2022-11-02 10:00:00', '2022-11-02 12:00:00', 'Officia ipsa sunt.', 'Facere expedita iure libero eaque unde ipsam. Fugit minima hic adipisci iure. Necessitatibus vel nostrum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 6, 1, '2022-11-19 16:00:00', '2022-11-19 18:00:00', 'Suscipit eveniet quod.', 'Mollitia totam rerum. Alias maiores nesciunt quo ipsa nulla error.
+Quos inventore ipsam sint repellat. Provident voluptatibus dolorum nihil autem fugit fuga magni.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 8, 6, '2022-12-24 12:00:00', '2022-12-24 13:00:00', 'Ut dolores officiis molestiae.', 'Dolorum veniam vero maxime nobis sint aspernatur. Ipsum quod sit dolorum.
+Aperiam sed quia repellat aspernatur quam. Praesentium nam quasi aliquid itaque non pariatur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 8, 6, '2023-01-18 14:00:00', '2023-01-18 15:00:00', 'Ducimus quidem.', 'Cum aspernatur accusantium facere. Numquam libero quasi itaque optio amet eius.
+Et odit qui omnis sit labore. Omnis sequi error nemo eveniet amet.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 3, 3, '2023-03-12 16:00:00', '2023-03-12 17:00:00', 'A reiciendis at blanditiis.', 'Praesentium beatae perspiciatis quo. Amet adipisci assumenda maiores expedita.
+Esse corrupti maxime quod maxime. Quae perspiciatis magnam nihil.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 2, 4, '2023-05-03 15:00:00', '2023-05-03 16:00:00', 'Perspiciatis vero animi.', 'Impedit nisi dolores. Suscipit officia officia unde numquam consectetur saepe nesciunt. Numquam rerum quod delectus expedita possimus ad accusantium.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 2, 6, '2023-05-05 15:00:00', '2023-05-05 16:00:00', 'Natus incidunt minima.', 'At in ducimus dolores voluptatibus. Molestiae voluptatum ullam autem deserunt velit. Soluta esse enim fuga.
+Laborum dolores iure esse magni enim odit. Dolorum occaecati nulla magni.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 4, 1, '2023-05-10 14:00:00', '2023-05-10 15:00:00', 'Laboriosam distinctio quod.', 'Fugiat architecto placeat nihil aperiam porro id. Delectus accusantium officia tenetur.
+Ratione mollitia aspernatur minus exercitationem optio odio. Voluptas veniam ipsum et.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 3, 6, '2023-06-09 09:00:00', '2023-06-09 11:00:00', 'Ex numquam aperiam.', 'Repudiandae recusandae deserunt ab voluptatum. Reiciendis doloribus amet fugit officia ea adipisci rem.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 2, 2, '2023-07-05 09:00:00', '2023-07-05 10:00:00', 'Saepe reiciendis expedita.', 'Magni ullam consequuntur perferendis impedit accusamus. Maxime quidem est excepturi nemo aut. Odit quis occaecati harum laborum dolore asperiores consectetur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 9, 3, '2023-07-06 10:00:00', '2023-07-06 12:00:00', 'Eum id fuga.', 'In reiciendis ullam iste nam praesentium ducimus. Qui ducimus dignissimos tempora. Incidunt quam maiores.
+Natus cumque harum. Maxime non ullam labore doloribus laudantium ut.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 1, 2, '2023-09-11 16:00:00', '2023-09-11 17:00:00', 'Excepturi mollitia aperiam id rerum.', 'Molestiae excepturi laborum. Ipsum quod doloribus laboriosam ratione hic. Veniam facilis aliquam nesciunt suscipit distinctio nam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 4, 4, '2023-11-05 11:00:00', '2023-11-05 12:00:00', 'Laudantium reiciendis eveniet.', 'Deserunt occaecati eveniet fugit ut optio. Repellat quos a maiores mollitia similique. Itaque beatae consectetur consequuntur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 4, 3, '2023-12-12 15:00:00', '2023-12-12 17:00:00', 'Quam doloremque blanditiis.', 'Placeat accusamus iste natus. Suscipit iure accusamus placeat quae nulla dignissimos quo.
+Culpa in quidem culpa laboriosam atque. Culpa ipsum hic quam dolorum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 2, 1, '2024-02-20 12:00:00', '2024-02-20 13:00:00', 'Neque ad saepe praesentium ad.', 'Doloribus doloremque omnis dolore doloremque. Perspiciatis vel amet blanditiis. Veniam officia corporis dolorum deserunt architecto.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 7, 2, '2024-05-09 12:00:00', '2024-05-09 14:00:00', 'Provident dolorum accusamus aperiam.', 'Aliquam exercitationem cupiditate facilis. Autem numquam laudantium repudiandae eius assumenda illum.
+Sunt non magnam mollitia. Voluptatibus magnam unde nostrum distinctio rerum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 5, 4, '2024-05-24 14:00:00', '2024-05-24 16:00:00', 'Illo non.', 'Quas fugiat alias delectus consequuntur eum omnis. Sapiente porro veniam excepturi. Deleniti facere quo.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 1, 6, '2024-06-19 11:00:00', '2024-06-19 13:00:00', 'Magnam vero reiciendis.', 'Error laboriosam hic aut nostrum. Maxime sint nihil molestiae cumque itaque culpa molestias. Labore odit dolorum aut molestias eaque.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 6, 5, '2024-06-25 12:00:00', '2024-06-25 13:00:00', 'Cumque iure doloribus ab.', 'Provident veritatis eos.
+Voluptatum exercitationem omnis. Quis delectus eos aut eligendi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 3, 1, '2024-07-02 11:00:00', '2024-07-02 13:00:00', 'Laudantium nisi quasi.', 'Laudantium tempore assumenda dicta error. Esse nihil similique vitae laboriosam nobis. Eveniet excepturi similique labore nobis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 7, 1, '2024-07-18 14:00:00', '2024-07-18 15:00:00', 'Tenetur consectetur quaerat nostrum.', 'Ad animi sequi quo animi excepturi sint. Ipsam natus placeat dignissimos. Molestiae aliquid laborum quos non illum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 3, 2, '2024-08-17 15:00:00', '2024-08-17 17:00:00', 'Iste alias.', 'Vel doloremque alias exercitationem architecto rerum voluptas. Nesciunt voluptatibus autem deserunt doloribus tenetur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 7, 4, '2024-09-26 16:00:00', '2024-09-26 18:00:00', 'Veritatis quisquam.', 'Maxime iusto natus occaecati eius. Modi repellat placeat voluptatibus facere veritatis qui. Corrupti quae expedita aliquid magni blanditiis quas dolorem.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 7, 1, '2024-10-05 14:00:00', '2024-10-05 16:00:00', 'Quae corrupti.', 'Repudiandae vitae culpa ut cumque saepe. Facilis aliquam excepturi illo. Iure vitae iure sed natus amet ab.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 7, 4, '2024-11-02 11:00:00', '2024-11-02 13:00:00', 'Cum quas veniam.', 'Quam expedita quos. Facere optio minus aliquam asperiores. Quisquam magnam odio ut tenetur dolorem. Eligendi nobis dicta.
+Atque dolorem animi nihil. Magnam reprehenderit dignissimos nobis quaerat ut.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 6, 1, '2024-12-05 13:00:00', '2024-12-05 14:00:00', 'Voluptatibus mollitia architecto quam nobis.', 'Maiores fugit molestias nulla sunt. Suscipit fuga possimus amet facere ex.
+Beatae ipsum ex mollitia totam voluptatem sunt explicabo. Sit amet inventore neque deserunt quo doloribus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (34, 9, 3, '2024-12-07 14:00:00', '2024-12-07 16:00:00', 'Deleniti debitis itaque esse quos.', 'Reprehenderit adipisci pariatur. Commodi adipisci consequatur est.
+Tempora impedit blanditiis ex exercitationem ipsum tempore. Esse sunt ex voluptates voluptate. Ab numquam culpa tenetur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 2, 4, '2022-01-04 14:00:00', '2022-01-04 16:00:00', 'Ipsum eum.', 'Alias neque illum odio. Fugit suscipit dolor iure cupiditate ab. Sint laudantium odio itaque.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 8, 2, '2022-01-11 15:00:00', '2022-01-11 16:00:00', 'Libero perspiciatis omnis repellendus.', 'Odit deleniti ut. Aperiam officia officiis pariatur dignissimos dolores. Non perspiciatis facilis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 9, 6, '2022-02-20 13:00:00', '2022-02-20 15:00:00', 'Exercitationem modi soluta adipisci.', 'Facere rem assumenda enim quasi dolores dolores.
+Repellendus est asperiores neque quos voluptates nemo. Omnis aliquid incidunt optio temporibus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 10, 7, '2022-02-17 10:00:00', '2022-02-17 12:00:00', 'Ipsam quae occaecati commodi.', 'Sed nisi officia commodi. Vitae repellendus labore eum officiis ratione ex. Incidunt nisi quasi quos animi provident dolores.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 2, 4, '2022-02-03 11:00:00', '2022-02-03 13:00:00', 'Impedit sunt cupiditate rem.', 'Nobis magnam sit accusantium iste odio. Ipsa non sit officiis magnam asperiores. Neque corporis cum error suscipit ipsa inventore.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 5, 1, '2022-03-07 11:00:00', '2022-03-07 12:00:00', 'Architecto provident blanditiis quia.', 'Quis explicabo excepturi velit nostrum molestias impedit. Quae ullam consectetur totam saepe quas possimus commodi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 1, 4, '2022-04-22 12:00:00', '2022-04-22 13:00:00', 'Architecto optio quasi debitis.', 'Sequi magnam voluptate laborum aspernatur earum itaque laborum. Adipisci explicabo suscipit. Esse praesentium laborum porro earum perferendis modi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 4, 8, '2022-04-24 11:00:00', '2022-04-24 13:00:00', 'Consequuntur alias minima quae.', 'Quisquam velit dolore velit. Explicabo officiis placeat.
+Earum optio vitae velit. Provident aperiam ducimus commodi odio. Laboriosam aliquam corrupti.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 1, 9, '2022-04-05 15:00:00', '2022-04-05 17:00:00', 'Assumenda iste voluptates labore fugiat.', 'Accusamus rerum reprehenderit assumenda. Nostrum atque commodi enim modi voluptate. Nemo quaerat incidunt quam corporis tempore.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 2, 6, '2022-05-18 14:00:00', '2022-05-18 15:00:00', 'Asperiores eum ipsa inventore.', 'Voluptatum blanditiis accusamus architecto. Perspiciatis reprehenderit tempore est deserunt doloremque numquam. Fuga itaque tempore itaque enim iste.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 3, 1, '2022-06-02 14:00:00', '2022-06-02 16:00:00', 'Accusamus ex veritatis.', 'Quo itaque ea totam temporibus a. Possimus quibusdam sapiente molestiae. Quo perferendis accusamus aut officiis nemo veniam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 10, 8, '2022-06-16 13:00:00', '2022-06-16 15:00:00', 'Eveniet nobis qui possimus aperiam.', 'Fugit ducimus temporibus. Veritatis tempore facilis alias. Deserunt et rem fugit unde est eligendi.
+Quae dolore dolorem occaecati officiis harum pariatur sed. Ut rem architecto recusandae tempora.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 8, 1, '2022-06-06 15:00:00', '2022-06-06 16:00:00', 'Deserunt sequi.', 'Explicabo nam necessitatibus dicta quo laboriosam. Ipsa iusto pariatur sunt et. Aliquid possimus est ipsum reiciendis aliquid quasi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 1, 2, '2022-07-02 11:00:00', '2022-07-02 13:00:00', 'Libero repellendus.', 'Ut dolorem ullam fugiat. Dolores nisi assumenda commodi nihil possimus. Magnam libero sunt sit nihil quasi incidunt.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 8, 4, '2022-08-15 16:00:00', '2022-08-15 18:00:00', 'Doloribus ad ducimus.', 'Fugiat recusandae explicabo. Possimus facere suscipit facere. Reiciendis id iure corporis explicabo maxime.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 6, 6, '2022-09-13 11:00:00', '2022-09-13 13:00:00', 'In tenetur.', 'Rem numquam itaque repellat iure rerum vitae. Tempore vero totam dolores eum necessitatibus eius. Quam neque facere magni.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 9, 4, '2022-09-18 15:00:00', '2022-09-18 16:00:00', 'Iure porro enim facere culpa.', 'Voluptatem ducimus error exercitationem quam. Ut mollitia fugit.
+Optio ut earum culpa saepe earum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 6, 9, '2022-10-28 14:00:00', '2022-10-28 15:00:00', 'Voluptates est quo ut.', 'Cupiditate adipisci inventore minus itaque placeat. Aperiam labore fugiat fugiat deserunt harum.
+Unde quo pariatur atque ea culpa. Odit tempora illo totam corrupti facere culpa possimus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 7, 8, '2022-10-06 09:00:00', '2022-10-06 10:00:00', 'Alias molestias quas.', 'Voluptatibus similique quo aut suscipit vero molestias. Labore possimus accusantium unde.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 4, 1, '2022-10-12 13:00:00', '2022-10-12 14:00:00', 'Beatae ut.', 'Nemo corporis eveniet repudiandae amet quos. In deserunt amet necessitatibus. Exercitationem quae qui veritatis fuga porro aperiam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 5, 4, '2022-11-07 09:00:00', '2022-11-07 10:00:00', 'Saepe recusandae debitis voluptas.', 'Perspiciatis quia voluptatum architecto veniam sunt. Debitis deleniti rem totam repellat sint repudiandae. Facilis et enim temporibus ipsum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 3, 5, '2022-11-02 09:00:00', '2022-11-02 10:00:00', 'Ipsa ab consectetur.', 'Officiis itaque quaerat a explicabo. Eligendi possimus esse vero autem.
+Quae illum eveniet impedit voluptates modi eius. Nemo ipsa optio accusantium quasi eveniet asperiores consequuntur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 9, 9, '2022-11-17 11:00:00', '2022-11-17 13:00:00', 'Ipsum vel.', 'Excepturi ad fuga corporis. Consequuntur distinctio et ducimus quas. Ut quas non magni.
+Esse officia sint provident aperiam. Sapiente sint eos pariatur corrupti.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 10, 9, '2022-12-19 10:00:00', '2022-12-19 11:00:00', 'Eaque accusamus ipsa minima.', 'Quam dolorum deserunt quaerat impedit placeat sit. Maxime asperiores dignissimos. Voluptatibus eos amet minus rem.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 9, 8, '2022-12-15 11:00:00', '2022-12-15 12:00:00', 'Accusamus error quo.', 'In ducimus sed sed. Possimus impedit animi pariatur voluptatem tempore.
+Totam cum amet cupiditate voluptatum facilis in.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 7, 7, '2023-01-06 11:00:00', '2023-01-06 12:00:00', 'Quaerat consequatur aut atque sapiente.', 'Mollitia explicabo a ducimus maiores. Minus incidunt commodi ipsum. Nostrum error voluptatem cupiditate.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 9, 7, '2023-02-21 12:00:00', '2023-02-21 13:00:00', 'Beatae quis.', 'Veniam ea quae accusantium voluptate. Eveniet fugiat eos ipsa recusandae quos iste. Illum harum possimus voluptatum laudantium ullam amet.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 7, 3, '2023-02-17 09:00:00', '2023-02-17 10:00:00', 'Dicta beatae quae.', 'Magni laboriosam dolores eaque ab.
+Fugiat rerum assumenda placeat necessitatibus sed quasi. Possimus aspernatur excepturi. A maiores dolor vitae laboriosam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 8, 8, '2023-02-27 16:00:00', '2023-02-27 17:00:00', 'Sunt quo laborum explicabo.', 'Impedit quam temporibus maiores. Commodi corrupti a.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 7, 6, '2023-03-25 16:00:00', '2023-03-25 17:00:00', 'Dolore placeat rem.', 'Est ex harum officia magnam. Odit natus nobis repellat nam. Magnam deserunt occaecati ducimus aut.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 4, 5, '2023-04-27 12:00:00', '2023-04-27 13:00:00', 'Tempora blanditiis.', 'Officiis autem ducimus in. Numquam repellat maiores. Eaque veritatis deserunt voluptatibus recusandae magni.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 5, 2, '2023-04-23 09:00:00', '2023-04-23 11:00:00', 'Ut optio.', 'Tempora beatae sunt expedita laudantium. Numquam accusamus possimus atque quos necessitatibus.
+Quas incidunt maxime architecto voluptate deserunt unde.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 10, 2, '2023-04-10 14:00:00', '2023-04-10 16:00:00', 'Tempore error.', 'Quisquam vero sed facilis ullam nobis voluptatum. Earum minus vero voluptatibus modi explicabo ullam laborum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 9, 6, '2023-05-06 09:00:00', '2023-05-06 11:00:00', 'Fugit minima unde deleniti.', 'Suscipit cumque earum deleniti corporis odit maxime.
+Nemo dicta officia est. Enim modi modi accusamus debitis.
+Quis enim hic ullam consequuntur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 5, 9, '2023-05-20 11:00:00', '2023-05-20 12:00:00', 'Reiciendis officiis.', 'Repellendus dolorem perferendis incidunt nihil. Alias non aliquam rem sit consequatur.
+Maxime quas voluptatum sapiente pariatur. Itaque vel ipsum eaque iste.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 3, 9, '2023-05-22 12:00:00', '2023-05-22 14:00:00', 'Minus adipisci.', 'Repellendus perspiciatis iste odit est illum iusto.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 8, 6, '2023-06-09 13:00:00', '2023-06-09 14:00:00', 'Eos in perspiciatis consectetur.', 'Distinctio fugiat in pariatur minima expedita quod. Temporibus non ipsum ratione aperiam minima.
+Accusamus similique occaecati ratione. Facere hic minima tempore quidem enim non. Autem a hic sit.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 9, 1, '2023-07-28 09:00:00', '2023-07-28 11:00:00', 'Magnam facere cupiditate praesentium.', 'Reprehenderit rerum consectetur possimus facere. Ad occaecati fugiat quibusdam perspiciatis earum. Provident labore dolorem placeat eius.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 4, 9, '2023-07-12 15:00:00', '2023-07-12 16:00:00', 'Iusto hic consequuntur.', 'Incidunt eos omnis pariatur voluptates. Laboriosam praesentium temporibus et.
+Aliquam ea vitae sed sed modi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 7, 7, '2023-07-01 16:00:00', '2023-07-01 17:00:00', 'Voluptatibus rerum laboriosam veritatis ab.', 'Voluptatibus pariatur explicabo sint. Odio unde quia adipisci. Ipsum aliquam incidunt molestiae magni vel iste dicta.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 9, 4, '2023-08-01 16:00:00', '2023-08-01 17:00:00', 'Nam ipsam.', 'Eos dignissimos eum architecto deserunt. Nisi quis doloremque.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 8, 5, '2023-08-21 15:00:00', '2023-08-21 17:00:00', 'Maiores voluptate.', 'Suscipit temporibus eius a numquam laudantium quos. Maxime repellat delectus accusantium tempora dolorum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 7, 8, '2023-08-21 10:00:00', '2023-08-21 12:00:00', 'Earum cupiditate minus.', 'Et quis omnis totam expedita. Delectus molestiae nulla. Vero totam laudantium ducimus error delectus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 5, 4, '2023-09-18 16:00:00', '2023-09-18 17:00:00', 'Iure facere.', 'Laudantium officia cum ipsa doloribus illo expedita. Delectus est deserunt corporis aperiam explicabo maxime. Aliquam nemo placeat possimus voluptatum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 2, 8, '2023-10-02 09:00:00', '2023-10-02 10:00:00', 'Ipsum vel molestiae facere itaque.', 'Sequi incidunt quod maiores incidunt suscipit rerum. Adipisci magnam porro ad accusantium ipsum quisquam. Adipisci impedit recusandae quo.
+Aliquid fugiat repellendus natus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 5, 1, '2023-11-28 13:00:00', '2023-11-28 14:00:00', 'Repudiandae perspiciatis veniam repellat.', 'Illo ad eligendi quae a. Aliquam voluptatum aperiam magnam soluta veniam. Ea eos in maiores deleniti sapiente asperiores.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 9, 6, '2023-11-02 11:00:00', '2023-11-02 12:00:00', 'Esse commodi nisi.', 'Neque maxime praesentium. Nam necessitatibus deserunt error maiores adipisci itaque.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 10, 6, '2023-11-16 09:00:00', '2023-11-16 11:00:00', 'At voluptas molestiae recusandae odit.', 'Dolorem labore laborum. Officiis expedita provident libero laborum dolore. Enim saepe eligendi ducimus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 2, 3, '2023-12-01 12:00:00', '2023-12-01 13:00:00', 'Recusandae deleniti.', 'Id accusantium facilis nostrum corporis architecto. Unde vitae natus a illo quaerat praesentium. Amet quae repudiandae quas eum quod.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 5, 4, '2023-12-22 10:00:00', '2023-12-22 12:00:00', 'Amet sunt aspernatur.', 'Aut ratione eos est inventore. Magni ex omnis nulla.
+Culpa odit dolorum magnam harum. Sequi saepe voluptatem inventore quisquam voluptas non ullam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 2, 4, '2023-12-04 13:00:00', '2023-12-04 15:00:00', 'Numquam aliquid eius nobis.', 'Fuga minima dignissimos nobis dolore sunt repudiandae. Illum fuga voluptatum tempora fugiat.
+Voluptatem mollitia consectetur mollitia. Perferendis suscipit molestias amet dicta provident ipsam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 6, 4, '2024-01-11 09:00:00', '2024-01-11 11:00:00', 'Ratione labore distinctio veniam.', 'Eveniet commodi ipsum pariatur vero esse earum voluptate. Mollitia non in quae saepe.
+Minus deserunt tenetur aspernatur. Corrupti iusto officiis harum vel.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 7, 3, '2024-01-11 14:00:00', '2024-01-11 15:00:00', 'Praesentium non reprehenderit facilis.', 'Deserunt consequuntur assumenda neque. Consectetur deserunt sequi suscipit. Debitis corporis vero unde tempore.
+Hic deserunt tempora iusto libero laudantium explicabo. Sapiente expedita quam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 7, 6, '2024-02-15 10:00:00', '2024-02-15 12:00:00', 'Ullam aliquid dicta perspiciatis laudantium.', 'Sequi illum vero velit consequatur veniam non corporis. At in enim fugit ea hic. Minima fuga aperiam laboriosam quo.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 9, 6, '2024-03-07 14:00:00', '2024-03-07 15:00:00', 'At voluptas vitae eveniet.', 'Illum debitis error non iste aut. Eum facere suscipit voluptates explicabo. Maxime voluptate tempora minus culpa.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 10, 5, '2024-03-18 16:00:00', '2024-03-18 18:00:00', 'Occaecati consectetur nam tenetur.', 'At cum repellat quibusdam quisquam modi. Ut officiis eum in quasi.
+Iure accusamus nesciunt nemo similique.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 10, 1, '2024-04-13 10:00:00', '2024-04-13 11:00:00', 'Dolore at eos quod at.', 'Sint mollitia itaque quo magni fugit explicabo. Cum repellendus vero repudiandae corporis. Suscipit blanditiis doloribus vitae.
+Aliquam adipisci amet animi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 3, 8, '2024-04-08 11:00:00', '2024-04-08 13:00:00', 'Dicta a eligendi eaque.', 'Aliquam eveniet consequuntur harum maiores architecto. Pariatur praesentium aliquid consequatur eius accusamus aliquam. Dolores similique nesciunt.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 2, 9, '2024-04-09 09:00:00', '2024-04-09 10:00:00', 'Debitis exercitationem.', 'Eos occaecati soluta aliquid unde fuga nihil vitae.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 4, 6, '2024-05-23 10:00:00', '2024-05-23 12:00:00', 'Eligendi tempore.', 'Quaerat quo cumque placeat sunt excepturi. Eaque doloribus laudantium veniam incidunt. Perferendis recusandae mollitia amet voluptatum incidunt.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 9, 8, '2024-05-18 15:00:00', '2024-05-18 16:00:00', 'Voluptate porro eos.', 'Occaecati placeat ipsum rem. Architecto vel necessitatibus hic molestias a ratione.
+Ab nobis ipsum ab perspiciatis fugit odio. At adipisci ipsam ad fugit. Nostrum quo vero.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 8, 8, '2024-06-27 10:00:00', '2024-06-27 12:00:00', 'Veritatis aliquid inventore voluptatem.', 'Delectus consectetur in maiores modi quaerat. Incidunt voluptate dolores velit odit ratione.
+Dolorum magni voluptas vero. Necessitatibus suscipit iste fugiat temporibus dignissimos minus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 7, 9, '2024-07-28 11:00:00', '2024-07-28 12:00:00', 'Eveniet porro eos.', 'Esse ut maiores explicabo perferendis iste. Maiores fugit provident eligendi officia ipsa. Odit fugit fugiat voluptatem consectetur incidunt. Suscipit ad facere asperiores animi recusandae optio.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 4, 4, '2024-08-15 13:00:00', '2024-08-15 15:00:00', 'Maxime laudantium sint possimus.', 'Quisquam provident aliquam minus. Error mollitia qui reprehenderit. Tempora libero hic quos sapiente.
+Iure architecto labore nostrum dolor voluptatum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 8, 3, '2024-09-05 14:00:00', '2024-09-05 15:00:00', 'Impedit sunt molestiae eligendi dolore.', 'Sit cum commodi voluptate ab ipsa reprehenderit.
+Fuga vero a ut libero sit ratione. Distinctio consequatur ipsa voluptates. Veniam maxime ipsum sit mollitia eos.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 1, 7, '2024-09-03 12:00:00', '2024-09-03 14:00:00', 'Maiores incidunt impedit non.', 'Debitis reprehenderit earum recusandae rerum soluta iusto incidunt. Pariatur aperiam iste recusandae quibusdam fugit odio.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 9, 3, '2024-09-14 10:00:00', '2024-09-14 11:00:00', 'Possimus magni reprehenderit porro.', 'Perferendis enim aperiam minus repellat commodi velit. Voluptate qui dolorem eum.
+Corporis autem quidem eos nisi. Occaecati quisquam praesentium alias et illo.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 2, 9, '2024-10-20 12:00:00', '2024-10-20 14:00:00', 'Autem reiciendis neque sunt adipisci.', 'Asperiores nisi ratione in deleniti soluta ut. Eum voluptatibus debitis est sed illum ex.
+Blanditiis quaerat in optio quia.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 7, 2, '2024-10-26 10:00:00', '2024-10-26 11:00:00', 'Modi dignissimos expedita repudiandae.', 'Recusandae eius architecto veritatis. Quis quae unde autem fugit aliquid perferendis mollitia.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 8, 8, '2024-11-25 14:00:00', '2024-11-25 16:00:00', 'Pariatur tempore.', 'Voluptates itaque dignissimos minus odit eligendi. Laboriosam consequatur dolorum possimus sint. Neque exercitationem quas doloremque ratione at.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (54, 10, 3, '2024-12-14 12:00:00', '2024-12-14 13:00:00', 'Quisquam quas nulla placeat.', 'Enim dolores commodi praesentium blanditiis adipisci iusto. Dolorem fugit modi consequuntur vitae corporis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 7, 8, '2022-01-10 12:00:00', '2022-01-10 13:00:00', 'Quo tempora temporibus quibusdam.', 'Quos inventore magni dolores aperiam facilis molestiae cum. Libero amet saepe veritatis ea.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 4, 4, '2022-03-14 14:00:00', '2022-03-14 16:00:00', 'Provident adipisci ducimus sunt.', 'Ex numquam accusantium et molestias deserunt. Dignissimos repellendus velit ut animi eum itaque. Accusantium deserunt impedit excepturi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 1, 9, '2022-03-27 11:00:00', '2022-03-27 13:00:00', 'Odit sed tenetur possimus maxime.', 'Sed exercitationem libero porro necessitatibus. Nihil minus in eaque eaque eos. Maiores pariatur ex sit asperiores. Sed distinctio similique voluptatibus vel delectus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 9, 9, '2022-05-25 14:00:00', '2022-05-25 16:00:00', 'Repellendus quod non.', 'Ducimus alias officiis asperiores debitis. Facilis magnam consectetur facere. Illum doloribus velit impedit dicta natus reiciendis.
+Nihil laudantium officia cumque quam quidem.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 7, 1, '2022-05-09 13:00:00', '2022-05-09 15:00:00', 'Culpa quas.', 'Laboriosam omnis sequi ad ex blanditiis. Maiores facilis aut aut. Eligendi laudantium libero nulla impedit voluptatum. Iure itaque ullam rerum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 4, 8, '2022-07-08 10:00:00', '2022-07-08 11:00:00', 'Voluptatum id adipisci eum similique.', 'Pariatur odio optio alias id. Quos suscipit eum excepturi quas. Quasi facere recusandae corporis alias.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 3, 4, '2022-07-05 12:00:00', '2022-07-05 13:00:00', 'Quas distinctio adipisci excepturi.', 'Necessitatibus perspiciatis non dignissimos. Cupiditate consequuntur illo eius ad hic.
+Placeat laboriosam iusto quos consectetur ex. Incidunt earum doloribus voluptatibus rem veritatis iure.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 7, 4, '2022-09-24 10:00:00', '2022-09-24 12:00:00', 'Debitis non eligendi odio.', 'Eos eum dignissimos sit qui reprehenderit ex vero. Libero eligendi vero debitis tempore.
+Aspernatur alias voluptas inventore consequatur aliquid blanditiis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 3, 4, '2022-09-26 09:00:00', '2022-09-26 10:00:00', 'Nisi aut.', 'Et labore rerum accusamus quam. Rem magni voluptatum doloribus maiores saepe. Expedita accusantium esse ab repellat porro molestias harum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 1, 1, '2022-10-25 16:00:00', '2022-10-25 17:00:00', 'Maxime voluptas consequatur ex.', 'Perferendis repellat quia. Nisi mollitia expedita hic optio. Ut distinctio recusandae fuga. Ipsam assumenda quo quae quia molestias praesentium.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 4, 1, '2022-11-06 14:00:00', '2022-11-06 15:00:00', 'Ad quibusdam.', 'Magnam molestias veritatis vitae voluptas ab dicta modi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 3, 9, '2022-11-08 16:00:00', '2022-11-08 17:00:00', 'Harum soluta possimus explicabo.', 'Facilis dolor vero aperiam nemo omnis rerum.
+Aliquid ab fuga quasi. Id amet voluptates.
+Dolorum id autem facere odit quasi.
+Ipsum eveniet velit omnis dolor. Adipisci nemo molestiae asperiores alias.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 2, 8, '2022-12-14 16:00:00', '2022-12-14 18:00:00', 'Eligendi neque et non.', 'Necessitatibus reiciendis ipsa occaecati amet occaecati tempore ratione. Officia ducimus odit quis.
+Eum ad doloremque non. Consequatur quis nulla fugit dolorum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 9, 8, '2023-01-27 16:00:00', '2023-01-27 17:00:00', 'Neque maiores.', 'Quos quasi ab debitis optio laborum aliquam. Doloribus provident libero optio repudiandae.
+Corporis facere optio sit magnam accusamus quaerat. Architecto ut necessitatibus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 4, 9, '2023-02-09 11:00:00', '2023-02-09 13:00:00', 'Tempore sequi distinctio.', 'Eveniet optio magnam modi illo hic consectetur unde. Ipsa asperiores voluptatum voluptatem.
+Ab accusantium dignissimos non quidem. Quam sapiente suscipit animi nihil in nemo officiis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 9, 9, '2023-02-01 11:00:00', '2023-02-01 12:00:00', 'Laboriosam soluta pariatur culpa.', 'Nihil quas saepe dolorem ex. Nostrum optio vero possimus necessitatibus assumenda.
+Aspernatur atque iste. Exercitationem aperiam minima laboriosam. Illum odit ratione ipsum unde dolore.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 2, 7, '2023-03-18 14:00:00', '2023-03-18 15:00:00', 'Placeat assumenda nisi labore animi.', 'Eum quaerat voluptates neque porro tempore. Modi officia ipsum quod repellat nesciunt.
+Assumenda quidem molestiae labore. Qui expedita cumque sit quam quod numquam. Repellendus at mollitia.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 7, 4, '2023-03-11 13:00:00', '2023-03-11 14:00:00', 'Optio voluptatum accusantium ex.', 'Doloribus fugiat repellendus nostrum. Autem facilis temporibus. Provident earum iusto eligendi repellat.
+Ut qui deserunt ipsa ullam voluptas. Officiis aperiam similique distinctio.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 1, 8, '2023-04-17 15:00:00', '2023-04-17 16:00:00', 'Blanditiis porro.', 'Vel possimus occaecati aliquam. Eaque dolores nemo aut delectus laudantium explicabo.
+Impedit mollitia error dicta.
+Ipsum ea occaecati accusantium. Cupiditate quod non cum. Minima similique ut aut.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 2, 4, '2023-05-15 12:00:00', '2023-05-15 14:00:00', 'Sed voluptas.', 'Blanditiis minima aspernatur tempore esse harum praesentium. Veritatis perferendis recusandae consectetur et architecto praesentium. Perspiciatis eum nam blanditiis magnam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 1, 7, '2023-07-08 13:00:00', '2023-07-08 14:00:00', 'Similique nihil.', 'Assumenda soluta eius ratione quas corrupti. Animi quam repudiandae blanditiis consequatur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 1, 7, '2023-07-12 09:00:00', '2023-07-12 10:00:00', 'Repellat animi omnis accusamus.', 'Consequuntur repellat nisi rerum.
+Magnam dicta necessitatibus voluptatibus perferendis. Rerum ipsa quam quod impedit non in.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 5, 7, '2023-10-27 10:00:00', '2023-10-27 11:00:00', 'Unde qui iste incidunt.', 'Debitis a quo molestiae ex. Aperiam dolore architecto facilis. Odit delectus cum fuga unde libero est.
+Accusantium saepe suscipit itaque quis dolorem dignissimos. Totam placeat doloremque eaque a.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 8, 8, '2023-11-04 14:00:00', '2023-11-04 16:00:00', 'Iusto doloremque ea cupiditate eius.', 'Esse repellat ducimus aliquam dolorem. Dignissimos consequuntur architecto necessitatibus libero. Fuga odio iusto repellendus error in perspiciatis.
+Fugiat debitis error voluptates nihil quam sequi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 2, 7, '2023-12-08 11:00:00', '2023-12-08 12:00:00', 'Corrupti consequatur.', 'Ab ipsa at at. Dolor dolores asperiores corrupti temporibus.
+Iure quidem inventore dolorum. Tempore quam voluptate aspernatur distinctio recusandae.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 2, 7, '2024-01-18 16:00:00', '2024-01-18 18:00:00', 'Blanditiis sequi.', 'Cupiditate libero quos suscipit nemo quia. Facilis eos asperiores unde cumque.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 4, 4, '2024-02-06 11:00:00', '2024-02-06 13:00:00', 'Cupiditate at.', 'Officiis corporis aperiam laborum quas corporis assumenda. Quis dolorem fuga perspiciatis pariatur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 1, 1, '2024-04-01 16:00:00', '2024-04-01 17:00:00', 'Ratione officia.', 'Veniam excepturi quaerat quasi nam voluptatibus placeat. Atque illum illum inventore odit pariatur. Doloribus veniam eligendi ducimus soluta nostrum ab.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 9, 4, '2024-04-05 14:00:00', '2024-04-05 16:00:00', 'Labore odio.', 'Iusto reiciendis occaecati. Facere nulla ex eveniet exercitationem atque assumenda. Officiis debitis dolores suscipit beatae dolorum voluptate.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 3, 8, '2024-05-13 16:00:00', '2024-05-13 18:00:00', 'Delectus corrupti modi eum ea.', 'Pariatur deleniti tenetur modi ipsa atque. Optio minima reiciendis ad.
+Veritatis ab dolor in. Cumque aperiam fugiat aut consequatur maxime veniam explicabo.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 3, 4, '2024-05-14 16:00:00', '2024-05-14 18:00:00', 'Dolores autem.', 'Rerum quae reiciendis esse eveniet quam expedita. Minus aliquam quibusdam laboriosam excepturi officiis incidunt omnis. Placeat culpa aperiam eaque.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 4, 7, '2024-06-17 15:00:00', '2024-06-17 17:00:00', 'Voluptates quaerat porro.', 'Molestias sunt cumque sunt beatae placeat maxime rerum. Atque earum fugit quibusdam atque praesentium. Dolorum ratione unde molestias a corporis.
+Porro rerum iusto blanditiis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 5, 7, '2024-09-11 12:00:00', '2024-09-11 14:00:00', 'Aut suscipit sunt voluptatum minima.', 'Dolores illo modi explicabo explicabo nisi quo. Amet sit neque tempora fuga adipisci recusandae a. Nostrum est tenetur nobis distinctio qui a.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 3, 4, '2024-10-10 12:00:00', '2024-10-10 13:00:00', 'Eligendi est.', 'Officia vero culpa corporis facilis iusto dolorem. Quaerat corrupti consequatur voluptas quae. Earum doloremque voluptatum id nobis sed.
+Cumque sapiente rem voluptatem. Ad soluta sit quas quis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (15, 10, 7, '2024-12-19 16:00:00', '2024-12-19 18:00:00', 'Dolore ab.', 'Eum officia reprehenderit. Sunt magnam eum. Debitis fugit assumenda quasi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 2, 4, '2022-01-19 11:00:00', '2022-01-19 13:00:00', 'Optio reprehenderit mollitia.', 'Assumenda excepturi debitis esse natus aliquid. Sed debitis excepturi ut nobis in.
+Fugiat veniam corporis tempora saepe.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 3, 5, '2022-01-17 16:00:00', '2022-01-17 18:00:00', 'Rerum deserunt corporis aliquam.', 'Numquam itaque nobis.
+Vel non commodi iure cumque distinctio. Beatae vitae ullam a minima atque optio.
+Nobis eius enim esse officia nemo. Dolorem vero nobis eos natus quae suscipit.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 10, 8, '2022-01-07 10:00:00', '2022-01-07 11:00:00', 'Aliquid distinctio reiciendis illo.', 'Assumenda inventore tenetur. Veniam dicta repudiandae. Adipisci amet maiores maiores voluptates molestias veniam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 3, 2, '2022-02-24 11:00:00', '2022-02-24 12:00:00', 'Accusamus vel enim aliquid.', 'Debitis similique voluptates dolorem quia. Sit rem ratione eaque recusandae reiciendis sit. Fugiat vitae ut impedit corrupti assumenda.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 1, 8, '2022-03-15 11:00:00', '2022-03-15 12:00:00', 'Labore perspiciatis quidem officiis itaque.', 'Vero error illum laudantium ratione. Distinctio sed at voluptatum laudantium perferendis molestiae.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 5, 5, '2022-03-05 09:00:00', '2022-03-05 11:00:00', 'Vero harum.', 'Quasi itaque consequatur ex tempore voluptatem. Cumque cum libero temporibus.
+Quisquam modi magnam distinctio corrupti suscipit omnis. Alias quo accusantium at.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 4, 4, '2022-03-23 12:00:00', '2022-03-23 14:00:00', 'Aspernatur eligendi eum.', 'Officiis consequuntur autem nihil. Totam perspiciatis dicta tenetur voluptate ducimus. Debitis nulla suscipit non quia molestiae.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 1, 1, '2022-04-23 10:00:00', '2022-04-23 11:00:00', 'Non tempora.', 'Aperiam quos dolorem quasi eius molestiae nemo. Ipsa fugit beatae dolore sunt.
+Dolores nesciunt quia suscipit in nulla in harum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 3, 6, '2022-04-15 12:00:00', '2022-04-15 14:00:00', 'Debitis architecto nemo ullam sunt.', 'Iusto nesciunt quo expedita ullam beatae. Sed consectetur ducimus officia dolores maxime.
+Rerum similique quia beatae. Dicta eveniet rem ex quas. At dolor dolorem perspiciatis porro est eligendi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 8, 4, '2022-05-05 14:00:00', '2022-05-05 16:00:00', 'Veniam repellendus quo voluptatum voluptatem.', 'Alias blanditiis accusamus minus. Quis asperiores itaque laborum.
+Quo libero doloremque debitis adipisci. Ipsum accusamus tenetur inventore pariatur perferendis laborum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 6, 2, '2022-05-07 15:00:00', '2022-05-07 16:00:00', 'Deleniti aliquam occaecati ea.', 'Id incidunt vero ipsa. Libero voluptates maxime magnam quo cum. Assumenda repellendus eveniet et ea minima vel.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 7, 8, '2022-05-26 14:00:00', '2022-05-26 15:00:00', 'Laboriosam distinctio consequuntur.', 'Nam quis nihil impedit sint vitae. Quasi tempore debitis fuga dolores atque eum. Possimus fuga natus dolore ipsam a explicabo soluta.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 7, 3, '2022-06-14 16:00:00', '2022-06-14 17:00:00', 'Doloremque incidunt iure animi.', 'Delectus molestiae culpa deleniti unde. Sint et tenetur in modi corrupti adipisci. Saepe officiis incidunt vitae. Facilis cum cumque minima.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 2, 5, '2022-06-18 10:00:00', '2022-06-18 12:00:00', 'Nulla nostrum.', 'Quam fugiat iusto iusto impedit. Numquam voluptatem voluptatum. Reiciendis delectus culpa soluta odio blanditiis.
+Assumenda repudiandae assumenda perferendis. Velit voluptatibus dignissimos corrupti.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 1, 5, '2022-07-27 10:00:00', '2022-07-27 12:00:00', 'Deserunt suscipit ad.', 'Unde placeat quidem reprehenderit.
+Aliquid vel earum cum odio repellat facere. Ut asperiores illum necessitatibus libero. Dolore esse architecto sint explicabo tempore dolor necessitatibus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 9, 7, '2022-07-17 13:00:00', '2022-07-17 15:00:00', 'Nostrum error laudantium.', 'Ducimus delectus labore nostrum. Facere odio asperiores accusamus.
+Nihil praesentium sunt facilis. Expedita explicabo aperiam perspiciatis rem alias. Nihil soluta id quam aspernatur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 8, 2, '2022-08-02 09:00:00', '2022-08-02 10:00:00', 'Porro ut vero quasi sequi.', 'Molestias corporis est et. Mollitia quos recusandae error impedit a praesentium. Reiciendis debitis libero.
+Hic impedit quas consectetur in. Quibusdam possimus illo delectus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 6, 6, '2022-08-26 16:00:00', '2022-08-26 18:00:00', 'Laboriosam quia fuga reprehenderit.', 'Voluptatem illum ipsa eum.
+Harum tenetur sed exercitationem facere fugit architecto. Quos placeat esse praesentium tenetur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 9, 4, '2022-08-28 13:00:00', '2022-08-28 14:00:00', 'Quaerat nemo quisquam.', 'Vel odio similique deleniti voluptate. Sunt provident quaerat quasi deserunt quia. Ad placeat quasi illo at.
+Velit impedit quo. Ipsa odit ipsa minima quidem expedita nulla ullam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 7, 1, '2022-09-26 11:00:00', '2022-09-26 12:00:00', 'Odit aperiam voluptatibus expedita.', 'Odit eligendi impedit.
+Minima nulla aliquam. Adipisci necessitatibus aut. Amet eos asperiores officia repudiandae voluptas.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 3, 5, '2022-10-11 16:00:00', '2022-10-11 18:00:00', 'Perspiciatis quis officiis eveniet dolor.', 'Minima laborum inventore esse cumque iure. Reiciendis architecto neque asperiores labore quasi.
+In culpa id iure similique excepturi iusto vero. Et omnis dolorem.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 9, 8, '2022-11-23 09:00:00', '2022-11-23 11:00:00', 'Doloribus dicta harum hic.', 'Impedit aperiam dolore repudiandae tempore quia corrupti. Officiis quaerat voluptates omnis nobis.
+Inventore ullam quis quisquam excepturi. Odio pariatur dicta alias molestias.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 7, 8, '2022-12-12 13:00:00', '2022-12-12 15:00:00', 'Optio maiores harum dignissimos totam.', 'Atque corrupti alias ea architecto ullam iure eius. Occaecati eaque dignissimos fugit totam voluptatum iste. Adipisci officiis repellendus exercitationem illo.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 8, 1, '2023-01-11 14:00:00', '2023-01-11 16:00:00', 'Eligendi repellendus temporibus ex.', 'Aspernatur atque assumenda consectetur quos magni. Esse nesciunt molestiae aperiam inventore placeat. Neque officiis praesentium voluptates.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 3, 7, '2023-01-04 14:00:00', '2023-01-04 15:00:00', 'Facilis inventore voluptas.', 'Totam numquam ab totam nostrum consequuntur. Nisi eaque ipsum assumenda veniam necessitatibus.
+Consequatur dolorum ipsa voluptates illum perferendis. Illo illo aliquam nam quidem unde eius.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 5, 9, '2023-01-11 10:00:00', '2023-01-11 12:00:00', 'Nesciunt delectus vitae veritatis libero.', 'Impedit et velit optio perferendis minima. Ducimus esse distinctio at esse similique vel.
+Vitae ab unde repellat soluta distinctio.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 6, 7, '2023-02-11 09:00:00', '2023-02-11 10:00:00', 'Suscipit quasi et placeat.', 'Harum minima unde laboriosam. Sed praesentium ipsum fuga.
+Ea inventore autem. Molestiae ex repellendus sunt.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 5, 8, '2023-02-22 13:00:00', '2023-02-22 15:00:00', 'Dolorem facilis architecto tempore.', 'Vitae impedit quis eum. Culpa rerum doloremque vitae veniam illo repellendus dolorum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 5, 2, '2023-02-01 16:00:00', '2023-02-01 18:00:00', 'Velit quis explicabo.', 'Esse tempora ullam cum dicta quibusdam. Assumenda culpa nostrum voluptatibus doloribus.
+Animi soluta delectus ex veniam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 9, 7, '2023-03-03 12:00:00', '2023-03-03 14:00:00', 'Assumenda deleniti adipisci.', 'Placeat praesentium dolores sequi molestias. Deleniti quam minus illo. Reiciendis ipsum esse ullam incidunt esse.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 10, 8, '2023-03-27 11:00:00', '2023-03-27 12:00:00', 'Quisquam aut quo adipisci.', 'Voluptas ea saepe doloribus dolor quis rerum. Laborum repellendus vitae nam. Reiciendis iure excepturi id ea non. Porro in inventore quaerat sit.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 7, 8, '2023-03-01 10:00:00', '2023-03-01 12:00:00', 'Voluptatum et.', 'Alias distinctio ducimus aperiam dolore ducimus autem. Mollitia dolore explicabo. Velit temporibus veniam quasi neque.
+Cupiditate harum velit.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 9, 2, '2023-04-11 12:00:00', '2023-04-11 13:00:00', 'Consequatur fuga dicta accusamus pariatur.', 'Ea adipisci qui iure facere cupiditate maiores eaque. Iure voluptatum qui voluptas labore. Cum neque dolorum perspiciatis numquam.
+Non sint deleniti debitis placeat quis et.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 2, 5, '2023-04-04 16:00:00', '2023-04-04 17:00:00', 'Perferendis aut asperiores.', 'Ex expedita dolore mollitia iste ipsa ullam.
+Earum assumenda ea atque eius veniam dolor facilis. Illo provident vero repellat maiores consectetur ipsa.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 2, 3, '2023-04-13 15:00:00', '2023-04-13 16:00:00', 'Labore itaque fuga ducimus.', 'Consectetur quam debitis quam. Saepe earum dignissimos porro quaerat architecto error. Commodi id voluptates corrupti quam deleniti impedit.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 5, 5, '2023-05-01 16:00:00', '2023-05-01 18:00:00', 'Quis earum.', 'Ex quisquam officia provident. Occaecati sunt exercitationem nulla eius repellat ut eum. Repellendus non consequatur voluptatibus voluptates incidunt beatae.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 6, 2, '2023-05-12 11:00:00', '2023-05-12 12:00:00', 'Quas debitis excepturi accusamus.', 'Nostrum id optio id cupiditate recusandae.
+Quibusdam quae repudiandae minima. Possimus tempora veritatis dolores iste.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 7, 3, '2023-05-04 14:00:00', '2023-05-04 16:00:00', 'Similique molestiae dolorem illo.', 'Error libero voluptas quo laborum consequatur inventore. Dolorum quasi quam a veritatis.
+Doloremque atque pariatur veritatis sapiente rerum labore iste. Laborum distinctio repellendus sunt adipisci.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 3, 2, '2023-06-07 12:00:00', '2023-06-07 14:00:00', 'Neque impedit quasi magnam.', 'Alias quia eum itaque.
+Doloremque ipsam non magnam atque. In maiores impedit eveniet natus quisquam exercitationem. Aliquid neque dignissimos modi sed excepturi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 6, 1, '2023-06-14 09:00:00', '2023-06-14 10:00:00', 'Non provident nostrum.', 'Rerum hic molestiae excepturi. Mollitia temporibus enim praesentium eos.
+Earum placeat et laudantium. Consequatur et nobis rerum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 2, 5, '2023-06-03 11:00:00', '2023-06-03 13:00:00', 'Vel laboriosam at dignissimos.', 'Quas cumque maiores est similique quae. Vitae officiis veritatis. Dignissimos nemo excepturi tempora sed. Sint sunt dolor quod.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 7, 3, '2023-07-28 14:00:00', '2023-07-28 16:00:00', 'Fugiat nobis quas quas molestiae.', 'Ducimus odio sed quasi labore. Rem iste totam. Deleniti laborum quam magni.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 7, 8, '2023-07-23 13:00:00', '2023-07-23 15:00:00', 'Voluptatibus assumenda sunt.', 'Totam fuga voluptate amet expedita ipsa ducimus. Quaerat nulla fuga tempore.
+Esse tempore dolor quod alias ducimus. Pariatur enim tempore recusandae quae illo.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 1, 1, '2023-07-23 11:00:00', '2023-07-23 12:00:00', 'Quasi veritatis laborum ad.', 'Accusamus odit maxime ducimus provident exercitationem explicabo. Rerum quis nostrum ipsam magnam. Architecto id maiores odit inventore qui rerum expedita.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 4, 5, '2023-08-24 11:00:00', '2023-08-24 12:00:00', 'Illum inventore quia.', 'Distinctio repellat quis. Quo illo facere porro aspernatur. Doloremque voluptate repudiandae officia ut.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 10, 7, '2023-09-02 13:00:00', '2023-09-02 14:00:00', 'Itaque ad expedita repudiandae.', 'Odit omnis magnam eligendi harum. Iure reprehenderit nostrum a nostrum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 10, 9, '2023-09-20 09:00:00', '2023-09-20 10:00:00', 'Sunt nobis id consequatur.', 'Quaerat eos repudiandae similique a aliquam. Saepe totam perferendis nostrum vero nobis laudantium. Inventore illum suscipit velit dicta nulla.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 1, 2, '2023-10-05 11:00:00', '2023-10-05 12:00:00', 'Deleniti animi minus.', 'Placeat sunt nisi commodi deleniti doloremque in. Illum ipsam animi. Suscipit ullam mollitia architecto quis molestiae reprehenderit.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 3, 8, '2023-11-12 15:00:00', '2023-11-12 16:00:00', 'Sit qui.', 'Doloremque accusantium officiis occaecati.
+Provident earum quaerat blanditiis qui ut accusamus. Soluta ipsa explicabo tenetur ipsa accusantium. Numquam maxime dolores.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 4, 9, '2023-11-19 16:00:00', '2023-11-19 18:00:00', 'Nam nesciunt.', 'Ducimus neque quaerat dolore quae ea cum. Eveniet accusantium sit vero veritatis natus quis. Dolor praesentium labore.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 5, 2, '2023-12-23 09:00:00', '2023-12-23 11:00:00', 'Non ad provident.', 'Corporis modi assumenda nam ducimus dolorum mollitia nobis. Necessitatibus iusto quae neque.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 2, 6, '2023-12-27 16:00:00', '2023-12-27 18:00:00', 'Vel neque itaque.', 'At nam eaque earum laudantium repellat consequatur.
+Provident facere eum molestiae. Suscipit eius repellendus dignissimos ad accusantium quos. Animi maxime harum corporis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 9, 1, '2023-12-17 12:00:00', '2023-12-17 13:00:00', 'Sint tenetur explicabo deserunt omnis.', 'Dolor distinctio praesentium ullam. Aperiam ipsum aut nostrum ex. Nulla cumque quia dolor debitis iusto assumenda.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 4, 5, '2024-01-02 13:00:00', '2024-01-02 15:00:00', 'Quo asperiores atque.', 'Impedit quo placeat consectetur unde hic laborum recusandae. Quos ratione quidem explicabo ducimus ipsum optio.
+Modi labore error. Cupiditate nisi beatae animi cum officia.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 5, 1, '2024-02-09 13:00:00', '2024-02-09 14:00:00', 'Magnam doloremque fugiat in.', 'Laudantium veniam impedit eius maxime eligendi perspiciatis. Voluptatem ut non.
+Itaque assumenda cumque quisquam. Porro quo facere eligendi quis architecto beatae.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 7, 3, '2024-03-17 11:00:00', '2024-03-17 13:00:00', 'Quaerat minima quisquam.', 'Dolorum quia doloribus ut dolore. Blanditiis quia nam natus ipsa. Repellendus dolorem eos non omnis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 8, 7, '2024-03-10 15:00:00', '2024-03-10 16:00:00', 'Iusto et.', 'Incidunt placeat porro enim sint. Voluptas voluptas animi. Vero error perferendis ex perferendis corporis velit.
+Itaque temporibus illo. Dicta laudantium illum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 6, 4, '2024-04-18 10:00:00', '2024-04-18 11:00:00', 'Consectetur officia.', 'Incidunt sit accusamus at. Similique iste inventore iusto at sint. Occaecati hic quisquam tempora minus mollitia temporibus officia. Sit minima assumenda cupiditate blanditiis numquam molestiae quo.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 3, 7, '2024-04-25 09:00:00', '2024-04-25 11:00:00', 'Voluptas omnis debitis animi dicta.', 'Eos saepe at laudantium dignissimos ducimus architecto. Ducimus ullam enim autem minima inventore ipsam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 5, 6, '2024-04-26 11:00:00', '2024-04-26 12:00:00', 'Culpa corrupti.', 'Fuga dolore quis ratione accusantium est sed. Temporibus doloremque nesciunt. Autem mollitia ut illum beatae doloribus.
+Nihil eum enim. Eveniet consectetur eum provident.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 9, 6, '2024-05-10 16:00:00', '2024-05-10 18:00:00', 'Officia quae saepe numquam minima.', 'Tempore non consequuntur deleniti incidunt voluptatum. Unde explicabo a et adipisci impedit. Dolore pariatur voluptate amet ea asperiores libero.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 4, 5, '2024-05-22 13:00:00', '2024-05-22 14:00:00', 'Reprehenderit quibusdam.', 'Cupiditate quam quam doloremque cum. Fugit facilis amet perferendis.
+Minima consectetur dolores. Nemo molestias quos corrupti nostrum optio.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 2, 7, '2024-06-28 13:00:00', '2024-06-28 14:00:00', 'Ex esse.', 'Ea voluptatum natus placeat non et. Veniam optio necessitatibus corporis alias eveniet quaerat animi.
+Quod assumenda quam consequatur. Distinctio quam recusandae atque.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 5, 5, '2024-06-10 16:00:00', '2024-06-10 18:00:00', 'Facere dolores voluptates velit.', 'Commodi neque dolorem minus tempore recusandae.
+Quos neque omnis consectetur. Sunt sapiente amet quis. Dignissimos cupiditate voluptates culpa dolores natus accusamus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 6, 6, '2024-06-01 16:00:00', '2024-06-01 18:00:00', 'Optio aperiam fuga error nihil.', 'Non ratione officiis adipisci. Animi magni provident sed repellat consequuntur eveniet voluptatem. Neque aspernatur quae inventore neque totam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 1, 4, '2024-07-09 10:00:00', '2024-07-09 11:00:00', 'Ducimus eum corporis ipsum.', 'Necessitatibus nobis iste veniam ratione nihil. Recusandae impedit ex unde officia corrupti quis.
+Quae cumque non. Commodi saepe culpa eum ea quos sunt.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 6, 1, '2024-07-01 09:00:00', '2024-07-01 11:00:00', 'Deleniti vel laborum iure voluptatum.', 'Veniam fugiat iusto. Explicabo dolorem occaecati impedit voluptate saepe. Quidem excepturi necessitatibus facilis accusamus. Accusamus officiis maxime culpa.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 7, 9, '2024-07-11 11:00:00', '2024-07-11 13:00:00', 'Impedit reiciendis voluptatum.', 'Provident beatae blanditiis cum doloribus. Illo illo quam libero dolorem facere.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 8, 5, '2024-08-04 11:00:00', '2024-08-04 12:00:00', 'Illo ipsam officiis molestias quisquam.', 'Officiis eos eligendi sunt impedit tenetur. Distinctio facere ullam consectetur porro debitis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 3, 3, '2024-08-19 11:00:00', '2024-08-19 13:00:00', 'Delectus quasi temporibus.', 'Excepturi sapiente delectus eum nihil aut ipsa. Ipsa rerum delectus occaecati officia officiis consequatur. Nostrum minima dolore tempora magni quia architecto.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 1, 5, '2024-09-23 10:00:00', '2024-09-23 12:00:00', 'Dolorum aut iusto iste.', 'Velit consectetur quas magni facere itaque quod et. Labore facilis quae autem. Fuga atque incidunt vel repellat.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 3, 2, '2024-09-13 16:00:00', '2024-09-13 17:00:00', 'Sed nam vero.', 'Molestiae provident eligendi harum non. Velit totam temporibus. Voluptatum sunt laudantium veritatis numquam dolor corrupti nam. Omnis vitae aspernatur deserunt ullam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 7, 5, '2024-10-05 16:00:00', '2024-10-05 17:00:00', 'Sit eos fugiat.', 'Ullam ex natus amet.
+Quibusdam deserunt nemo nobis modi eos deleniti. Iste natus reprehenderit. Repellendus ab libero exercitationem repellat saepe quo.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 2, 8, '2024-10-22 10:00:00', '2024-10-22 12:00:00', 'Pariatur numquam deleniti.', 'Vel adipisci magnam laudantium laudantium. Inventore laudantium occaecati. Ipsam laudantium voluptatibus harum cupiditate.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 5, 1, '2024-10-24 15:00:00', '2024-10-24 17:00:00', 'Quasi tenetur.', 'Blanditiis doloremque delectus corporis. Repellendus harum quis fugiat distinctio. Hic sapiente odit quibusdam fugit modi vitae corporis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 4, 2, '2024-11-11 14:00:00', '2024-11-11 16:00:00', 'Odit modi dolor.', 'Culpa ut molestiae repellat quis. Aspernatur delectus quibusdam alias tempore. Voluptatum quia sunt dolores nihil.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 7, 8, '2024-11-12 12:00:00', '2024-11-12 14:00:00', 'Molestiae fugit ab.', 'Magni ad non quisquam. Saepe tempora omnis voluptas vero occaecati temporibus odio. Atque possimus ipsam harum itaque.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 6, 5, '2024-12-01 10:00:00', '2024-12-01 12:00:00', 'Veritatis eos culpa cumque at.', 'Animi rem sint consequuntur ducimus ducimus. Deleniti beatae dignissimos.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (3, 7, 9, '2024-12-15 11:00:00', '2024-12-15 12:00:00', 'Explicabo repellat similique non.', 'Repudiandae eius explicabo.
+Vero vitae ad natus. Aut dolores dolores.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 3, 3, '2022-01-21 14:00:00', '2022-01-21 16:00:00', 'Libero quam.', 'Fugiat odio ipsam voluptates porro. Exercitationem minus ea ipsum repellendus hic earum cupiditate. Facere facere laudantium harum quidem officia.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 6, 1, '2022-01-23 12:00:00', '2022-01-23 14:00:00', 'Cum atque consequatur quasi.', 'Dignissimos expedita aspernatur quaerat asperiores placeat iure cum. Totam facere mollitia cupiditate quo. Fugit reprehenderit incidunt optio earum fuga.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 9, 2, '2022-01-22 15:00:00', '2022-01-22 16:00:00', 'Ratione perferendis aliquid.', 'Animi distinctio culpa placeat nulla corporis. Aperiam nesciunt nulla consequatur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 10, 1, '2022-02-01 10:00:00', '2022-02-01 11:00:00', 'Consectetur in recusandae quasi laborum.', 'Natus at distinctio excepturi. Autem in beatae laboriosam blanditiis. Dignissimos optio necessitatibus eveniet maxime.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 10, 3, '2022-02-23 13:00:00', '2022-02-23 15:00:00', 'Consequatur odit totam odio maxime.', 'Fugiat dolorem architecto facilis id ab est. Ab iste vero et fugit.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 5, 8, '2022-02-12 12:00:00', '2022-02-12 14:00:00', 'Est excepturi odio animi.', 'Tempora in aperiam ipsam rem quas id quasi. Quo unde quidem corrupti voluptatum amet. Consequuntur ut voluptatibus consequuntur modi saepe maiores.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 2, 9, '2022-03-26 10:00:00', '2022-03-26 12:00:00', 'Veritatis blanditiis fugiat quaerat placeat.', 'Accusamus aut non deleniti accusantium excepturi. Sit cupiditate doloribus natus minima reiciendis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 1, 7, '2022-03-09 15:00:00', '2022-03-09 16:00:00', 'Sed dignissimos non perspiciatis.', 'Debitis eius similique numquam facilis consequatur ab maxime. Doloribus placeat officia cupiditate quam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 9, 4, '2022-03-02 13:00:00', '2022-03-02 14:00:00', 'Facilis nesciunt architecto.', 'Similique explicabo magnam corrupti.
+Omnis est asperiores sit ipsum. Molestias incidunt cupiditate fugiat nesciunt vel quaerat. Iure repudiandae unde nulla laudantium magni.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 5, 9, '2022-04-07 10:00:00', '2022-04-07 12:00:00', 'Magni nobis provident maxime et.', 'Placeat accusamus libero voluptas. Doloribus culpa ea. Velit exercitationem adipisci delectus. Autem quos veritatis corporis tempore.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 6, 1, '2022-05-24 16:00:00', '2022-05-24 18:00:00', 'Nesciunt minus adipisci.', 'Quas sapiente suscipit cum nostrum aliquid maiores. Pariatur aliquid voluptatibus delectus.
+Sit hic id eaque voluptas. Laudantium velit ad dolor repellendus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 9, 5, '2022-05-02 13:00:00', '2022-05-02 15:00:00', 'Sit in esse atque laborum.', 'Minus ab vero enim officia a soluta. Impedit voluptatum sapiente itaque. Fugiat ab maxime molestiae aliquid ratione architecto necessitatibus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 10, 8, '2022-06-23 14:00:00', '2022-06-23 16:00:00', 'Voluptas commodi distinctio.', 'Officiis magnam sit itaque explicabo repellat. Fuga accusantium eaque sunt architecto soluta suscipit. Repellendus tempore dolorum voluptate.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 5, 2, '2022-07-11 09:00:00', '2022-07-11 11:00:00', 'Optio corporis incidunt possimus consectetur.', 'Facere quae sunt tempore qui. Recusandae omnis numquam reprehenderit. Magnam voluptate nemo ea.
+Esse possimus qui similique temporibus tempore tenetur. Tempora odit totam eaque.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 4, 1, '2022-07-22 12:00:00', '2022-07-22 14:00:00', 'Repellendus eveniet sequi hic.', 'Porro hic tenetur eligendi itaque sit voluptate nemo. Beatae temporibus vero non non.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 7, 4, '2022-08-20 11:00:00', '2022-08-20 12:00:00', 'Pariatur enim placeat.', 'Atque provident dolores odit accusamus. Temporibus nemo quibusdam occaecati neque. Ea sequi blanditiis vel.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 7, 3, '2022-08-01 11:00:00', '2022-08-01 13:00:00', 'Iure laborum accusamus quos.', 'Dolores velit voluptate asperiores incidunt numquam ex. Facilis voluptatibus tempora unde. Laboriosam dolores numquam quidem sapiente.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 4, 3, '2022-09-21 14:00:00', '2022-09-21 15:00:00', 'Autem ducimus voluptatum.', 'Illum totam consequuntur maxime velit. Voluptatum illo suscipit accusamus. Magni aliquid eum.
+Deleniti voluptatibus adipisci deleniti. Quo corporis atque est.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 7, 1, '2022-09-12 14:00:00', '2022-09-12 15:00:00', 'Nam dignissimos magni.', 'Et id neque placeat molestiae. Tempore sunt sed recusandae numquam inventore.
+Facilis praesentium fuga soluta placeat. Tenetur laborum dolores totam dignissimos impedit dolor.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 9, 8, '2022-09-15 15:00:00', '2022-09-15 17:00:00', 'Blanditiis adipisci aspernatur cum.', 'Excepturi similique hic voluptate necessitatibus quidem. Dolorem magnam sapiente perferendis modi cum eligendi et. Error ut soluta tenetur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 7, 8, '2022-10-24 15:00:00', '2022-10-24 17:00:00', 'Est nemo at qui veniam.', 'Dolorum neque assumenda veniam accusantium. Dignissimos laboriosam pariatur deleniti officia quibusdam. Eum commodi explicabo dolor quibusdam totam quaerat.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 6, 4, '2022-11-12 14:00:00', '2022-11-12 15:00:00', 'Quidem dicta tenetur.', 'Impedit laudantium eaque porro sapiente earum. Laboriosam suscipit omnis ut recusandae doloribus.
+Placeat delectus nesciunt iusto enim aut. Perspiciatis illum itaque. Hic quidem laborum nostrum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 5, 3, '2022-12-23 13:00:00', '2022-12-23 14:00:00', 'Sed sint voluptate sed vero.', 'Laboriosam ullam sunt suscipit fugit nobis. Soluta doloremque accusantium nisi. Labore culpa quam sed delectus nisi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 5, 9, '2023-01-01 09:00:00', '2023-01-01 10:00:00', 'Laboriosam exercitationem.', 'Dicta animi aliquid. Corrupti dignissimos itaque sed maxime ratione.
+Dicta sit sapiente veniam animi harum aperiam. In recusandae aut doloremque error vitae.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 1, 1, '2023-01-20 15:00:00', '2023-01-20 16:00:00', 'Eaque vitae ex.', 'Quis pariatur cupiditate natus quia ullam.
+Dolorum quasi architecto accusamus architecto tempore quaerat.
+Temporibus at ad commodi. Cum sint laudantium.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 10, 9, '2023-02-21 10:00:00', '2023-02-21 11:00:00', 'Unde porro esse minus.', 'Omnis ut quidem voluptatibus minus provident.
+Sunt quas doloremque doloribus.
+Sint odio veniam nisi recusandae sint repudiandae quis. Libero dolores nesciunt culpa.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 10, 7, '2023-02-23 09:00:00', '2023-02-23 11:00:00', 'Qui sed eligendi eligendi.', 'Fugiat amet cum ipsa. Ab consequuntur temporibus impedit. Quam voluptatem ratione nobis. Ipsa at eius repellat nulla fugit.
+Deserunt nisi rerum reprehenderit. Placeat maiores beatae error.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 8, 6, '2023-03-24 16:00:00', '2023-03-24 18:00:00', 'Odit culpa repudiandae veritatis dicta.', 'Perferendis animi iure similique.
+Unde officia omnis voluptates fugiat perferendis aperiam. Maxime odit blanditiis sequi vero quia explicabo.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 1, 1, '2023-03-07 11:00:00', '2023-03-07 12:00:00', 'Accusamus esse nihil ab.', 'Earum autem sapiente repellat.
+Cupiditate accusantium voluptatum cupiditate rerum mollitia. Officia laborum quod deleniti voluptatem reiciendis distinctio.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 10, 9, '2023-04-24 12:00:00', '2023-04-24 13:00:00', 'Dolorum commodi repellat.', 'Minima quaerat hic dolorum. Harum reiciendis aperiam sed dicta.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 5, 3, '2023-04-23 11:00:00', '2023-04-23 13:00:00', 'In tempore eligendi.', 'Laudantium minima quaerat beatae quia sapiente. Earum necessitatibus deleniti odit deleniti vel totam. Eius laudantium provident dolorem ducimus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 6, 1, '2023-05-12 15:00:00', '2023-05-12 17:00:00', 'Incidunt delectus.', 'Natus asperiores deleniti. Sit sapiente optio alias temporibus. Aut nobis iste facere expedita.
+Magnam deleniti corrupti optio quas repudiandae asperiores. Molestiae quae tenetur ut hic.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 3, 7, '2023-06-08 11:00:00', '2023-06-08 13:00:00', 'Nostrum quisquam architecto.', 'Eos sed quo in alias. Aperiam odit quod porro. Enim tenetur voluptas nisi.
+Vel dignissimos quam laboriosam similique eligendi. Nostrum iusto itaque provident doloremque.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 6, 1, '2023-06-07 13:00:00', '2023-06-07 14:00:00', 'A voluptates veniam reprehenderit.', 'Quia fugit provident at. Nemo deserunt quae nostrum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 1, 3, '2023-07-06 09:00:00', '2023-07-06 11:00:00', 'Harum ullam.', 'Magnam cum sequi quibusdam corporis tempora. Facere fuga possimus atque sint eius sunt saepe. Veniam quibusdam enim est.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 7, 1, '2023-08-10 11:00:00', '2023-08-10 12:00:00', 'Non praesentium et.', 'Eveniet at ab alias amet. Accusantium iure magni perspiciatis earum sapiente. Fugit animi nisi minus eos voluptatem.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 4, 7, '2023-08-27 11:00:00', '2023-08-27 13:00:00', 'Culpa asperiores iusto.', 'Quasi quasi excepturi temporibus aperiam deserunt. A aliquid a culpa quod.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 9, 5, '2023-09-27 11:00:00', '2023-09-27 13:00:00', 'Rerum aliquam voluptate.', 'Illum vitae nemo. Harum quos iure vero sequi molestias.
+Error impedit et quam ad asperiores tempore. Quaerat impedit consequatur delectus. Vero minus libero.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 6, 9, '2024-12-21 15:00:00', '2024-12-21 17:00:00', 'Aliquam ullam inventore.', 'Debitis recusandae deserunt quo cumque soluta. Quia consectetur repellendus quae explicabo. At impedit nulla eos sit natus minima.
+Eius vero aspernatur esse harum. Quasi animi dolorem itaque facilis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 9, 4, '2023-10-13 16:00:00', '2023-10-13 18:00:00', 'Magnam inventore inventore consequatur vel.', 'Sapiente quibusdam dolor voluptate optio. Fugit ipsum nemo.
+Doloribus asperiores provident necessitatibus. Facilis ex deserunt alias. Inventore debitis magni placeat libero tenetur iusto itaque.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 10, 5, '2023-10-15 14:00:00', '2023-10-15 16:00:00', 'Voluptate accusamus cupiditate.', 'Ad ab eaque maxime iusto pariatur quam. Repudiandae facilis qui autem accusantium modi doloremque.
+Quo esse et sequi culpa. Eaque corporis eos ducimus cumque modi sint.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 9, 4, '2023-11-24 11:00:00', '2023-11-24 13:00:00', 'Fugit excepturi illo ipsum.', 'Earum inventore libero. Inventore alias atque reiciendis. In autem non nesciunt explicabo nostrum quod quam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 7, 2, '2023-11-02 11:00:00', '2023-11-02 13:00:00', 'Voluptate eaque quo reiciendis.', 'Cum laudantium corrupti asperiores corporis.
+Ipsam cumque odit odit voluptatum consequatur. Itaque aut voluptatum molestiae.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 7, 2, '2023-12-02 15:00:00', '2023-12-02 16:00:00', 'Et culpa voluptatem laudantium laudantium.', 'Reiciendis delectus modi eum iste maiores. Maxime dicta corporis. Tempora eaque occaecati quas animi.
+Facere fugiat delectus. Blanditiis magnam sequi est omnis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 10, 8, '2024-12-18 12:00:00', '2024-12-18 15:00:00', 'Ullam nam molestiae incidunt ipsum.', 'Libero sint illum repellat pariatur cumque. Itaque aspernatur numquam dolorem enim corrupti. Unde alias saepe delectus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 8, 4, '2024-01-14 13:00:00', '2024-01-14 15:00:00', 'Nesciunt tempora earum corporis.', 'In molestiae deserunt facilis ullam exercitationem. Assumenda rem recusandae consectetur. Fugit fugiat nemo sint sed laborum vel.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 6, 3, '2024-02-01 09:00:00', '2024-02-01 11:00:00', 'Repellendus exercitationem.', 'Vero maxime dolore veritatis enim iure impedit. Dolor ducimus dolorum eligendi quaerat.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 5, 7, '2024-12-16 09:00:00', '2024-12-16 10:00:00', 'Autem ut debitis eveniet nesciunt.', 'Quos culpa vitae mollitia. A in ab hic veritatis aspernatur quaerat. Eligendi aspernatur quidem aliquam.
+Officiis esse esse repudiandae.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 1, 9, '2024-12-14 11:00:00', '2024-12-14 14:00:00', 'Eaque inventore nemo.', 'Esse iure laboriosam numquam neque. Fugiat exercitationem nihil harum omnis deleniti. Aspernatur quisquam repellendus facilis corrupti eum error.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 5, 5, '2024-03-27 09:00:00', '2024-03-27 10:00:00', 'Omnis autem dolorem recusandae.', 'Aliquid consequatur fugit hic at modi incidunt. Quaerat iure blanditiis accusamus possimus nemo rerum. Nesciunt eum laboriosam impedit expedita cum voluptatum.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 6, 3, '2024-04-11 15:00:00', '2024-04-11 16:00:00', 'Doloribus corrupti voluptates minima asperiores.', 'Dolores recusandae sequi consequatur exercitationem possimus. Rerum omnis in placeat blanditiis doloremque aspernatur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 5, 7, '2024-12-11 15:00:00', '2024-12-11 17:00:00', 'Veritatis distinctio tenetur soluta.', 'Deserunt et error doloribus dolorum doloribus. Distinctio rerum beatae explicabo.
+Magnam minima neque. Fugit maxime aspernatur reiciendis. Ipsam molestiae aperiam ratione ut enim eveniet.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 10, 7, '2024-12-09 10:00:00', '2024-12-09 12:00:00', 'Nihil in ut ducimus pariatur.', 'Laboriosam inventore tempore tenetur eos.
+Deserunt autem accusantium error reprehenderit praesentium incidunt suscipit. Reiciendis officia nisi deleniti.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 8, 2, '2024-06-03 09:00:00', '2024-06-03 10:00:00', 'Ea laudantium a.', 'Accusantium laborum eveniet aspernatur. Itaque hic aspernatur neque iusto. Eum sit porro veniam.
+Dolor id corporis ipsa. Repellat dicta aliquid odit cum ratione itaque laboriosam. Ducimus hic nam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 5, 3, '2024-07-22 09:00:00', '2024-07-22 11:00:00', 'Vero rem nemo voluptatem.', 'Molestias error vel provident placeat magni porro. Ullam odit dolor quod beatae quod sapiente. Consequuntur aliquid minus illo. Reprehenderit at dicta impedit saepe in rem nam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 1, 7, '2024-12-07 16:00:00', '2024-12-07 18:00:00', 'Quidem ex praesentium soluta maxime.', 'Ad ullam ea labore suscipit. Vero iusto qui fuga. Voluptatem fugit magnam.
+Et maiores praesentium voluptatem.
+Quaerat eaque incidunt ratione earum aut. Adipisci ad libero facilis deserunt.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 1, 1, '2024-09-10 16:00:00', '2024-09-10 18:00:00', 'Deserunt consectetur.', 'Eius quas consectetur temporibus maxime quasi. Possimus magni temporibus maiores eum.
+Occaecati nobis veritatis expedita. Ea possimus provident soluta cumque porro.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 7, 4, '2024-09-05 16:00:00', '2024-09-05 18:00:00', 'Neque unde exercitationem.', 'Ut nemo similique assumenda. Possimus velit dolore non consequatur aperiam. Voluptatem eaque et est sed facere reprehenderit.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 10, 9, '2024-12-05 14:00:00', '2024-12-05 15:00:00', 'Alias ab pariatur.', 'Voluptates deleniti recusandae blanditiis. Recusandae consequuntur rerum vel esse optio non.
+Provident fugit unde nihil sapiente impedit. Atque eveniet incidunt quia quidem quo deleniti velit.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 4, 8, '2024-12-02 12:00:00', '2024-12-02 14:00:00', 'Molestiae aliquid distinctio mollitia optio.', 'Eum officia ea dolore deleniti ex autem. Nemo saepe odit quisquam reprehenderit soluta quos. Molestias adipisci odit.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 2, 2, '2024-11-13 10:00:00', '2024-11-13 12:00:00', 'Eum aperiam soluta ipsa dolorem.', 'Commodi itaque voluptatum vero numquam nam officia illo. Debitis voluptatem nulla quis non totam. Numquam perferendis mollitia blanditiis mollitia.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 6, 6, '2024-11-22 14:00:00', '2024-11-22 15:00:00', 'Iure impedit commodi soluta.', 'Dicta optio quod nobis. Dicta recusandae nobis doloremque consequuntur occaecati quaerat. Commodi vel voluptas maiores. Numquam in quaerat veritatis unde.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 9, 6, '2024-11-04 12:00:00', '2024-11-04 13:00:00', 'Asperiores necessitatibus.', 'Tempora corrupti labore eaque eligendi. Aliquam aliquid quam odio minima fugiat eius. Soluta iste sed ipsum tenetur quam iste architecto. Fuga aliquid maiores nihil pariatur.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 10, 6, '2024-12-08 09:00:00', '2024-12-08 11:00:00', 'Quasi doloribus iste.', 'Rerum hic perferendis illum officia consectetur. Voluptatibus explicabo magni cumque. Accusamus recusandae consequuntur commodi commodi libero optio voluptatibus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (55, 3, 3, '2024-12-21 11:00:00', '2024-12-21 12:00:00', 'Modi ut quisquam delectus.', 'Quaerat quidem consequatur labore nisi provident. Illo quisquam sequi harum necessitatibus.
+Eum hic sunt totam accusantium.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (99, 7, 4, '2022-02-02 15:00:00', '2022-02-02 17:00:00', 'Aliquid dolore a.', 'Ipsum quo asperiores accusamus asperiores molestiae exercitationem. Soluta deleniti veniam consectetur praesentium dolor ea non. Provident laudantium aliquam facilis sed dolores esse.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (99, 4, 4, '2022-04-14 10:00:00', '2022-04-14 12:00:00', 'A commodi iusto.', 'Labore ea voluptas itaque omnis dolores eveniet. Eum quaerat at maxime quod. Blanditiis explicabo molestias quasi voluptates dolorum neque.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (99, 1, 1, '2022-05-09 11:00:00', '2022-05-09 13:00:00', 'Sequi alias accusantium.', 'Facilis at pariatur. Quibusdam dolorum modi velit.
+Veritatis laborum numquam ratione itaque iure sunt. Deserunt laborum praesentium corporis iusto dolor. Distinctio ex saepe quo.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (99, 10, 1, '2022-06-24 16:00:00', '2022-06-24 18:00:00', 'Dolore non.', 'Blanditiis ad maiores maxime. Maxime accusamus perferendis corporis nam. Laborum sunt voluptatibus at alias repudiandae.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (99, 4, 1, '2022-06-03 15:00:00', '2022-06-03 16:00:00', 'Enim ipsum.', 'Provident deserunt ipsum id inventore. Voluptatem accusantium libero sapiente nostrum sit. Veritatis nostrum natus inventore et inventore.
+Recusandae provident repudiandae dolor odio suscipit.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (99, 8, 1, '2022-09-17 13:00:00', '2022-09-17 14:00:00', 'Dicta facere est pariatur.', 'Est facilis omnis hic. Maiores odio voluptatibus iusto quisquam non.
+Repellendus cum et. Sequi quis beatae. Quas aliquid delectus omnis provident.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (99, 8, 4, '2022-09-28 14:00:00', '2022-09-28 16:00:00', 'Eveniet iste repudiandae facilis.', 'Asperiores repellendus nemo velit numquam. Adipisci reprehenderit iusto quas ad nemo. Nam accusantium voluptate culpa dolorem id eligendi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (99, 1, 4, '2022-11-13 15:00:00', '2022-11-13 17:00:00', 'Dolor laboriosam hic accusantium.', 'Dolorum eveniet nisi corrupti quos unde. Rerum eum quos voluptatibus doloribus nisi neque. Blanditiis placeat cupiditate cupiditate.
+Cupiditate aperiam error. Harum minima sapiente ex earum natus.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (99, 2, 4, '2023-02-22 10:00:00', '2023-02-22 11:00:00', 'Iste natus.', 'Porro earum tempora impedit amet necessitatibus. Delectus dolore corrupti. Neque quidem corporis.
+Eius impedit debitis distinctio.
+Maxime quia dolorem eum sint. Fuga similique eum aliquid laudantium.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (99, 8, 1, '2023-03-09 16:00:00', '2023-03-09 17:00:00', 'Consequuntur illo.', 'Consectetur aliquid magnam soluta. Reprehenderit nisi ex vitae iste quis. Magnam dolor itaque eveniet error unde atque blanditiis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (99, 3, 4, '2023-04-09 11:00:00', '2023-04-09 12:00:00', 'Itaque odit officiis sit.', 'Consequatur provident officiis a ullam sequi. Facere eligendi atque. Blanditiis magnam numquam sunt tempora eaque.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (99, 6, 4, '2023-07-22 12:00:00', '2023-07-22 13:00:00', 'Eligendi molestiae voluptate non atque.', 'Vel enim odio alias. Incidunt incidunt eveniet laborum vero sapiente nulla.
+Vero officiis assumenda officiis voluptas corrupti. Aperiam enim et aliquam.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (99, 7, 4, '2023-07-07 13:00:00', '2023-07-07 15:00:00', 'Dicta similique veritatis veritatis.', 'Earum occaecati ab vero. Eum mollitia facere culpa assumenda dolore. Maxime tenetur id voluptatibus enim ratione voluptas.
+Ullam nihil porro saepe vel ullam alias voluptate. Porro quaerat corporis.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (99, 6, 1, '2023-08-25 13:00:00', '2023-08-25 14:00:00', 'Quas esse provident occaecati.', 'Dolorem laudantium quam nostrum laborum. Exercitationem dolor recusandae ut rem.
+Sunt facere dolorum expedita dicta quia aliquam. Cum inventore neque provident.
+Laboriosam voluptate vel.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (99, 2, 1, '2023-09-18 13:00:00', '2023-09-18 14:00:00', 'Nobis ullam ducimus nobis.', 'Quae nulla ratione vel in tempora veritatis. Delectus nihil magni ex at odio sint. Minus dolore error.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (99, 4, 1, '2023-11-01 14:00:00', '2023-11-01 15:00:00', 'Commodi assumenda repudiandae quo nihil.', 'Impedit omnis reprehenderit consequuntur.
+Deserunt et architecto illo exercitationem ducimus. Enim nobis amet incidunt autem cupiditate. Deleniti aliquid eum consequatur accusamus nam exercitationem.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (99, 1, 4, '2023-12-08 11:00:00', '2023-12-08 12:00:00', 'Natus animi voluptatum.', 'Maxime eaque odio adipisci. Unde cum cumque deleniti recusandae. Eligendi molestiae quas modi in.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (99, 6, 1, '2024-02-25 16:00:00', '2024-02-25 18:00:00', 'Architecto eaque repudiandae.', 'Ex qui quo. Minus dicta corporis magnam.
+Laudantium consequuntur consequuntur inventore corrupti modi deserunt. Tenetur porro quod magnam. Fugiat consequuntur et quasi.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (99, 8, 1, '2024-04-21 16:00:00', '2024-04-21 17:00:00', 'Nulla ad distinctio provident.', 'Nulla libero voluptatem aut assumenda. At impedit eveniet molestias aperiam. Repudiandae maxime eveniet magni tempore officia explicabo. Accusantium molestias molestias eum voluptatibus sunt velit.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (99, 5, 4, '2024-04-28 11:00:00', '2024-04-28 12:00:00', 'Cum quod exercitationem repudiandae.', 'Nobis aut excepturi veniam explicabo. Asperiores maxime tenetur magnam. Iusto nihil minima soluta rem suscipit ad. Culpa enim veritatis ipsam repellendus quaerat error.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (99, 1, 4, '2024-07-08 15:00:00', '2024-07-08 16:00:00', 'Natus quisquam.', 'Ipsam enim quaerat accusantium quaerat non. Assumenda ab exercitationem accusantium.
+Officiis ducimus et aliquid. Velit iste culpa. Tempora aperiam eos ipsum reprehenderit recusandae inventore.');
+INSERT INTO activity (instructor_school_id, location_id, price_id, start_time, end_time, title, description) VALUES (99, 10, 1, '2024-09-16 10:00:00', '2024-09-16 11:00:00', 'Itaque voluptate delectus libero.', 'Quibusdam dicta optio. Architecto et iste recusandae placeat quam in. Sit illum tempora atque doloremque minus. Porro ullam necessitatibus omnis.');
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (4, 7, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (5, 7, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (6, 7, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (12, 7, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (17, 7, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (18, 7, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (21, 7, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (23, 7, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (27, 7, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (29, 7, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (32, 7, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (33, 7, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (34, 7, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (38, 7, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (40, 7, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (46, 7, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (48, 7, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (51, 7, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (53, 7, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (59, 7, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (61, 7, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (63, 7, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (66, 7, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (68, 7, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (69, 7, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (70, 7, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (75, 7, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (78, 6, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (81, 6, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (87, 6, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (90, 6, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (91, 1, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (93, 6, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (97, 6, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (99, 6, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (100, 6, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (102, 6, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (107, 6, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (110, 6, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (111, 6, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (112, 6, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (114, 5, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (117, 6, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (120, 6, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (122, 6, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (123, 6, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (125, 6, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (126, 6, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (127, 1, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (128, 6, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (129, 6, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (130, 1, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (133, 3, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (134, 3, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (136, 1, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (139, 5, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (143, 5, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (151, 7, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (153, 1, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (157, 7, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (158, 7, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (165, 5, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (166, 7, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (173, 7, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (174, 7, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (183, 5, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (186, 7, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (189, 7, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (192, 1, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (193, 7, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (194, 5, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (202, 5, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (203, 7, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (209, 6, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (210, 1, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (214, 2, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (215, 6, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (216, 1, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (219, 1, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (220, 1, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (224, 2, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (225, 2, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (228, 1, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (231, 6, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (233, 1, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (234, 1, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (235, 1, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (237, 1, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (238, 2, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (239, 1, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (243, 1, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (244, 1, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (245, 1, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (247, 1, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (249, 1, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (250, 1, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (252, 9, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (256, 4, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (261, 7, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (263, 7, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (264, 9, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (270, 4, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (278, 9, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (282, 9, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (283, 9, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (288, 7, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (296, 4, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (299, 9, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (303, 9, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (307, 4, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (315, 9, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (317, 9, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (319, 9, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (321, 9, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (326, 3, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (331, 3, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (332, 3, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (349, 3, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (360, 10, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (364, 10, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (367, 5, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (369, 5, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (373, 10, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (376, 1, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (380, 5, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (385, 5, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (389, 10, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (391, 5, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (393, 5, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (394, 5, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (395, 10, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (396, 5, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (398, 5, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (400, 1, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (404, 5, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (407, 10, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (409, 10, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (411, 5, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (412, 5, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (423, 10, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (426, 5, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (428, 10, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (431, 10, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (432, 10, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (436, 7, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (437, 10, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (438, 6, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (439, 10, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (440, 10, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (446, 10, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (449, 7, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (450, 6, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (452, 7, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (453, 7, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (454, 6, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (458, 10, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (460, 6, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (464, 10, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (466, 10, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (467, 6, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (469, 6, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (470, 10, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (471, 7, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (478, 7, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (479, 6, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (482, 10, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (486, 10, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (489, 6, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (490, 10, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (492, 7, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (496, 10, 2);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (500, 7, 3);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (503, 6, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (504, 6, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (505, 6, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (506, 6, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (510, 6, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (514, 6, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (515, 6, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (516, 6, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (518, 6, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (519, 6, 1);
+INSERT INTO lesson_individual (activity_id, instrument_type, skill_level) VALUES (522, 6, 1);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (1, 7, 3, 3, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (9, 7, 2, 2, 2);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (10, 7, 2, 2, 3);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (15, 7, 1, 3, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (16, 7, 2, 3, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (19, 7, 1, 3, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (20, 7, 1, 4, 9);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (22, 7, 3, 4, 9);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (24, 7, 3, 4, 9);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (25, 7, 2, 4, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (26, 7, 1, 4, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (28, 7, 3, 5, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (30, 7, 2, 3, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (31, 7, 2, 2, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (36, 7, 3, 2, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (37, 7, 1, 2, 3);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (44, 7, 1, 5, 9);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (45, 7, 2, 2, 3);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (49, 7, 1, 3, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (50, 7, 3, 5, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (54, 7, 3, 5, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (55, 7, 1, 4, 9);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (57, 7, 3, 2, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (58, 7, 2, 4, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (60, 7, 1, 3, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (65, 7, 3, 2, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (71, 7, 1, 3, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (74, 7, 2, 3, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (77, 6, 2, 5, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (79, 6, 3, 2, 3);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (80, 5, 1, 5, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (82, 6, 3, 2, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (83, 6, 3, 4, 9);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (84, 6, 3, 5, 9);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (85, 6, 3, 3, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (86, 5, 1, 2, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (88, 6, 3, 3, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (89, 6, 3, 4, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (92, 6, 3, 4, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (94, 6, 2, 5, 9);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (95, 6, 3, 2, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (96, 6, 2, 2, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (98, 6, 2, 4, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (101, 6, 2, 4, 9);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (103, 6, 1, 2, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (104, 6, 3, 4, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (105, 6, 2, 4, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (106, 6, 1, 3, 3);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (108, 6, 3, 3, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (109, 6, 3, 3, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (113, 6, 3, 5, 9);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (115, 6, 2, 2, 3);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (116, 6, 3, 5, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (118, 6, 2, 4, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (119, 6, 2, 4, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (121, 6, 3, 2, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (124, 6, 3, 3, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (131, 3, 1, 4, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (132, 3, 1, 2, 2);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (135, 1, 1, 3, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (137, 1, 1, 2, 2);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (138, 3, 1, 2, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (140, 1, 1, 4, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (146, 1, 1, 3, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (147, 7, 2, 2, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (148, 7, 3, 3, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (154, 7, 1, 5, 10);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (160, 1, 1, 2, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (163, 7, 3, 3, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (167, 7, 2, 5, 9);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (168, 1, 1, 2, 3);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (169, 7, 2, 5, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (171, 7, 3, 3, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (172, 7, 1, 5, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (177, 5, 1, 3, 3);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (179, 7, 3, 4, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (181, 7, 3, 3, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (187, 7, 3, 2, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (188, 7, 3, 4, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (190, 7, 3, 2, 3);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (191, 7, 3, 5, 9);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (195, 1, 1, 3, 3);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (196, 5, 1, 5, 9);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (197, 7, 3, 2, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (198, 7, 3, 3, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (199, 7, 3, 3, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (200, 7, 3, 3, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (204, 7, 3, 4, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (205, 7, 3, 4, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (206, 7, 3, 3, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (207, 1, 1, 2, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (208, 5, 1, 2, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (211, 1, 2, 5, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (212, 1, 3, 3, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (213, 1, 3, 5, 10);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (217, 6, 1, 4, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (218, 1, 2, 3, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (221, 1, 3, 4, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (222, 1, 1, 4, 9);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (223, 1, 2, 4, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (226, 1, 3, 3, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (227, 1, 3, 2, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (229, 2, 1, 3, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (230, 1, 3, 2, 3);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (232, 1, 3, 5, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (236, 2, 1, 4, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (240, 2, 1, 2, 2);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (241, 1, 3, 4, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (242, 1, 2, 3, 3);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (246, 1, 1, 4, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (248, 6, 1, 4, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (251, 4, 1, 3, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (253, 9, 3, 2, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (255, 9, 1, 3, 3);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (257, 7, 1, 4, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (260, 9, 3, 4, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (265, 7, 1, 3, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (266, 9, 3, 5, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (267, 9, 1, 3, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (271, 9, 1, 2, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (272, 9, 2, 3, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (280, 9, 3, 2, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (281, 9, 2, 3, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (284, 9, 3, 5, 10);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (287, 9, 3, 3, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (291, 7, 1, 4, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (292, 9, 2, 3, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (294, 4, 1, 4, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (297, 9, 3, 3, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (298, 9, 3, 2, 2);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (300, 7, 1, 3, 3);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (301, 4, 1, 2, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (302, 7, 1, 5, 9);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (304, 9, 3, 3, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (305, 9, 3, 5, 10);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (306, 9, 2, 4, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (310, 9, 3, 4, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (314, 9, 1, 3, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (323, 3, 1, 2, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (328, 3, 1, 5, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (329, 3, 1, 2, 2);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (330, 3, 1, 4, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (339, 3, 1, 4, 9);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (341, 3, 1, 5, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (348, 3, 1, 3, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (350, 3, 1, 3, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (352, 3, 1, 4, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (355, 3, 1, 4, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (357, 1, 1, 5, 9);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (358, 5, 2, 4, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (362, 5, 2, 2, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (363, 10, 1, 3, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (365, 5, 3, 4, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (366, 5, 1, 5, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (370, 5, 2, 3, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (371, 5, 2, 2, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (374, 5, 3, 3, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (375, 10, 1, 4, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (377, 10, 2, 4, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (390, 10, 2, 2, 3);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (392, 5, 2, 5, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (397, 10, 2, 5, 9);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (401, 10, 2, 3, 3);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (408, 5, 3, 5, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (410, 5, 2, 5, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (414, 10, 1, 2, 3);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (416, 5, 3, 3, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (417, 5, 3, 4, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (418, 10, 2, 3, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (420, 5, 2, 3, 3);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (421, 5, 3, 4, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (422, 5, 1, 4, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (425, 5, 2, 2, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (427, 5, 2, 3, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (429, 5, 2, 4, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (434, 5, 2, 4, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (444, 10, 1, 5, 10);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (447, 6, 2, 4, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (451, 6, 1, 3, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (457, 10, 1, 2, 3);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (463, 10, 3, 3, 3);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (473, 7, 2, 2, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (475, 10, 1, 3, 7);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (476, 10, 2, 5, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (477, 10, 1, 3, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (481, 6, 1, 2, 3);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (485, 7, 2, 2, 2);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (493, 6, 1, 4, 8);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (497, 10, 3, 4, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (498, 10, 3, 3, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (499, 7, 3, 5, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (501, 6, 1, 4, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (502, 6, 1, 2, 2);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (507, 6, 1, 2, 3);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (508, 6, 1, 2, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (509, 6, 1, 5, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (511, 6, 1, 3, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (512, 6, 1, 4, 4);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (513, 6, 1, 5, 6);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (517, 6, 1, 3, 5);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (520, 6, 1, 3, 3);
+INSERT INTO lesson_group (activity_id, instrument_type, skill_level, min_students, max_students) VALUES (521, 6, 1, 4, 5);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (2, 'Rock', 5, 9);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (3, 'Pop', 5, 6);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (7, 'Folkmusik', 5, 10);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (8, 'Folkmusik', 4, 13);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (11, 'Jazz', 5, 5);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (13, 'Rock', 5, 14);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (14, 'Folkmusik', 3, 7);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (35, 'Pop', 4, 14);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (39, 'Klassisk', 4, 13);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (41, 'Jazz', 4, 4);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (42, 'Jazz', 5, 15);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (43, 'Jazz', 5, 7);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (47, 'Jazz', 4, 13);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (52, 'Klassisk', 5, 10);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (56, 'Pop', 3, 4);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (62, 'Jazz', 4, 13);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (64, 'Jazz', 5, 9);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (67, 'Pop', 5, 10);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (72, 'Pop', 5, 10);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (73, 'Folkmusik', 5, 14);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (76, 'Folkmusik', 4, 8);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (141, 'Jazz', 4, 7);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (142, 'Jazz', 3, 6);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (144, 'Jazz', 4, 9);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (145, 'Folkmusik', 5, 10);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (149, 'Folkmusik', 5, 8);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (150, 'Rock', 4, 12);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (152, 'Rock', 4, 12);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (155, 'Folkmusik', 5, 9);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (156, 'Folkmusik', 4, 9);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (159, 'Rock', 3, 4);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (161, 'Pop', 4, 9);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (162, 'Klassisk', 3, 10);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (164, 'Rock', 5, 13);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (170, 'Pop', 4, 7);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (175, 'Pop', 3, 8);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (176, 'Pop', 5, 5);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (178, 'Folkmusik', 4, 13);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (180, 'Pop', 3, 11);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (182, 'Jazz', 3, 9);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (184, 'Pop', 5, 12);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (185, 'Pop', 5, 5);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (201, 'Klassisk', 4, 10);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (254, 'Folkmusik', 5, 13);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (258, 'Pop', 5, 12);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (259, 'Pop', 3, 9);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (262, 'Jazz', 4, 6);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (268, 'Klassisk', 4, 6);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (269, 'Klassisk', 3, 3);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (273, 'Folkmusik', 5, 10);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (274, 'Folkmusik', 3, 8);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (275, 'Folkmusik', 3, 12);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (276, 'Folkmusik', 4, 9);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (277, 'Folkmusik', 5, 11);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (279, 'Folkmusik', 5, 7);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (285, 'Folkmusik', 5, 5);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (286, 'Klassisk', 4, 9);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (289, 'Rock', 4, 8);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (290, 'Rock', 3, 4);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (293, 'Rock', 5, 5);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (295, 'Klassisk', 4, 10);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (308, 'Klassisk', 5, 9);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (309, 'Rock', 4, 6);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (311, 'Folkmusik', 4, 5);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (312, 'Klassisk', 5, 5);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (313, 'Jazz', 5, 5);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (316, 'Rock', 4, 13);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (318, 'Klassisk', 3, 7);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (320, 'Pop', 3, 6);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (322, 'Pop', 4, 6);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (324, 'Folkmusik', 4, 11);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (325, 'Jazz', 5, 5);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (327, 'Klassisk', 3, 5);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (333, 'Folkmusik', 4, 7);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (334, 'Rock', 3, 10);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (335, 'Klassisk', 4, 10);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (336, 'Klassisk', 4, 4);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (337, 'Pop', 3, 8);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (338, 'Klassisk', 4, 6);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (340, 'Rock', 3, 11);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (342, 'Rock', 5, 12);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (343, 'Folkmusik', 4, 9);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (344, 'Pop', 3, 8);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (345, 'Jazz', 3, 11);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (346, 'Pop', 4, 11);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (347, 'Klassisk', 5, 10);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (351, 'Jazz', 5, 8);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (353, 'Jazz', 4, 14);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (354, 'Pop', 5, 9);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (356, 'Pop', 3, 10);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (359, 'Klassisk', 4, 10);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (361, 'Folkmusik', 4, 12);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (368, 'Pop', 3, 10);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (372, 'Folkmusik', 5, 15);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (378, 'Jazz', 5, 6);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (379, 'Pop', 4, 4);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (381, 'Folkmusik', 5, 12);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (382, 'Klassisk', 4, 12);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (383, 'Pop', 5, 9);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (384, 'Pop', 5, 10);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (386, 'Klassisk', 4, 8);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (387, 'Folkmusik', 5, 10);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (388, 'Rock', 5, 10);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (399, 'Rock', 4, 6);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (402, 'Klassisk', 5, 10);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (403, 'Klassisk', 5, 7);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (405, 'Pop', 3, 9);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (406, 'Rock', 3, 9);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (413, 'Rock', 5, 14);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (415, 'Rock', 3, 4);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (419, 'Pop', 4, 9);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (424, 'Jazz', 3, 13);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (430, 'Rock', 3, 12);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (433, 'Jazz', 4, 13);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (435, 'Rock', 4, 5);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (441, 'Pop', 4, 11);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (442, 'Rock', 5, 6);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (443, 'Klassisk', 3, 11);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (445, 'Jazz', 4, 9);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (448, 'Pop', 5, 9);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (455, 'Pop', 3, 7);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (456, 'Pop', 4, 11);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (459, 'Rock', 3, 9);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (461, 'Klassisk', 3, 12);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (462, 'Folkmusik', 3, 7);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (465, 'Klassisk', 3, 11);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (468, 'Pop', 4, 6);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (472, 'Klassisk', 5, 8);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (474, 'Rock', 7, 7);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (480, 'Klassisk', 1, 3);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (483, 'Klassisk', 1, 4);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (484, 'Rock', 5, 5);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (487, 'Pop', 4, 6);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (488, 'Klassisk', 4, 13);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (491, 'Klassisk', 1, 2);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (494, 'Jazz', 2, 4);
+INSERT INTO ensamble (activity_id, genre, min_students, max_students) VALUES (495, 'Folkmusik', 3, 8);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (45, 1, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (11, 2, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (46, 2, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (47, 2, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (35, 2, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (53, 3, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (22, 4, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (72, 5, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (48, 6, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (67, 7, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (73, 7, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (20, 7, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (23, 7, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (31, 8, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (69, 8, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (76, 8, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (17, 8, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (13, 8, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (35, 9, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (53, 10, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (69, 10, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (70, 11, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (76, 12, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (37, 13, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (76, 13, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 13, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (17, 14, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (77, 14, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (4, 14, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 15, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (57, 15, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (7, 16, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (25, 16, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (45, 17, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (24, 18, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (39, 19, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (6, 19, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (16, 19, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (10, 19, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (67, 19, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 20, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (62, 21, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (48, 22, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (46, 22, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 22, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (16, 22, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (17, 23, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (97, 24, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (62, 24, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (67, 24, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (57, 24, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (89, 25, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (86, 25, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (91, 25, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (19, 25, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (47, 25, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (23, 26, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (19, 26, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 26, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (86, 26, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (20, 27, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (4, 28, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 28, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (18, 28, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 28, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (48, 29, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (81, 30, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 31, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (31, 32, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (70, 33, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (92, 34, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (18, 35, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (95, 35, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (18, 36, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (52, 36, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (5, 37, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (33, 37, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (53, 37, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 38, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (37, 39, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (17, 40, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (75, 41, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (70, 41, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (58, 41, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (38, 42, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (81, 42, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (90, 42, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (98, 43, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (72, 44, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (47, 44, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 44, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (76, 44, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 44, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (60, 45, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (72, 46, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (24, 47, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (76, 47, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (82, 48, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (57, 49, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (81, 49, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (29, 49, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (82, 49, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (72, 49, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (86, 50, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (29, 50, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (23, 50, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (90, 50, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (77, 51, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 52, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 52, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (73, 53, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (66, 54, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (93, 55, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (76, 55, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (14, 56, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (22, 57, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (90, 57, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (66, 57, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (97, 57, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (69, 57, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (86, 58, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (58, 58, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (39, 58, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (52, 58, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (75, 58, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 59, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (37, 60, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (98, 61, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (17, 62, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (11, 62, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (75, 63, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (94, 64, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (35, 65, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 65, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (84, 65, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (98, 65, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (90, 66, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (69, 67, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (38, 67, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (92, 68, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (66, 69, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 70, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (89, 71, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 71, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (5, 71, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (14, 72, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (93, 72, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (69, 73, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (76, 73, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (98, 73, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (75, 74, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (19, 74, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (69, 74, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (23, 75, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 76, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (29, 76, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (95, 76, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (16, 76, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (66, 76, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (5, 77, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (73, 77, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (14, 77, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (90, 77, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (70, 77, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (48, 78, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 79, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (39, 79, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (52, 80, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (31, 80, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (58, 80, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (93, 80, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 80, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (69, 81, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (45, 82, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (81, 83, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 83, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (93, 83, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (90, 84, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (11, 84, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (28, 85, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (5, 86, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (67, 87, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (39, 88, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (45, 88, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (50, 88, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (47, 88, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 89, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (72, 89, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (24, 90, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (25, 91, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 92, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (94, 92, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (11, 92, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (60, 92, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (7, 93, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (52, 94, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 94, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (29, 94, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (10, 95, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (47, 95, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (100, 95, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (22, 96, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (69, 96, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 96, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (76, 97, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 98, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (60, 98, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (1, 98, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (45, 98, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (60, 99, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (28, 100, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (46, 101, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (67, 101, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (19, 101, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (91, 101, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (77, 102, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (38, 103, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (23, 103, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (13, 104, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (100, 104, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (38, 104, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (76, 104, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (73, 104, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (85, 105, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (72, 106, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (1, 106, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (6, 106, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (60, 106, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (19, 107, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (77, 108, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (58, 109, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (19, 109, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (41, 109, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (11, 110, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (10, 111, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (86, 112, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (75, 113, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 113, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (87, 113, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (47, 113, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (76, 114, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (4, 115, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (67, 115, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (91, 116, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (28, 116, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (58, 116, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (41, 116, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (22, 117, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 118, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (28, 118, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (19, 118, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 118, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (85, 119, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 119, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (77, 119, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (45, 120, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (14, 121, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (52, 121, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (86, 121, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (37, 122, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (5, 123, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (93, 124, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (93, 125, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (84, 126, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (6, 127, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (97, 128, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (98, 129, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (66, 130, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (53, 131, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (32, 131, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (70, 131, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (82, 131, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (92, 131, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (28, 132, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (27, 133, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (46, 134, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (76, 135, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (23, 135, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (24, 135, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (14, 135, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (53, 136, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (25, 137, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (69, 137, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (100, 137, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (5, 137, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (27, 138, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (57, 138, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (45, 138, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (47, 138, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (13, 138, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (100, 139, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (10, 140, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 140, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (13, 140, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (27, 140, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (84, 141, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (66, 141, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (32, 141, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (95, 142, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (69, 142, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (37, 142, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (18, 142, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (28, 143, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (5, 144, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 144, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (57, 145, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (39, 145, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (27, 145, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (86, 145, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (87, 146, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (69, 146, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (18, 146, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (82, 146, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (53, 147, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (90, 147, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (66, 147, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (93, 148, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (76, 149, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (45, 149, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (58, 149, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (100, 150, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (70, 150, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (37, 150, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (77, 150, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (60, 150, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (20, 151, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (38, 152, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (32, 152, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (52, 153, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (13, 154, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (39, 155, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (39, 156, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 156, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (35, 156, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (95, 156, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (86, 156, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (17, 157, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (47, 158, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (31, 159, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 159, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (95, 159, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (75, 159, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (66, 159, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 160, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (22, 160, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (6, 160, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 160, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (91, 160, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (94, 161, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (39, 161, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (28, 161, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (66, 161, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (29, 161, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (13, 162, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (85, 162, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (77, 163, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (85, 163, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (19, 163, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 163, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (94, 163, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (93, 164, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (13, 164, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (11, 164, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (86, 164, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (20, 164, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (39, 165, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (50, 166, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (75, 167, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (16, 167, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (27, 167, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (57, 167, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 168, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (84, 168, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (29, 168, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (25, 169, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (24, 169, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (66, 169, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (6, 170, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (67, 170, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (75, 170, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (66, 170, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (97, 171, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (50, 171, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (53, 171, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (29, 172, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (10, 173, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (62, 174, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 175, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (85, 176, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (66, 176, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (45, 176, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (77, 177, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (76, 177, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (57, 177, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (53, 178, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (41, 178, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (69, 178, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (38, 178, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (89, 179, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (97, 179, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (1, 179, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 179, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (62, 179, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (19, 180, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (7, 180, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (10, 180, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 180, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (66, 181, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (24, 181, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (86, 182, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (38, 183, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (20, 184, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (47, 184, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (87, 185, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (6, 185, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (73, 186, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (94, 187, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (1, 187, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (45, 187, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (5, 187, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (91, 188, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (35, 188, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (82, 188, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (93, 188, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (45, 189, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (95, 190, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 190, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (41, 190, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (85, 190, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (84, 190, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 191, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (91, 191, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 191, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (77, 192, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (22, 193, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (23, 194, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (37, 195, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (58, 195, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (70, 196, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (47, 196, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (75, 197, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (24, 197, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 197, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (48, 197, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (85, 198, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (72, 198, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (58, 198, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (23, 198, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (85, 199, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (18, 199, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (19, 199, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (22, 199, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (50, 200, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (85, 201, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (38, 201, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 201, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (20, 201, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (46, 201, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 202, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (33, 203, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (29, 204, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (18, 204, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (33, 204, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (45, 204, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (91, 205, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (85, 205, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (93, 205, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (14, 205, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (37, 206, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (90, 206, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (94, 206, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (28, 206, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (19, 206, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (29, 207, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (1, 207, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 207, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (28, 208, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (25, 209, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 210, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (91, 211, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (72, 211, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (11, 212, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 213, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (60, 213, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (73, 213, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 213, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (60, 214, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 215, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (94, 216, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (33, 217, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (77, 217, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (39, 217, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (25, 217, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (62, 217, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 218, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (47, 219, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (41, 220, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (7, 221, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (46, 221, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (17, 221, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (76, 221, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (98, 222, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (50, 223, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (62, 223, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 223, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 224, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (62, 225, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (11, 226, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (58, 226, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (57, 227, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (69, 228, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (76, 229, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 229, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 229, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (66, 230, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (91, 231, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (76, 232, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (67, 232, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (25, 232, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (77, 232, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (35, 233, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 234, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (92, 235, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (16, 236, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (82, 236, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (87, 236, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (76, 236, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (50, 236, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 237, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (87, 238, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (73, 239, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (70, 240, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (82, 240, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (25, 241, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (75, 241, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (87, 242, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (70, 242, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (70, 243, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (7, 244, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (77, 245, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 246, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (75, 247, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (6, 248, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (77, 248, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (97, 249, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (94, 250, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (58, 251, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (75, 251, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (7, 251, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (37, 251, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (94, 251, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 252, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (29, 253, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (13, 253, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (47, 254, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (82, 254, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (18, 254, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (25, 255, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (100, 255, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (5, 255, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (90, 255, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (11, 256, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (93, 257, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (31, 257, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 257, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (39, 257, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (11, 258, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (75, 258, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (17, 258, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 259, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (87, 259, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 259, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (29, 259, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (73, 260, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (14, 260, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (90, 260, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (86, 260, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (82, 261, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (14, 262, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (93, 262, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (53, 263, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (5, 264, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (10, 265, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (16, 266, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (50, 266, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (10, 266, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (58, 267, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (31, 267, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (5, 267, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (14, 267, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (6, 267, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (24, 268, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (69, 268, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (91, 268, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (17, 269, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (41, 270, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (39, 271, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 271, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (46, 271, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (25, 271, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (16, 271, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (19, 272, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (5, 272, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (46, 272, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (1, 273, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (7, 273, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 273, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (39, 273, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 274, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (24, 275, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (38, 275, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (95, 275, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (97, 275, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (22, 275, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (13, 276, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (27, 277, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (98, 277, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (90, 277, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (33, 277, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (31, 277, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (6, 278, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (25, 279, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (23, 279, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (29, 279, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (31, 279, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (22, 280, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (73, 280, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (62, 281, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (19, 281, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 281, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (98, 281, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (31, 282, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 283, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (39, 284, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (23, 284, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (70, 284, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (52, 284, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (86, 284, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (77, 285, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 285, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (82, 285, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (27, 286, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (39, 286, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (58, 286, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (13, 286, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (41, 287, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 287, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (29, 287, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (97, 287, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (46, 287, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (31, 288, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (37, 289, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 289, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (27, 289, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (28, 290, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 291, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (28, 291, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (69, 292, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 292, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (24, 292, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (100, 292, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (37, 292, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (95, 293, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (27, 293, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (22, 293, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (67, 293, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (50, 294, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (37, 294, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (81, 295, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (17, 295, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 296, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (45, 297, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (84, 297, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 297, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (67, 297, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (33, 297, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (38, 298, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 298, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (23, 298, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (62, 298, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (25, 298, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (100, 299, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 300, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (89, 300, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (41, 300, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (39, 301, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (75, 301, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (60, 301, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (57, 302, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (24, 302, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (10, 303, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (16, 304, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (48, 305, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (41, 306, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (23, 307, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (11, 308, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 308, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (41, 308, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 308, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (35, 309, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (48, 310, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (87, 310, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (17, 310, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (53, 310, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (13, 310, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (100, 311, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (28, 311, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (38, 311, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (67, 311, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (25, 311, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (31, 312, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (22, 312, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (92, 312, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (20, 312, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (100, 312, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 313, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (1, 313, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (4, 313, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (11, 313, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (22, 314, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (4, 314, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (35, 314, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (89, 314, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 314, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (29, 315, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (35, 316, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (13, 316, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (92, 316, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (93, 316, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (20, 316, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (77, 317, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (32, 318, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (72, 318, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (10, 318, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 318, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (70, 319, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (95, 320, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (73, 320, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 320, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (67, 320, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (7, 321, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (28, 322, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (13, 322, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (45, 322, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (18, 323, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (94, 323, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (33, 323, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (75, 323, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 324, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (84, 324, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (24, 324, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (50, 324, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 324, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (92, 325, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (22, 325, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (86, 325, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (33, 326, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 327, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (19, 327, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 328, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (27, 329, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (97, 329, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (23, 330, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (11, 331, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (46, 332, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (73, 333, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 333, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (23, 333, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (66, 333, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 334, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (41, 334, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (92, 334, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (24, 334, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (73, 335, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (62, 335, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (41, 335, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (18, 335, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 335, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (48, 336, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (60, 336, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (45, 336, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (76, 337, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (48, 337, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (32, 337, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (81, 337, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (52, 338, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (94, 338, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (70, 338, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (6, 338, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (32, 339, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (67, 339, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (87, 340, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (7, 340, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 341, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (53, 341, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (73, 341, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (24, 342, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (93, 342, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (67, 342, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (20, 342, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 342, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (10, 343, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (75, 343, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (66, 343, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (14, 343, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (25, 344, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (98, 344, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (89, 344, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (53, 344, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (84, 344, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (6, 345, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (58, 345, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (72, 345, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (86, 345, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (97, 346, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (67, 346, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (24, 346, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (4, 346, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 347, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (53, 347, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (29, 347, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (10, 347, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (41, 348, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (6, 348, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (91, 348, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (32, 348, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (10, 349, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (93, 350, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (81, 351, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (75, 351, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (11, 351, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (32, 351, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (46, 352, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (82, 352, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (31, 353, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (10, 353, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (5, 353, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (73, 353, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 353, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (4, 354, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (73, 354, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (86, 355, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (93, 356, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (46, 356, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (58, 356, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (100, 356, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (84, 357, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (90, 357, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (62, 357, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (92, 357, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (92, 358, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (41, 358, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (89, 358, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (86, 358, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (35, 359, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (66, 360, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (4, 361, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (25, 361, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (72, 361, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 362, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (52, 362, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (29, 362, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (17, 362, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (92, 362, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (66, 363, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 364, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (35, 365, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (11, 365, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (69, 365, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (62, 366, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (98, 366, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (81, 366, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (16, 367, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (92, 368, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (14, 368, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (24, 369, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (58, 370, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (35, 370, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (86, 371, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 372, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (86, 372, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (41, 372, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (82, 372, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (100, 372, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (19, 373, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (60, 374, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (39, 374, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (37, 375, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (53, 375, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (1, 375, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (47, 375, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (57, 376, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (32, 377, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (100, 378, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (62, 378, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (38, 378, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (23, 378, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (50, 379, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (4, 379, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (100, 379, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (11, 379, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (6, 379, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (98, 380, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (67, 381, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (84, 381, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (22, 381, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (89, 381, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (47, 381, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (86, 382, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (67, 383, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (17, 383, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (33, 383, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (32, 384, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (70, 384, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 384, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (38, 384, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 385, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (41, 386, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (85, 386, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (19, 386, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (76, 386, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (90, 386, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (92, 387, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (29, 387, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (38, 387, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (1, 387, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (50, 387, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (89, 388, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (75, 389, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (6, 390, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (84, 390, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (50, 390, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (87, 391, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 392, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (77, 393, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (67, 394, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (6, 395, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (28, 396, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (67, 397, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (29, 397, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (5, 397, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (31, 397, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (39, 397, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 398, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (73, 399, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (95, 399, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (92, 399, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (60, 400, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (25, 401, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (72, 401, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (7, 401, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (89, 402, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (35, 403, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (14, 403, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (87, 403, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (1, 403, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (19, 404, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (53, 405, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (16, 405, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (67, 405, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (57, 405, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (7, 405, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (14, 406, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (66, 407, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 408, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (14, 408, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (69, 408, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (10, 408, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (19, 408, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (5, 409, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (1, 410, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (98, 410, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (89, 411, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 412, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (22, 413, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (17, 413, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (45, 413, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (94, 413, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (32, 413, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (20, 414, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (7, 414, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (57, 414, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (4, 414, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (32, 414, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (7, 415, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (76, 416, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 417, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (75, 417, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (20, 417, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (11, 417, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (24, 417, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (87, 418, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (38, 418, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (52, 418, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (76, 418, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (5, 419, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (82, 420, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 420, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 420, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (67, 421, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (32, 422, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (73, 422, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (16, 422, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (1, 422, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (17, 422, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (35, 423, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (66, 424, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (6, 424, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (91, 425, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (97, 425, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 425, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (29, 425, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (48, 425, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (95, 426, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (46, 427, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (11, 427, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (53, 428, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (66, 429, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 429, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (72, 429, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (39, 430, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (86, 431, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (58, 432, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (19, 433, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 434, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (84, 434, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (19, 435, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (50, 435, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 436, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (6, 437, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (11, 438, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (11, 439, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (67, 440, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (47, 441, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (92, 441, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (77, 442, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (93, 442, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (95, 442, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (53, 442, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (75, 442, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 443, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (16, 443, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (48, 443, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (81, 444, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (53, 444, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (94, 444, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (67, 445, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (10, 445, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (87, 445, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (93, 445, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (14, 445, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (95, 446, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (32, 447, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 447, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (18, 447, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (31, 447, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (90, 448, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 448, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (75, 448, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (92, 448, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (86, 449, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (70, 450, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (48, 451, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (10, 451, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (46, 451, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (31, 452, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (92, 453, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (1, 454, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (72, 455, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (19, 455, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (1, 455, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (7, 455, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (90, 456, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 456, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (32, 456, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 456, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (22, 457, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (60, 457, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (29, 457, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (87, 458, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (66, 459, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (85, 459, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (16, 460, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (4, 461, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (20, 461, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (89, 461, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (19, 461, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (10, 462, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (82, 462, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (69, 462, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (100, 462, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (95, 462, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (19, 463, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (98, 463, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (13, 463, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (70, 463, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (7, 463, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (57, 464, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (27, 465, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (53, 465, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (4, 466, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (22, 467, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (82, 468, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (46, 468, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 468, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (35, 468, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (82, 469, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (35, 470, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (86, 471, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (23, 472, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 473, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (32, 473, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (25, 473, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (77, 473, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (48, 473, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (39, 474, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (37, 474, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (77, 474, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (100, 474, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 475, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (25, 475, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (66, 476, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (75, 476, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 476, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (98, 476, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (5, 476, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (93, 477, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 478, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 479, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (25, 480, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (77, 480, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (90, 480, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (11, 481, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (57, 481, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (60, 481, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (91, 481, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (32, 482, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (95, 483, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (38, 483, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (31, 483, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (93, 484, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 484, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (25, 484, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 484, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (53, 484, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (29, 485, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (50, 485, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (77, 486, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 487, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (70, 487, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (90, 487, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (50, 487, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (73, 487, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (32, 488, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (52, 488, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (86, 488, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (20, 488, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (87, 489, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (46, 490, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (58, 491, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (32, 491, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (95, 492, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (95, 493, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (37, 493, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (6, 493, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (100, 493, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (87, 493, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (79, 494, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (23, 494, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (48, 494, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (53, 495, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (84, 495, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (25, 496, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (89, 497, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (98, 498, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (39, 498, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (90, 498, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (22, 499, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (4, 499, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (10, 499, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (73, 499, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (16, 500, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 501, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (28, 501, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (72, 501, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (77, 501, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (5, 501, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (37, 502, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (57, 502, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (28, 502, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (40, 502, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (98, 502, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (82, 503, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (89, 504, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (50, 505, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (10, 506, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (87, 507, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (67, 507, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 508, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (82, 508, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (87, 508, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (98, 508, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (48, 509, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (28, 509, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (77, 509, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (25, 509, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (62, 510, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 511, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (53, 511, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (28, 511, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (32, 511, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (94, 512, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (8, 512, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (65, 512, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (25, 512, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (39, 512, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (13, 513, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (58, 513, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (31, 513, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (53, 513, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (24, 514, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (28, 515, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (29, 516, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (21, 517, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (94, 517, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (7, 518, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (1, 519, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (14, 520, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (33, 520, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (76, 521, FALSE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (62, 521, TRUE);
+INSERT INTO booking (student_school_id, activity_id, is_paid_for) VALUES (87, 522, FALSE);
