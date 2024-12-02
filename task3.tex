@@ -185,6 +185,17 @@ Denormalized databases are often used in implementations where you want to favor
 
 One of the obvious disadvantages is bigger database size since you store a lot of the same data multiple times. It might also be hard to maintain a denormalized database if you need to modify the same data at multiple locations. This can become time-consuming for its maintainers and makes it prone to errors. It will also be a lot more performance heavy if you for example need to update the same data at multiple locations. If you are working with huge amounts of data, you also pose the risk of meeting the limitations of your database quicker. This might for example arise as performance degradation, etc.
 
+\subsection{Query Plan Analyze}
+In the figure below the query plan for the first query regarding the number of lessons given per month of each type and total is shown. From the query plan it is shown that the query time is just over 2 milliseconds and the majority of that time is spent on joins and grouping. All tables are accessed via sequential scans, which are very inexpensive and only consume about 0.02 ms with the exception for the last sequential scan which also filters out rows to match the specified year and therefore takes a tiny bit longer at 0.434ms. The Hash Right Joins are the most expensive part of the query and take up a bulk of the time at approximately 1.2ms combined. If there is room for optimization in the query, it would be here. One way to optimize this would be to use Indexes, which would allow joins to avoid full table scans and speed up the filtering.
+
+\begin{figure}[H]
+    \begin{center}
+      \includegraphics[scale=0.6]{Explain Analyze Q1.png}
+      \caption{Query Plan for query 1}
+      \label{fig:diag}
+    \end{center}
+  \end{figure}
+
 \section{Comments About the Course}
 
 \end{document}
