@@ -115,7 +115,7 @@ FROM ensambles_next_week
 /* Query 5 (Insert historical data) */
 
 WITH personal_emails AS (
-    SELECT DISTINCT ON (school_id) *
+    SELECT DISTINCT ON (school_id) email, school_id
     FROM contact_details
     WHERE is_personal=true AND email IS NOT NULL
 ),
@@ -134,15 +134,8 @@ history_data AS (
             WHEN lesson_group.activity_id IS NOT NULL THEN 'Group Lesson'
             WHEN ensamble.activity_id IS NOT NULL THEN 'Ensemble'
         END::activity_type_enum AS activity_type,
-        CASE
-            WHEN lesson_individual.activity_id IS NOT NULL THEN instrument_type.instrument_name
-            WHEN lesson_group.activity_id IS NOT NULL THEN instrument_type.instrument_name
-            ELSE NULL
-        END AS instrument,
-        CASE
-            WHEN ensamble.activity_id IS NOT NULL THEN ensamble.genre
-            ELSE NULL
-        END AS genre
+        instrument_type.instrument_name AS instrument,
+        ensamble.genre AS genre
     FROM booking
         JOIN person ON booking.student_school_id = person.school_id
         LEFT JOIN personal_emails ON booking.student_school_id = personal_emails.school_id
@@ -176,4 +169,5 @@ SELECT
     first_name AS student_firstname,
     last_name AS student_lastname,
     email AS student_email
-FROM history_data;
+FROM history_data
+ON CONFLICT (activity_id, student_school_id) DO NOTHING;
