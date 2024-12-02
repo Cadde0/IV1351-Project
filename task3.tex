@@ -49,6 +49,9 @@ Our primary source of information for this assignment was the PostgreSQL documen
 
 \section{Method}
 
+This project task was to create an OLAP consisting of writing 4 different SQL queries to the previously created Database, as well as create a denormalized historical database and a query to fill it with data. The DBMS used for this task was \textbf{postgreSQL} and the queries where developed in the IDE visual studio code, with git used for version control. 
+
+The method used for verifying that the queries work as intended was a structured testing method. Each query was run against the database with some prepared mock data, and the results were reviewed to make sure they met all the specified requirements from the query descriptions as well as the Soundgood music school. The verification for this included checking and changing the output formatting, handling edge cases and confirming all logic. The expected output was also tested, initially with a small dataset when creating the queries and lastly with bigger datasets to make sure all edge cases and could be detected and tested against the expected output.
 
 \section{Result}
 
@@ -164,11 +167,16 @@ Running the query multiple times will not be a problem due to the final clause \
 
 \section{Discussion}
 
-\subsection{Question 1}
+\subsection{Analyzing Queries}
+No part of the database was changed or modified from the previous task to simplify these specific queries since the database design should not be changed for the lesser only to simplify a single query. Below follows a short discussion regarding each query:
 
-\subsection{Question 2}
+Query 1 uses grouping and aggregation and is not computationally expensive enough, which can be seen using postgreSQL EXPLAIN, or by simply logically looking at the query, to justify a materialized view, however if the query is done frequently enough, a materialized view could help performance. It also uses no correlated subqueries.
+    
+Query 2 uses "sibling_count" and "total_sibling_count" CTEs to break down the query int smaller logical steps for clarity. There exists an argument to have a materialized view since sibling counts are most likely almost static since siblings don't change unless a sibling quits the school or a new one joins. It uses grouping and summing instead of any correlated subqueries. This query uses a UNION ALL, but this is required since a student can appear in both the first and the second column of the table and not using a UNION ALL would not simplify the query but instead lead to incomplete results and losing data requested.
 
-\subsection{Question 3}
+Query 3 uses "lessons_this_month" to calculate total lessons this specific month and then uses that to filter based on the number of lessons. A materialized view would not be appropriate for this query since the number of lesson can change, especially if you are querying for the current month where scheduled lessons are customed to change. In this query all aggregations are handled using GROUP BY and JOIN and therefore avoids any correlated subqueries.
+
+Query 4 has two CTEs, one for next weeks ensembles and one for how many bookings/students booked each ensemble has to improve clarity and make the query more logical. The students booked CTE is used to calculate the number of available places from the maximum number of places at the lesson. A materialized view would not fit here since it queries the ensembles for next week, meaning the lessons and especially the number of students booked on a lesson are most likely to change. To avoid any correlated subqueries that would reduce performance this query uses a CASE statement and joins. 
 
 \subsection{Advantages and disadvantages of using denormalization}
 Denormalized databases are often used in implementations where you want to favor read speeds. Its main advantages include better performance for reading data due to fewer uses of joins and potentially better indexing. It also makes queries a lot easier to understand since you won't have to work with a lot of tables like you do in a normalized database.

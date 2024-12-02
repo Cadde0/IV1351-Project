@@ -109,7 +109,7 @@ SELECT TO_CHAR(start_time, 'Dy') as "Day",
   END AS "No of Free Seats"
 FROM ensambles_next_week
   LEFT JOIN bookings_per_ensamble on ensambles_next_week.activity_id = bookings_per_ensamble.activity_id
-  ORDER BY "Day", "Genre"
+  ORDER BY "Day", "Genre";
 
 
 /* Query 5 (Insert historical data) */
