@@ -88,11 +88,10 @@ WITH ensambles_next_week AS (
     ensamble.genre,
     ensamble.max_students,
     activity.start_time
-  from activity,
-    ensamble
+  from activity
+  JOIN ensamble ON activity.activity_id = ensamble.activity_id
   WHERE start_time >= DATE_TRUNC('week', CURRENT_DATE) + INTERVAL '7 days'
     AND start_time < DATE_TRUNC('week', CURRENT_DATE) + INTERVAL '14 days'
-    AND activity.activity_id = ensamble.activity_id
 ),
 bookings_per_ensamble AS (
   SELECT booking.activity_id,
