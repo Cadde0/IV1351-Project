@@ -45,7 +45,7 @@ It is furthermore declared that the solution below is a contribution by the proj
 
 
 \section{Literature Study}
-
+Our primary source of information for this assignment was the PostgreSQL documentation available at \url{https://www.postgresql.org/docs/current/}. This provided valuable information and even examples on how to write different queries. The chapters 6 and 7 in the book also provided valuable information on how to structure the actual queries and how to work with the data. For example, \textbf{7.1 More Complex SQL Retrieval Queries} mentions uses of the different functions such as \textbf{SUM}, how to work with \textbf{GROUP BY}, joining tables, etc. They also provide very good examples with images and diagrams which further help to visualize the concepts.
 
 \section{Method}
 
@@ -55,7 +55,7 @@ It is furthermore declared that the solution below is a contribution by the proj
 The GitHub repository with Astah files, SQL files, etc., can be found at \url{https://github.com/Cadde0/IV1351-Project}.
 
 \subsection{Query 1: Show the number of lessons given per month during a specified year}
-See code: \url{https://github.com/Cadde0/IV1351-Project/blob/bc37b1da7fca5ef37e66b2ea96cdc225cdd3290f/queries.sql#L1}.
+See code: \url{https://github.com/Cadde0/IV1351-Project/blob/da393a327bdfa9095d946e80d1bcf94df4ccb866/queries.sql#L1}.
 
 The first query we created was for retrieving information about how many activities there are of each type, each month.
 
@@ -77,7 +77,7 @@ Finally, the \textbf{ORDER BY} clause where we sort the rows based on the numeri
 
 
 \subsection{Query 2: Show how many students there are with no sibling, with one sibling, with two siblings, etc.}
-See code: \url{https://github.com/Cadde0/IV1351-Project/blob/bc37b1da7fca5ef37e66b2ea96cdc225cdd3290f/queries.sql#L25}.
+See code: \url{https://github.com/Cadde0/IV1351-Project/blob/da393a327bdfa9095d946e80d1bcf94df4ccb866/queries.sql#L25}.
 
 The second query will list how many students that different number of siblings registered in the school database.
 
@@ -99,7 +99,7 @@ Finally, we use a \textbf{GROUP BY} clause to group everything by the number of 
 
 
 \subsection{Query 3: List ids and names of all instructors who has given more than a specific number of lessons during the current month.}
-See code: \url{https://github.com/Cadde0/IV1351-Project/blob/bc37b1da7fca5ef37e66b2ea96cdc225cdd3290f/queries.sql#L61}.
+See code: \url{https://github.com/Cadde0/IV1351-Project/blob/da393a327bdfa9095d946e80d1bcf94df4ccb866/queries.sql#L61}.
 
 In this query we will select the instructor ID, first name, last name, and the number of lessons that each instructor has given during the current month. In our example, we limited the number of lessons to \textbf{0} to show more data, but this number can obviously easily be changed to only show instructors that has given a certain number of lessons.
 
@@ -116,7 +116,7 @@ Now we only have the instructor ID and the number of lessons that each instructo
   \end{figure}
 
 \subsection{Query 4: List all ensembles held during the next week}
-See code: \url{https://github.com/Cadde0/IV1351-Project/blob/bc37b1da7fca5ef37e66b2ea96cdc225cdd3290f/queries.sql#L84}.
+See code: \url{https://github.com/Cadde0/IV1351-Project/blob/da393a327bdfa9095d946e80d1bcf94df4ccb866/queries.sql#L84}.
 
 This query will give us a schedule-like output of all ensembles next week and also include the number of free seats for each ensemble.
 
@@ -138,7 +138,7 @@ Finally, we make an \textbf{SELECT} operation on \textbf{ensambles\_next\_week} 
 
 
 \subsection{Query 5: Query for selecting and inserting historical data in denormalized database}
-See code: \url{https://github.com/Cadde0/IV1351-Project/blob/bc37b1da7fca5ef37e66b2ea96cdc225cdd3290f/queries.sql#L116} and \url{https://github.com/Cadde0/IV1351-Project/blob/main/CreateHistorical.sql}.
+See code: \url{https://github.com/Cadde0/IV1351-Project/blob/da393a327bdfa9095d946e80d1bcf94df4ccb866/queries.sql#L116} and \url{https://github.com/Cadde0/IV1351-Project/blob/main/CreateHistorical.sql}.
 
 This last query is part of the higher grade task, where we are assigned to select all activities that people have made bookings for into a denormalized database. We have also created the historical database diagram which can be seen in \textbf{Figure 5} below. To make it easier to move the data to the \textbf{activity\_history} table with a single query we implemented it into the same database. This might be bad practice because you don't necessarily want to fill up your main production database with historical data that is based on data within it. Instead, it would be a great idea to offload this data to a database that only keeps historical data. However, moving data between databases like this isn't introduced in this course.
 
@@ -169,6 +169,11 @@ Running the query multiple times will not be a problem due to the final clause \
 \subsection{Question 2}
 
 \subsection{Question 3}
+
+\subsection{Advantages and disadvantages of using denormalization}
+Denormalized databases are often used in implementations where you want to favor read speeds. Its main advantages include better performance for reading data due to fewer uses of joins and potentially better indexing. It also makes queries a lot easier to understand since you won't have to work with a lot of tables like you do in a normalized database.
+
+One of the obvious disadvantages is bigger database size since you store a lot of the same data multiple times. It might also be hard to maintain a denormalized database if you need to modify the same data at multiple locations. This can become time-consuming for its maintainers and makes it prone to errors. It will also be a lot more performance heavy if you for example need to update the same data at multiple locations. If you are working with huge amounts of data, you also pose the risk of meeting the limitations of your database quicker. This might for example arise as performance degradation, etc.
 
 \section{Comments About the Course}
 
