@@ -1,19 +1,10 @@
-Task 2.asta.lock
+*.asta.lock
 .DS_Store
 *.bak
-task2.aux
-task2.fdb_latexmk
-task2.fls
-task2.log
-task2.synctex.gz
 .vscode/ltex.hiddenFalsePositives.en-US.txt
-task2.out
-task3.aux
-task3.fdb_latexmk
-task3.fls
-task3.log
-task3.out
-task3.synctex.gz
-task3 2.aux
-task3 2.fdb_latexmk
-task3 2.log
+*.fls
+*.out
+*.synctex.gz
+*.aux
+*.fdb_latexmk
+*.log
