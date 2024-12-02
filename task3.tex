@@ -52,7 +52,7 @@ Our primary source of information for this assignment was the PostgreSQL documen
 This project task was to create an OLAP consisting of writing 4 different SQL queries to the previously created Database, as well as create a denormalized historical database and a query to fill it with data. The DBMS used for this task was \textbf{postgreSQL} and the queries where developed in the IDE visual studio code, with git used for version control. 
 
 The method used for verifying that the queries work as intended was a structured testing method. Each query was run against the database with some prepared mock data, and the results were reviewed to make sure they met all the specified requirements from the query descriptions as well as the Soundgood music school. The verification for this included checking and changing the output formatting, handling edge cases and confirming all logic. The expected output was also tested, initially with a small dataset when creating the queries and lastly with bigger datasets to make sure all edge cases and could be detected and tested against the expected output.
-
+ 
 When making the denormalized database we started by looking at the information that the database should contain. We quickly realized that there wasn't much data that needed to be stored and that we probably would be enough with creating a single table for said data. Minimizing the number of tables also makes the database more denormalized and ensures that you don't have to include as many \textbf{JOIN}:s later when making queries. We tried to consider what the database would be used for to determine how much we should denormalize it whilst still keeping it usable in a real-world scenario. For example, we decided to keep the student first and last name in separate columns. Next, we made a diagram in Astah using our knowledge from previous tasks. We included notes and constraints to our data to make it as clear as possible. Implementing our database in SQL could also easily be made from our knowledge from previous tasks.
 
 \section{Result}
@@ -190,7 +190,7 @@ In the figure below the query plan for the first query regarding the number of l
 
 \begin{figure}[H]
     \begin{center}
-      \includegraphics[scale=0.6]{Explain Analyze Q1.png}
+      \includegraphics[scale=0.34]{Explain Analyze Q1.png}
       \caption{Query Plan for query 1}
       \label{fig:diag}
     \end{center}
